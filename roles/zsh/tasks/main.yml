@@ -1,0 +1,73 @@
+- name: Deleting ZSH folder (if it exists)
+  file:
+    path: "{{ZSH_PATH}}"
+    state: absent
+
+- name: Installing ZSH
+  package:
+    name: zsh
+    state: present
+  become: true
+  when: ansible_distribution != 'ArchLinux'
+
+- name: Installing ZSH
+  community.general.pacman:
+    name: zsh
+    state: present
+  become: true
+  when: ansible_distribution == 'ArchLinux'
+
+- name: Installing Oh-My-ZSH
+  shell: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
+
+- name: Cloning zsh-autosuggestions plugin
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: "{{ZSH_CUSTOM}}/plugins/zsh-autosuggestions"
+
+- name: Cloning zsh-syntax-highlighting plugin
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting
+    dest: "{{ZSH_CUSTOM}}/plugins/zsh-syntax-highlighting"
+
+- name: Creating Meslo Nerd Font directory
+  become: true
+  file:
+    path: /usr/share/fonts/MesloLGS
+    state: directory
+
+- name: Installing Meslo Nerd Font
+  become: true
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - url: "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf"
+      dest: "/usr/share/fonts/MesloLGS/MesloLGS NF Regular.ttf"
+    - url: "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf"
+      dest: "/usr/share/fonts/MesloLGS/MesloLGS NF Bold.ttf"
+    - url: "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf"
+      dest: "/usr/share/fonts/MesloLGS/MesloLGS NF Italic.ttf"
+    - url: "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
+      dest: "/usr/share/fonts/MesloLGS/MesloLGS NF Bold Italic.ttf"
+
+- name: Cloning powerlevel10k theme
+  git:
+    repo: https://github.com/romkatv/powerlevel10k
+    dest: "{{ZSH_CUSTOM}}/themes/powerlevel10k"
+
+- name: Changing default shell
+  shell: "chsh --shell $(command -v zsh) {{user}}"
+  become: true
+
+- name: Linking dotfiles
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - src: zshrc
+      dest: ~/.zshrc
+    - src: p10k.zsh
+      dest: ~/.p10k.zsh
+    - src: modules/
+      dest: ~/.zsh_modules/
