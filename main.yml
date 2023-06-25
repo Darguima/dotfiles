@@ -3,3 +3,9 @@
   tags: zsh
   roles:
     - zsh
+
+- name: "Nginx"
+  hosts: server
+  tags: nginx
+  roles:
+    - nginx

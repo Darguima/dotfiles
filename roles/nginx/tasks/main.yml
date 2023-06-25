@@ -1,0 +1,38 @@
+- name: Installing Nginx
+  package:
+    name: nginx
+    state: present
+  become: true
+
+- name: Copying website
+  copy:
+    src: website/
+    dest: /var/www/html/
+  become: true
+
+- name: Copying nginx website config
+  copy:
+    src: nginx_config.sh
+    dest: /etc/nginx/sites-available/default
+  become: true
+
+- name: Installing certbot
+  package:
+    name:
+      - certbot
+      - python3-certbot-nginx
+    state: present
+  become: true
+
+- name: Running certbot with nginx plugin
+  shell: "certbot --nginx --noninteractive --agree-tos -d dsgdevbraga.ddns.net -m dsgdevbraga@gmail.com"
+  become: true
+
+- name: Restarting service nginx
+  service:
+    name: nginx
+    state: restarted
+  become: true
+  
+
+
