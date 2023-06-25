@@ -1,4 +1,5 @@
 - name: "Z Shell"
   hosts: all
+  tags: zsh
   roles:
     - zsh
