@@ -60,7 +60,7 @@
   shell: "chsh --shell $(command -v zsh) {{user}}"
   become: true
 
-- name: Linking dotfiles
+- name: Copying dotfiles
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"

@@ -32,16 +32,16 @@ $ yay -S ansible-core ansible
 With everything ready, we can run the main playbook to configure your local machine:
 
 ```bash
-$ ansible-playbook -c local main.yml -K
+$ ansible-playbook --limit localhost main.yml -K
 ```
 
-Or if you want configure a remote machine, like a server, you can run:
+You can also edit `inventory.yml` to configure your remote machines, like a server. Just follow [ansible guide](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html) to write one. In my case I just need run:
 
 ```bash
-# Configure a desktop
-$ ansible-playbook -i "desktop: <desktop ssh address>," -c local main.yml -K
+# Configure all desktops
+$ ansible-playbook --limit desktop main.yml -K
 
-# Configure a server
-$ ansible-playbook -i "server: <server ssh address>," -c local main.yml -K
+# Configure all servers
+$ ansible-playbook --limit server main.yml -K
 ```
 

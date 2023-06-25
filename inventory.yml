@@ -1,0 +1,12 @@
+all:
+  children:
+    desktop:
+      hosts:
+        archDesktop:
+        archLaptop:
+        localhost:
+          ansible_connection: local
+    server:
+      hosts:
+        tiny:
+        dsgdevbraga:
