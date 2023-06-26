@@ -1,15 +1,5 @@
 # Ubuntu
 
-- name: Installed dependencies
-  apt:
-    pkg:
-      - ca-certificates
-      - curl
-      - gnupg
-    state: latest
-  become: true
-  when: ansible_distribution | lower == 'ubuntu'
-
 - name: Added Docker GPG apt Key
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg

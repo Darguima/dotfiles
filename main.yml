@@ -1,8 +1,8 @@
-- name: "System Upgrade"
+- name: "System Prepare"
   hosts: all
-  tags: system_upgrade
+  tags: system_prepare
   roles:
-    - system_upgrade
+    - system_prepare
 
 - name: "Z Shell"
   hosts: all

@@ -1,0 +1,50 @@
+# Ubuntu
+
+- name: Installed apt dependencies
+  apt:
+    pkg:
+      - ca-certificates
+      - curl
+      - gnupg
+      - apt-transport-https
+    state: latest
+  become: true
+  when: ansible_distribution | lower == 'ubuntu'
+
+- name: Updated & Upgraded apt
+  apt:
+    update_cache: yes
+    upgrade: yes
+  become: true
+  when: ansible_distribution | lower == 'ubuntu'
+
+# Arch
+
+- name: Updated & Upgraded pacman
+  community.general.pacman:
+    update_cache: yes
+    upgrade: yes
+  become: true
+  when: ansible_distribution | lower == 'archlinux'
+
+# Ansible Dependencies
+
+- name: Installed ansible's packages dependencies
+  apt:
+    pkg:
+      - python3-pip
+    state: latest
+  become: true
+  when: ansible_distribution | lower == 'ubuntu'
+
+- name: Installed ansible's packages dependencies
+  community.general.pacman:
+    name: python-pip
+    state: present
+  become: true
+  when: ansible_distribution | lower == 'archlinux'
+
+- name: Installed ansible's python dependencies
+  pip:
+    name:
+      - lxml
