@@ -9,3 +9,9 @@
   tags: zsh
   roles:
     - zsh
+
+- name: "Docker"
+  hosts: all
+  tags: docker
+  roles:
+    - docker

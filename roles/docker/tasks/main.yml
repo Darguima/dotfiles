@@ -1,0 +1,42 @@
+# Ubuntu
+
+- name: Installing dependencies
+  apt:
+    pkg:
+      - ca-certificates
+      - curl
+      - gnupg
+    state: latest
+  become: true
+  when: ansible_distribution | lower == 'ubuntu'
+
+- name: Adding Docker GPG apt Key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  become: true
+  when: ansible_distribution | lower == 'ubuntu'
+
+- name: Adding Docker Repository
+  apt_repository:
+    repo: "deb https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable"
+    state: present
+  become: true
+  when: ansible_distribution | lower == 'ubuntu'
+
+- name: Updating apt and Installing docker-ce
+  apt:
+    name: docker-ce
+    state: latest
+    update_cache: true
+  become: true
+  when: ansible_distribution | lower == 'ubuntu'
+
+# Arch
+
+- name: Installing Docker
+  community.general.pacman:
+    name: docker
+    state: present
+  become: true
+  when: ansible_distribution | lower == 'archlinux'

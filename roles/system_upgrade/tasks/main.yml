@@ -3,7 +3,7 @@
     update_cache: yes
     upgrade: yes
   become: true
-  when: ansible_distribution | lower != 'archlinux'
+  when: ansible_distribution | lower == 'ubuntu'
 
 - name: Update & Upgrade pacman
   community.general.pacman:

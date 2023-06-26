@@ -4,11 +4,11 @@
     state: absent
 
 - name: Installing ZSH
-  package:
+  apt:
     name: zsh
     state: present
   become: true
-  when: ansible_distribution | lower != 'archlinux'
+  when: ansible_distribution | lower == 'ubuntu'
 
 - name: Installing ZSH
   community.general.pacman:
