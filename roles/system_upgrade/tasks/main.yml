@@ -1,11 +1,11 @@
-- name: Update & Upgrade apt
+- name: Updated & Upgraded apt
   apt:
     update_cache: yes
     upgrade: yes
   become: true
   when: ansible_distribution | lower == 'ubuntu'
 
-- name: Update & Upgrade pacman
+- name: Updated & Upgraded pacman
   community.general.pacman:
     update_cache: yes
     upgrade: yes

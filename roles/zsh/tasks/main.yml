@@ -1,42 +1,42 @@
-- name: Deleting ZSH folder (if it exists)
+- name: Deleted ZSH folder (if it exists)
   file:
     path: "{{ZSH_PATH}}"
     state: absent
 
-- name: Installing ZSH
+- name: Installed ZSH
   apt:
     name: zsh
     state: present
   become: true
   when: ansible_distribution | lower == 'ubuntu'
 
-- name: Installing ZSH
+- name: Installed ZSH
   community.general.pacman:
     name: zsh
     state: present
   become: true
   when: ansible_distribution | lower == 'archlinux'
 
-- name: Installing Oh-My-ZSH
+- name: Installed Oh-My-ZSH
   shell: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
 
-- name: Cloning zsh-autosuggestions plugin
+- name: Cloned zsh-autosuggestions plugin
   git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
     dest: "{{ZSH_CUSTOM}}/plugins/zsh-autosuggestions"
 
-- name: Cloning zsh-syntax-highlighting plugin
+- name: Cloned zsh-syntax-highlighting plugin
   git:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting
     dest: "{{ZSH_CUSTOM}}/plugins/zsh-syntax-highlighting"
 
-- name: Creating Meslo Nerd Font directory
+- name: Created Meslo Nerd Font directory
   become: true
   file:
     path: /usr/share/fonts/MesloLGS
     state: directory
 
-- name: Installing Meslo Nerd Font
+- name: Installed Meslo Nerd Font
   become: true
   get_url:
     url: "{{ item.url }}"
@@ -51,16 +51,16 @@
     - url: "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
       dest: "/usr/share/fonts/MesloLGS/MesloLGS NF Bold Italic.ttf"
 
-- name: Cloning powerlevel10k theme
+- name: Cloned powerlevel10k theme
   git:
     repo: https://github.com/romkatv/powerlevel10k
     dest: "{{ZSH_CUSTOM}}/themes/powerlevel10k"
 
-- name: Changing default shell
+- name: Changed default shell
   shell: "chsh --shell $(command -v zsh) {{user}}"
   become: true
 
-- name: Copying dotfiles
+- name: Copied dotfiles
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
