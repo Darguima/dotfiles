@@ -1,3 +1,9 @@
+- name: "System Upgrade"
+  hosts: all
+  tags: system_upgrade
+  roles:
+    - system_upgrade
+
 - name: "Z Shell"
   hosts: all
   tags: zsh

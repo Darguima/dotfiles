@@ -8,14 +8,14 @@
     name: zsh
     state: present
   become: true
-  when: ansible_distribution != 'ArchLinux'
+  when: ansible_distribution | lower != 'archlinux'
 
 - name: Installing ZSH
   community.general.pacman:
     name: zsh
     state: present
   become: true
-  when: ansible_distribution == 'ArchLinux'
+  when: ansible_distribution | lower == 'archlinux'
 
 - name: Installing Oh-My-ZSH
   shell: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
