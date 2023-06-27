@@ -1,0 +1,143 @@
+# Installing at Ubuntu
+
+- name: Added GPG apt Key
+  apt_key:
+    url: https://syncthing.net/release-key.gpg
+    state: present
+  become: true
+  when: ansible_distribution | lower == 'ubuntu'
+
+- name: Added Repository
+  apt_repository:
+    repo: "deb https://apt.syncthing.net/ syncthing stable"
+    state: present
+  become: true
+  when: ansible_distribution | lower == 'ubuntu'
+
+- name: Updated apt and Installed Syncthing
+  apt:
+    name: syncthing
+    state: latest
+    update_cache: true
+  become: true
+  when: ansible_distribution | lower == 'ubuntu'
+
+# Installing at Arch
+
+- name: Installed Syncthing
+  community.general.pacman:
+    name: syncthing
+    state: present
+  become: true
+  when: ansible_distribution | lower == 'archlinux'
+
+# Ubuntu Configurations
+
+- name: Created Syncthing directory
+  ansible.builtin.file:
+    path: ~/syncthing
+    state: directory
+  when: ansible_distribution | lower == 'ubuntu'
+
+# Both Configurations
+
+- name: Enabled and Started service
+  ansible.builtin.service:
+    name: "syncthing@{{ ansible_user_id }}"
+    state: restarted
+    enabled: yes
+  become: true
+
+# From https://github.com/eddyhub/ansible-syncthing/blob/master/tasks/main.yml
+
+- name: Waited for config file (toke some time)
+  wait_for: path=~/.config/syncthing/config.xml
+
+- name: Set public WebInterface address
+  xml:
+    path: ~/.config/syncthing/config.xml
+    xpath: /configuration/gui/address
+    value: "{{ public_address }}"
+  when: ansible_distribution | lower == 'ubuntu'
+
+- name: Set private WebInterface address
+  xml:
+    path: ~/.config/syncthing/config.xml
+    xpath: /configuration/gui/address
+    value: "{{ private_address }}"
+  when: ansible_distribution | lower == 'archlinux'
+
+- name: Set listen address
+  xml:
+    path: ~/.config/syncthing/config.xml
+    xpath: /configuration/options/listenAddress
+    value: "{{ listen_address }}"
+
+- name: Set localAnnounceEnabled
+  xml:
+    path: ~/.config/syncthing/config.xml
+    xpath: /configuration/options/localAnnounceEnabled
+    value: "{{ local_announce | lower }}"
+
+- name: Set globalAnnounceEnabled
+  xml:
+    path: ~/.config/syncthing/config.xml
+    xpath: /configuration/options/globalAnnounceEnabled
+    value: "{{ global_announce | lower }}"
+
+- name: Set user
+  xml:
+    path: ~/.config/syncthing/config.xml
+    xpath: /configuration/gui/user
+    value: "{{ gui_user }}"
+  when: gui_user is defined
+
+- name: Set password
+  xml:
+    path: ~/.config/syncthing/config.xml
+    xpath: /configuration/gui/password
+    value: "{{ gui_password }}"
+  when: gui_password is defined
+
+- name: Deleted Default Folder
+  xml:
+    path: ~/.config/syncthing/config.xml
+    xpath: /configuration/folder[@id="default"]
+    state: absent
+
+- name: Changed folder defaults path
+  xml:
+    path: ~/.config/syncthing/config.xml
+    xpath: /configuration/defaults/folder
+    attribute: path
+    value: ~/syncthing
+  when: ansible_distribution | lower == 'ubuntu'
+
+- name: Changed folder defaults update order
+  xml:
+    path: ~/.config/syncthing/config.xml
+    xpath: /configuration/defaults/folder/order
+    value: smallestFirst
+
+- name: Removed all devices defaults addresses
+  xml:
+    path: ~/.config/syncthing/config.xml
+    xpath: /configuration/defaults/device/address
+    state: absent
+
+- name: Added devices defaults addresses
+  xml:
+    path: ~/.config/syncthing/config.xml
+    xpath: /configuration/defaults/device
+    add_children:
+      - address: tcp://192.168.1.70:22000
+      - address: tcp://192.168.1.71:22000
+      - address: tcp://192.168.1.72:22000
+      - address: tcp://dsgdevbraga.ddns.net:22000
+
+
+- name: Restarted service
+  ansible.builtin.service:
+    name: "syncthing@{{ ansible_user_id }}"
+    state: restarted
+  become: true

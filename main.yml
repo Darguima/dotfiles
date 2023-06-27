@@ -15,3 +15,9 @@
   tags: docker
   roles:
     - docker
+
+- name: "Syncthing"
+  hosts: all
+  tags: syncthing
+  roles:
+    - syncthing

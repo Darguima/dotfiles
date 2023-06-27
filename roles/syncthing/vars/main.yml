@@ -1,0 +1,10 @@
+---
+private_address: 127.0.0.1:8384
+public_address: 0.0.0.0:8384
+listen_address: tcp://0.0.0.0:22000
+
+local_announce: true
+global_announce: true
+
+gui_user: darguima
+gui_password: $2a$10$S4If5v4e87MZO94KqZM.4urXxPo1Z.eWOh6xDbC7oUAqSfJTw/OfO

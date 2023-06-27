@@ -30,7 +30,7 @@
     repo: https://github.com/zsh-users/zsh-syntax-highlighting
     dest: "{{ZSH_CUSTOM}}/plugins/zsh-syntax-highlighting"
 
-- name: Created Meslo Nerd Font directory
+- name: Ensured Meslo Nerd Font directory
   become: true
   file:
     path: /usr/share/fonts/MesloLGS
