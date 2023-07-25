@@ -39,7 +39,7 @@
     state: directory
   when: ansible_distribution | lower == 'ubuntu'
 
-# Both Configurations
+# Start Service to generate config file
 
 - name: Enabled and Started service
   ansible.builtin.service:
@@ -47,6 +47,15 @@
     state: restarted
     enabled: yes
   become: true
+  when: ansible_distribution | lower == 'ubuntu'
+
+- name: Enabled and Started service
+  ansible.builtin.systemd:
+    name: "syncthing"
+    state: restarted
+    enabled: yes
+    scope: "user"
+  when: ansible_distribution | lower == 'archlinux'
 
 # From https://github.com/eddyhub/ansible-syncthing/blob/master/tasks/main.yml
 
@@ -85,14 +94,14 @@
     xpath: /configuration/options/globalAnnounceEnabled
     value: "{{ global_announce | lower }}"
 
-- name: Set user
+- name: Set login user
   xml:
     path: ~/.config/syncthing/config.xml
     xpath: /configuration/gui/user
     value: "{{ gui_user }}"
   when: gui_user is defined
 
-- name: Set password
+- name: Set login password
   xml:
     path: ~/.config/syncthing/config.xml
     xpath: /configuration/gui/password
@@ -135,9 +144,18 @@
       - address: tcp://192.168.1.72:22000
       - address: tcp://dsgdevbraga.ddns.net:22000
 
+# Restart Service to load new config file
 
 - name: Restarted service
   ansible.builtin.service:
     name: "syncthing@{{ ansible_user_id }}"
     state: restarted
   become: true
+  when: ansible_distribution | lower == 'ubuntu'
+
+- name: Restarted service
+  ansible.builtin.systemd:
+    name: "syncthing"
+    state: restarted
+    scope: "user"
+  when: ansible_distribution | lower == 'archlinux'
