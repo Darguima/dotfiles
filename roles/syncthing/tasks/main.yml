@@ -98,15 +98,15 @@
   xml:
     path: ~/.config/syncthing/config.xml
     xpath: /configuration/gui/user
-    value: "{{ gui_user }}"
-  when: gui_user is defined
+    value: "{{ syncthing_gui_user }}"
+  when: syncthing_gui_user is defined
 
 - name: Set login password
   xml:
     path: ~/.config/syncthing/config.xml
     xpath: /configuration/gui/password
-    value: "{{ gui_password }}"
-  when: gui_password is defined
+    value: "{{ syncthing_gui_password }}"
+  when: syncthing_gui_password is defined
 
 - name: Deleted Default Folder
   xml:
