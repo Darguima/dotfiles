@@ -1,5 +1,16 @@
 ---
 
-just_an_unused_var: can be deleted if other var is set
-# syncthing_gui_user:
-# syncthing_gui_password:
+#### Personal Information Vars
+
+email: your personal/dev/enterprise e-mail (used for example for certbot certificate notifications)
+
+#### Server and Desktop Vars
+
+syncthing_gui_user: The user that will be prompted to login on the Syncthing Webpage Interface
+syncthing_gui_password: The password that will be prompted to login on the Syncthing Webpage Interface
+
+#### Server Vars
+
+server_address: The address that exposes your server to the global network (eg. myPortfolio.com)
+nginx_server_address: "{{ server_address }}"
+nginx_email: "{{ email }}"

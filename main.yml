@@ -21,3 +21,9 @@
   tags: syncthing
   roles:
     - syncthing
+
+- name: "Nginx"
+  hosts: server
+  tags: nginx
+  roles:
+    - nginx

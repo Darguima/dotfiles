@@ -1,0 +1,43 @@
+- name: Installing Nginx
+  package:
+    name: nginx
+    state: present
+  become: true
+
+- name: Copying website
+  copy:
+    src: website/
+    dest: /var/www/html/
+  become: true
+
+- name: Copying nginx website config
+  copy:
+    src: nginx_config.sh
+    dest: /etc/nginx/sites-available/default
+  become: true
+
+- name: Added server name to nginx website config
+  replace:
+    path: /etc/nginx/sites-available/default
+    regexp: 'rename_me.com'
+    replace: '{{ nginx_server_address }}'
+  become: true
+
+- name: Installing certbot
+  package:
+    name:
+      - certbot
+      - python3-certbot-nginx
+    state: present
+  become: true
+
+- name: Running certbot with nginx plugin
+  shell: "certbot --nginx --noninteractive --agree-tos -d {{ nginx_server_address }} -m {{ nginx_email }}"
+  become: true
+
+- name: Restarting service nginx
+  service:
+    name: nginx
+    state: restarted
+  become: true
+  
