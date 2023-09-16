@@ -1,11 +1,16 @@
 # .dotfiles
 
-Finally after 3 years of Linux and many Linux distros I created my `.dotfiles`.
+A collection of my [Ansible](https://docs.ansible.com/ansible/latest/index.html) roles, and two bootstraps to create my desktop/laptop environment and my Home Server.
 
-Here you will find an [Ansible](https://docs.ansible.com/ansible/latest/index.html) (radically simple IT automation platform) environment, that I use to quickly setup my network devices, including my server.
+## Ansible
 
-## Installing 🐧
+Before do anything you should learn a little about [Ansible](https://docs.ansible.com/ansible/latest/index.html) if you never hear about it.
 
+Ansible will run a bunch of commands, organized in yaml files. You can run Ansible in an `host machine` to install the dotfiles on the `target machine` (Ansible will use SSH). When configuring my server, this remote installation is very useful, but when I want to run something on my personal computers, I prefer do it locally.
+
+You can find some more about Ansible on their [docs](https://docs.ansible.com/ansible/latest/index.html), and about this projects [after the installation guide](#how-the-project-is-organized).
+
+## Installing the dotfiles 🐧
 ### Clone the repo 📥
 
 ```bash
@@ -21,10 +26,11 @@ $ git clone git@github.com:Darguima/dotfiles.git ~/.dotfiles
 Now, on the machine from where you configure every device, the master, you need to install ansible. From the [installation documentation](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#pip-install) we can use pip:
 
 ```bash
-$ python3 -m pip install --user ansible
-
-# Or in Arch if you want
+# Arch Linux
 $ yay -S ansible-core ansible
+
+# With pip
+$ python3 -m pip install --user ansible
 ```
 
 ### Defining your variables
@@ -55,3 +61,14 @@ $ ansible-playbook --limit desktop main.yml -K --extra-vars "@vars.yml"
 $ ansible-playbook --limit server main.yml -K --extra-vars "@vars.yml"
 ```
 
+## How the project is organized
+
+A role is folder with yaml files that organize certain commands. You can find all my roles on the folder `./roles`. Each role will be used to perform a specific function/installation/configuration like install `docker` or `zsh`. Each role has sub-folders for tasks, files and variables.
+
+### My roles
+
+#### system_prepare
+
+Ansible, and some of my roles need some dependencies. All them should be installed by the role `system_prepare`. This include some Linux and python packages.
+
+Also the 
