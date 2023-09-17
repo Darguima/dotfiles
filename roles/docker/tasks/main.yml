@@ -1,5 +1,5 @@
 - name: Installed Docker
   community.general.pacman:
     name: docker
-    state: present
+    state: latest
   become: true

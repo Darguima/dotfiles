@@ -1,7 +1,7 @@
 - name: Installed Syncthing
   community.general.pacman:
     name: syncthing
-    state: present
+    state: latest
   become: true
 
 - name: Enabled and Started service

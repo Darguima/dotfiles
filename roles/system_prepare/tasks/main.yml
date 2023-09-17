@@ -9,5 +9,5 @@
     name:
       - python-setuptools
       - python-lxml
-    state: present
+    state: latest
   become: true

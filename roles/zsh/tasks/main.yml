@@ -6,7 +6,7 @@
 - name: Installed ZSH
   community.general.pacman:
     name: zsh
-    state: present
+    state: latest
   become: true
 
 - name: Installed Oh-My-ZSH
@@ -49,7 +49,7 @@
     dest: "{{ZSH_CUSTOM}}/themes/powerlevel10k"
 
 - name: Changed default shell
-  shell: "chsh --shell $(command -v zsh) {{user}}"
+  command: "chsh --shell $(command -v zsh) {{user}}"
   become: true
 
 - name: Copied dotfiles
