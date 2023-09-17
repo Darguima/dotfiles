@@ -1,0 +1,20 @@
+- name: Installed yay dependencies
+  community.general.pacman:
+    name:
+      - git
+      - base-devel
+    state: latest
+  become: true
+
+- name: Cloned yay binary
+  git:
+    repo: https://aur.archlinux.org/yay.git
+    dest: "/tmp/yay"
+
+- name: Built and installed yay package
+  register: command_output
+  changed_when: "'there is nothing to do' not in command_output.stdout"
+  command:
+    chdir: "/tmp/yay"
+    cmd: "makepkg -si --noconfirm --needed"
+    

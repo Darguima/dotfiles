@@ -4,6 +4,12 @@
   roles:
     - system_prepare
 
+- name: "yay"
+  hosts: all
+  tags: yay
+  roles:
+    - yay
+
 - name: "Z Shell"
   hosts: all
   tags: zsh
