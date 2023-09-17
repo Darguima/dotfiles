@@ -91,3 +91,12 @@
     name: "syncthing"
     state: restarted
     scope: "user"
+
+- name: Installed Syncthing Tray
+  pacman:
+    executable: yay
+    name:
+      - "c++utilities"
+      - "qtforkawesome"
+      - "syncthingtray"
+    state: present
