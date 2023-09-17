@@ -1,5 +1,5 @@
 - name: Installed yay dependencies
-  community.general.pacman:
+  pacman:
     name:
       - git
       - base-devel

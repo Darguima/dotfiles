@@ -1,5 +1,5 @@
 - name: Installed Syncthing
-  community.general.pacman:
+  pacman:
     name: syncthing
     state: latest
   become: true

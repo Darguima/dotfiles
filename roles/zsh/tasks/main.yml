@@ -4,7 +4,7 @@
     state: absent
 
 - name: Installed ZSH
-  community.general.pacman:
+  pacman:
     name: zsh
     state: latest
   become: true

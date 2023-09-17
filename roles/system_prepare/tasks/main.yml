@@ -1,11 +1,11 @@
 - name: Updated & Upgraded pacman
-  community.general.pacman:
+  pacman:
     update_cache: yes
     upgrade: yes
   become: true
 
 - name: Installed ansible's packages dependencies
-  community.general.pacman:
+  pacman:
     name:
       - python-setuptools
       - python-lxml
