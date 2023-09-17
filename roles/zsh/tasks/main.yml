@@ -4,18 +4,10 @@
     state: absent
 
 - name: Installed ZSH
-  apt:
-    name: zsh
-    state: present
-  become: true
-  when: ansible_distribution | lower == 'ubuntu'
-
-- name: Installed ZSH
   community.general.pacman:
     name: zsh
     state: present
   become: true
-  when: ansible_distribution | lower == 'archlinux'
 
 - name: Installed Oh-My-ZSH
   shell: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
