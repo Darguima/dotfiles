@@ -16,6 +16,12 @@
   roles:
     - zsh
 
+- name: "Xorg"
+  hosts: all
+  tags: xorg
+  roles:
+    - xorg
+
 - name: "Docker"
   hosts: all
   tags: docker

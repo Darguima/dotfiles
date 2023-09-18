@@ -1,0 +1,46 @@
+- name: Installed Xorg, arandr and arandr utils
+  pacman:
+    name:
+      - xorg-server
+      - arandr
+      - xorg-xrandr
+      - autorandr
+    state: latest
+  become: true
+
+- name: Checked GPU brand
+  shell: lspci | grep -i 'VGA\|3D'
+  register: gpu_output
+  changed_when: false
+
+- name: Installed nvidia drivers
+  pacman:
+    name: nvidia
+    state: latest
+  become: true
+  when: "'nvidia' in gpu_output.stdout | lower"
+
+- name: Copied Xorg devices config files
+  copy:
+    src: "xorg/{{ item.src }}"
+    dest: /etc/X11/xorg.conf.d/
+  loop:
+    - src: 00-keyboard.conf
+    - src: 70-touchpad-settings.conf
+  become: true
+
+- name: Copied arandr layouts folder
+  copy:
+    src: arandr/
+    dest: ~/.screenlayout
+
+- name: Copied autorandr profiles folder
+  copy:
+    src: autorandr/
+    dest: /etc/xdg/autorandr
+  become: true
+
+- name: Copied xprofile
+  copy:
+    src: xorg/xprofile
+    dest: ~/.xprofile

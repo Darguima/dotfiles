@@ -1,0 +1,10 @@
+output HDMI-0
+off
+output DVI-D-0
+crtc 0
+mode 1920x1080
+pos 0x0
+primary
+rate 59.93
+rotate inverted
+x-prop-non_desktop 0
