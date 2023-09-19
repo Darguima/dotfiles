@@ -1,0 +1,11 @@
+- name: Installed qt5ct
+  pacman:
+    name: qt5ct
+    state: latest
+  become: true
+
+# It's dependent from ~/.xprofile variables
+- name: Copied qt5ct config file
+  copy:
+    src: qt5ct.conf
+    dest: ~/.config/qt5ct/qt5ct.conf

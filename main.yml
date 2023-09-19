@@ -22,6 +22,12 @@
   roles:
     - xorg
 
+- name: "QT Interfaces Theming"
+  hosts: all
+  tags: qt
+  roles:
+    - qt
+
 - name: "Docker"
   hosts: all
   tags: docker
