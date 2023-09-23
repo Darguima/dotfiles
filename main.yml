@@ -1,58 +1,64 @@
-- name: "System Prepare"
+- name: System Prepare
   hosts: all
   tags: system_prepare
   roles:
     - system_prepare
 
-- name: "yay"
+- name: yay
   hosts: all
   tags: yay
   roles:
     - yay
 
-- name: "Z Shell"
+- name: Z Shell
   hosts: all
   tags: zsh
   roles:
     - zsh
 
-- name: "Xorg"
+- name: Xorg
   hosts: all
   tags: xorg
   roles:
     - xorg
 
-- name: "Lightdm"
+- name: Lightdm
   hosts: all
   tags: lightdm
   roles:
     - lightdm
   
-- name: "Bluetooth"
+- name: Bluetooth
   hosts: all
   tags: bluetooth
   roles:
     - bluetooth
 
-- name: "picom"
+- name: picom
   hosts: all
   tags: picom
   roles:
     - picom
 
-- name: "QT Interfaces Theming"
+- name: rofi
+  hosts: all
+  tags: rofi
+  roles:
+    - rofi
+
+- name: QT Interfaces Theming
   hosts: all
   tags: qt
   roles:
     - qt
 
-- name: "Docker"
+- name: Docker
   hosts: all
   tags: docker
   roles:
     - docker
 
-- name: "Syncthing"
+- name: Syncthing
   hosts: all
   tags: syncthing
   roles:
