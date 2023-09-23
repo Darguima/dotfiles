@@ -6,10 +6,9 @@
     state: latest
   become: true
 
-- name: Enabled and Started Lightdm service
+- name: Enabled Lightdm service
   systemd:
     name: "lightdm"
-    state: started
     enabled: yes
   become: true
 
