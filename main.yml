@@ -22,6 +22,12 @@
   roles:
     - xorg
 
+- name: "Lightdm"
+  hosts: all
+  tags: lightdm
+  roles:
+    - lightdm
+
 - name: "QT Interfaces Theming"
   hosts: all
   tags: qt
