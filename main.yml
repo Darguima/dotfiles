@@ -27,6 +27,12 @@
   tags: lightdm
   roles:
     - lightdm
+  
+- name: "Bluetooth"
+  hosts: all
+  tags: bluetooth
+  roles:
+    - bluetooth
 
 - name: "picom"
   hosts: all
