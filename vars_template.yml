@@ -1,10 +1,5 @@
 ---
-
-#### Personal Information Vars
-
-email: your personal/dev/enterprise e-mail (used for example for certbot certificate notifications)
-
 #### Syncthing Vars
 
 syncthing_gui_user: The user that will be prompted to login on the Syncthing Webpage Interface
-syncthing_gui_password: The password that will be prompted to login on the Syncthing Webpage Interface
+# syncthing_gui_password: The password that will be prompted to login on the Syncthing Webpage Interface
