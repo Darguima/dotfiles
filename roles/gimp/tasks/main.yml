@@ -1,0 +1,10 @@
+- name: Installed gimp
+  pacman:
+    name: gimp
+    state: latest
+  become: true
+
+- name: Copied gimp config folder
+  copy:
+    src: ./2.10
+    dest: ~/.config/GIMP/

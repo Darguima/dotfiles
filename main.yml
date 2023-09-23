@@ -63,3 +63,9 @@
   tags: syncthing
   roles:
     - syncthing
+
+- name: Gimp
+  hosts: all
+  tags: gimp
+  roles:
+    - gimp
