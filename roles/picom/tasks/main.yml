@@ -1,0 +1,10 @@
+- name: Installed picom
+  pacman:
+    name: picom
+    state: latest
+  become: true
+
+- name: Copied picom config file
+  copy:
+    src: picom.conf
+    dest: ~/.config/picom.conf

@@ -28,6 +28,12 @@
   roles:
     - lightdm
 
+- name: "picom"
+  hosts: all
+  tags: picom
+  roles:
+    - picom
+
 - name: "QT Interfaces Theming"
   hosts: all
   tags: qt
