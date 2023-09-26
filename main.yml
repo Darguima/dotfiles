@@ -69,3 +69,9 @@
   tags: gimp
   roles:
     - gimp
+
+- name: OBS
+  hosts: all
+  tags: obs
+  roles:
+    - obs

@@ -1,0 +1,11 @@
+- name: Installed OBS
+  pacman:
+    name: obs-studio
+    state: latest
+  become: true
+
+
+- name: Copied OBS scenes folder
+  copy:
+    src: ./scenes
+    dest: ~/.config/obs-studio/basic/
