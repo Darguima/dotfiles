@@ -99,4 +99,4 @@
       - "c++utilities"
       - "qtforkawesome"
       - "syncthingtray"
-    state: present
+    state: latest
