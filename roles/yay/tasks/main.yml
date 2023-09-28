@@ -17,4 +17,10 @@
   command:
     chdir: "/tmp/yay"
     cmd: "makepkg -si --noconfirm --needed"
+  
+- name: Updated & Upgraded yay
+  pacman:
+    executable: yay
+    update_cache: yes
+    upgrade: yes
     
