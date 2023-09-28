@@ -70,8 +70,8 @@
   roles:
     - gimp
 
-- name: OBS
+- name: UFW
   hosts: all
-  tags: obs
+  tags: ufw
   roles:
-    - obs
+    - ufw
