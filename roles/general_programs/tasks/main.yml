@@ -1,0 +1,168 @@
+# Arch Essentials:
+- name: Installed Grub
+  pacman:
+    name: grub
+    state: latest
+  become: true
+
+- name: Installed efibootmgr
+  pacman:
+    name: efibootmgr
+    state: latest
+  become: true
+
+- name: Installed sudo
+  pacman:
+    name: sudo
+    state: latest
+  become: true
+
+- name: Installed git
+  pacman:
+    name: git
+    state: latest
+  become: true
+
+- name: Installed base
+  pacman:
+    name: base
+    state: latest
+  become: true
+
+- name: Installed NetworkManager
+  pacman:
+    name: networkmanager
+    state: latest
+  become: true
+
+# Video and Sound:
+- name: Installed alsa-utils
+  pacman:
+    name: alsa-utils
+    state: latest
+  become: true
+
+- name: Installed pavucontrol
+  pacman:
+    name: pavucontrol
+    state: latest
+  become: true
+
+- name: Installed pulseaudio
+  pacman:
+    name: pulseaudio
+    state: latest
+  become: true
+
+- name: Installed vlc
+  pacman:
+    name: vlc
+    state: latest
+  become: true
+
+# Internet
+- name: Installed RealVNC Server
+  pacman:
+    executable: yay
+    name: realvnc-vnc-server
+    state: latest
+
+- name: Installed RealVNC Viewer
+  pacman:
+    executable: yay
+    name: realvnc-vnc-viewer
+    state: latest
+
+- name: Installed KDE Connect
+  pacman:
+    name: kdeconnect
+    state: latest
+  become: true
+
+# Coding:
+- name: Installed vim
+  pacman:
+    name: vim
+    state: latest
+  become: true
+
+- name: Installed VS Code
+  pacman:
+    name: visual-studio-code-bin
+    state: latest
+  become: true
+
+# - name: Installed nvm
+#   pacman:
+#     executable: yay
+#     name: nvm
+#     state: latest
+
+# - name: Installed Android Studio
+#   pacman:
+#     executable: yay
+#     name: android-studio
+#     state: latest
+
+# Utilities:
+
+- name: Installed wget
+  pacman:
+    name: wget
+    state: latest
+  become: true
+
+# - name: Installed wine, wine-gecko & wine-mono
+#   pacman:
+#     name:
+#       - wine-stable
+#       - wine-gecko
+#       - wine-mono
+#     state: latest
+#   become: true
+
+# Apps:
+- name: Installed Firefox
+  pacman:
+    name: firefox
+    state: latest
+  become: true
+
+- name: Installed Spotify
+  pacman:
+    executable: yay
+    name: spotify
+    state: latest
+
+- name: Installed Discord
+  pacman:
+    name: discord
+    state: latest
+  become: true
+
+- name: Installed Figma
+  pacman:
+    executable: yay
+    name: figma-linux
+    state: latest
+
+# - name: Installed Steam
+#   pacman:
+#     name: steam
+#     state: latest
+#   become: true
+
+# Others:
+- name: Installed Deja Dup
+  pacman:
+    name: deja-dup
+    state: latest
+  become: true
+
+- name: Installed Gnome Keyring & seahorse
+  pacman:
+    name:
+      - gnome-keyring
+      - seahorse
+    state: latest
+  become: true

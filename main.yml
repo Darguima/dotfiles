@@ -75,3 +75,9 @@
   tags: ufw
   roles:
     - ufw
+
+- name: General Programs
+  hosts: all
+  tags: general_programs
+  roles:
+    - general_programs
