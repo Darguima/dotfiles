@@ -1,4 +1,4 @@
-- name: Installed yay dependencies
+- name: Installing yay dependencies
   pacman:
     name:
       - git
@@ -6,19 +6,19 @@
     state: latest
   become: true
 
-- name: Cloned yay binary
+- name: Cloning yay binary
   git:
     repo: https://aur.archlinux.org/yay.git
     dest: "/tmp/yay"
 
-- name: Built and installed yay package
+- name: Building and installing yay package
   register: command_output
   changed_when: "'there is nothing to do' not in command_output.stdout"
   command:
     chdir: "/tmp/yay"
     cmd: "makepkg -si --noconfirm --needed"
   
-- name: Updated & Upgraded yay
+- name: Updating & Upgrading yay
   pacman:
     executable: yay
     update_cache: yes

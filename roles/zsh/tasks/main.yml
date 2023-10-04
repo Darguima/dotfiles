@@ -1,34 +1,34 @@
-- name: Deleted ZSH folder (if it exists)
+- name: Deleting ZSH folder (if it exists)
   file:
     path: "{{ZSH_PATH}}"
     state: absent
 
-- name: Installed ZSH
+- name: Installing ZSH
   pacman:
     name: zsh
     state: latest
   become: true
 
-- name: Installed Oh-My-ZSH
+- name: Installing Oh-My-ZSH
   shell: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
 
-- name: Cloned zsh-autosuggestions plugin
+- name: Cloning zsh-autosuggestions plugin
   git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
     dest: "{{ZSH_CUSTOM}}/plugins/zsh-autosuggestions"
 
-- name: Cloned zsh-syntax-highlighting plugin
+- name: Cloning zsh-syntax-highlighting plugin
   git:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting
     dest: "{{ZSH_CUSTOM}}/plugins/zsh-syntax-highlighting"
 
-- name: Ensured Meslo Nerd Font directory
+- name: Ensuring Meslo Nerd Font directory
   become: true
   file:
     path: /usr/share/fonts/MesloLGS
     state: directory
 
-- name: Installed Meslo Nerd Font
+- name: Installing Meslo Nerd Font
   become: true
   get_url:
     url: "{{ item.url }}"
@@ -43,16 +43,16 @@
     - url: "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
       dest: "/usr/share/fonts/MesloLGS/MesloLGS NF Bold Italic.ttf"
 
-- name: Cloned powerlevel10k theme
+- name: Cloning powerlevel10k theme
   git:
     repo: https://github.com/romkatv/powerlevel10k
     dest: "{{ZSH_CUSTOM}}/themes/powerlevel10k"
 
-- name: Changed default shell
+- name: Changing default shell
   command: "chsh --shell $(command -v zsh) {{user}}"
   become: true
 
-- name: Copied dotfiles
+- name: Copying dotfiles
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"

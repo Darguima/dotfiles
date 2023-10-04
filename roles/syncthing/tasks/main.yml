@@ -1,10 +1,10 @@
-- name: Installed Syncthing
+- name: Installing Syncthing
   pacman:
     name: syncthing
     state: latest
   become: true
 
-- name: Enabled and Started service
+- name: Enabling and Starting service
   systemd:
     name: "syncthing"
     state: restarted
@@ -13,66 +13,66 @@
 
 # From https://github.com/eddyhub/ansible-syncthing/blob/master/tasks/main.yml
 
-- name: Waited for config file (toke some time)
+- name: Waiting for config file (toke some time)
   wait_for: path=~/.config/syncthing/config.xml
 
-- name: Set private WebInterface address
+- name: Setting private WebInterface address
   xml:
     path: ~/.config/syncthing/config.xml
     xpath: /configuration/gui/address
     value: "{{ private_address }}"
 
-- name: Set listen address
+- name: Setting listen address
   xml:
     path: ~/.config/syncthing/config.xml
     xpath: /configuration/options/listenAddress
     value: "{{ listen_address }}"
 
-- name: Set localAnnounceEnabled
+- name: Setting localAnnounceEnabled
   xml:
     path: ~/.config/syncthing/config.xml
     xpath: /configuration/options/localAnnounceEnabled
     value: "{{ local_announce | lower }}"
 
-- name: Set globalAnnounceEnabled
+- name: Setting globalAnnounceEnabled
   xml:
     path: ~/.config/syncthing/config.xml
     xpath: /configuration/options/globalAnnounceEnabled
     value: "{{ global_announce | lower }}"
 
-- name: Set login user
+- name: Setting login user
   xml:
     path: ~/.config/syncthing/config.xml
     xpath: /configuration/gui/user
     value: "{{ syncthing_gui_user }}"
   when: syncthing_gui_user is defined
 
-- name: Set login password
+- name: Setting login password
   xml:
     path: ~/.config/syncthing/config.xml
     xpath: /configuration/gui/password
     value: "{{ syncthing_gui_password }}"
   when: syncthing_gui_password is defined
 
-- name: Deleted Default Folder
+- name: Deleting Default Folder
   xml:
     path: ~/.config/syncthing/config.xml
     xpath: /configuration/folder[@id="default"]
     state: absent
 
-- name: Changed folder defaults update order
+- name: Changing folder defaults update order
   xml:
     path: ~/.config/syncthing/config.xml
     xpath: /configuration/defaults/folder/order
     value: smallestFirst
 
-- name: Removed all devices defaults addresses
+- name: Removing all devices defaults addresses
   xml:
     path: ~/.config/syncthing/config.xml
     xpath: /configuration/defaults/device/address
     state: absent
 
-- name: Added devices defaults addresses
+- name: Adding devices defaults addresses
   xml:
     path: ~/.config/syncthing/config.xml
     xpath: /configuration/defaults/device
@@ -86,13 +86,13 @@
       - address: tcp://dsgdevbraga.ddns.net:22000
       - address: dynamic
 
-- name: Restarted service
+- name: Restarting service
   systemd:
     name: "syncthing"
     state: restarted
     scope: "user"
 
-- name: Installed Syncthing Tray
+- name: Installing Syncthing Tray
   pacman:
     executable: yay
     name:

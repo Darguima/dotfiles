@@ -1,15 +1,15 @@
-- name: Installed rofi
+- name: Installing rofi
   pacman:
     name: rofi
     state: latest
   become: true
 
-- name: Ensured rofi config directory
+- name: Ensuring rofi config directory
   file:
     path: ~/.config/rofi
     state: directory
 
-- name: Copied picom config file
+- name: Copying picom config file
   copy:
     src: config.rasi
     dest: ~/.config/rofi/config.rasi

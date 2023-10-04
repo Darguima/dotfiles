@@ -1,61 +1,61 @@
-- name: Installed UFW
+- name: Installing UFW
   pacman:
     name: ufw
     state: latest
   become: true
 
-- name: Enabled IPV6 support
+- name: Enabling IPV6 support
   lineinfile:
     path: /etc/default/ufw
     regexp: 'IPV6='
     line: IPV6=yes
   become: true
 
-- name: Added default rule to deny incoming traffic
+- name: Adding default rule to deny incoming traffic
   ufw:
     default: deny
     direction: incoming
   become: true
 
-- name: Added default rule to allow outgoing traffic
+- name: Adding default rule to allow outgoing traffic
   ufw:
     default: allow
     direction: outgoing
   become: true
 
-- name: Added rule to allow traffic to SSH Port
+- name: Adding rule to allow traffic to SSH Port
   ufw:
     rule: allow
     port: ssh
   become: true
 
-- name: Added rule to allow traffic to KDE Connect TCP Port
+- name: Adding rule to allow traffic to KDE Connect TCP Port
   ufw:
     rule: allow
     port: 1714:1764
     proto: tcp
   become: true
 
-- name: Added rule to allow traffic to KDE Connect UDP Port
+- name: Adding rule to allow traffic to KDE Connect UDP Port
   ufw:
     rule: allow
     port: 1714:1764
     proto: udp
   become: true
 
-- name: Added rule to allow traffic to React Native Server Port
+- name: Adding rule to allow traffic to React Native Server Port
   ufw:
     rule: allow
     port: 8081
   become: true
 
-- name: Added rule to allow traffic to Syncthing Port
+- name: Adding rule to allow traffic to Syncthing Port
   ufw:
     rule: allow
     port: 22000
   become: true
 
-- name: Enabled UFW service
+- name: Enabling UFW service
   ufw:
     state: enabled
   become: true

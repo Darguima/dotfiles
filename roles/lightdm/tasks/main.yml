@@ -1,4 +1,4 @@
-- name: Installed Lightdm and Webkit Greeter
+- name: Installing Lightdm and Webkit Greeter
   pacman:
     name:
       - lightdm
@@ -6,25 +6,25 @@
     state: latest
   become: true
 
-- name: Enabled Lightdm service
+- name: Enabling Lightdm service
   systemd:
     name: "lightdm"
     enabled: yes
   become: true
 
-- name: Copied Lightdm config file
+- name: Copying Lightdm config file
   copy:
     src: lightdm.conf
     dest: /etc/lightdm/lightdm.conf
   become: True
 
-- name: Copied greeter config file
+- name: Copying greeter config file
   copy:
     src: lightdm-webkit2-greeter.conf
     dest: /etc/lightdm/lightdm-webkit2-greeter.conf
   become: True
 
-- name: Copied greeter theme
+- name: Copying greeter theme
   copy:
     src: rui_theme/
     dest: /usr/share/lightdm-webkit/themes/rui_theme/

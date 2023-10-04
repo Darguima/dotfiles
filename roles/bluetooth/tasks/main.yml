@@ -1,10 +1,10 @@
-- name: Installed blueman
+- name: Installing blueman
   pacman:
     name: blueman
     state: latest
   become: true
 
-- name: Enabled Bluetooth service
+- name: Enabling Bluetooth service
   systemd:
     name: bluetooth
     state: started

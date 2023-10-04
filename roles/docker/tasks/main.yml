@@ -1,4 +1,4 @@
-- name: Installed Docker
+- name: Installing Docker
   pacman:
     name: docker
     state: latest

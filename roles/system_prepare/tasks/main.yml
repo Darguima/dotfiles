@@ -1,10 +1,10 @@
-- name: Updated & Upgraded pacman
+- name: Updating & Upgrading pacman
   pacman:
     update_cache: yes
     upgrade: yes
   become: true
 
-- name: Installed ansible's packages dependencies
+- name: Installing ansible's packages dependencies
   pacman:
     name:
       - python-setuptools
