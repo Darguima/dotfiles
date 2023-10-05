@@ -140,6 +140,12 @@
     state: latest
   become: true
 
+- name: Installing Slack
+  pacman:
+    executable: yay
+    name: slack-desktop
+    state: latest
+
 - name: Installing Figma
   pacman:
     executable: yay
