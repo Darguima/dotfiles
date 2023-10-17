@@ -1,0 +1,15 @@
+tabspaces: 4
+
+cursor:
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
+  style: Beam
+
+window:
+  opacity: 0.98
+
+font:
+  size: 12
+  normal:
+    family: "MesloLGS NF"

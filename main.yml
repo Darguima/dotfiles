@@ -27,12 +27,6 @@
   tags: lightdm
   roles:
     - lightdm
-  
-- name: Bluetooth
-  hosts: all
-  tags: bluetooth
-  roles:
-    - bluetooth
 
 - name: picom
   hosts: all
@@ -45,6 +39,12 @@
   tags: rofi
   roles:
     - rofi
+
+- name: alacritty
+  hosts: all
+  tags: alacritty
+  roles:
+    - alacritty
 
 - name: QT Interfaces Theming
   hosts: all
@@ -63,6 +63,12 @@
   tags: syncthing
   roles:
     - syncthing
+
+- name: Bluetooth
+  hosts: all
+  tags: bluetooth
+  roles:
+    - bluetooth
 
 - name: Gimp
   hosts: all

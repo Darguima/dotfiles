@@ -1,0 +1,10 @@
+- name: Installing Alacritty
+  pacman:
+    name: alacritty
+    state: latest
+  become: true
+
+- name: Copying Alacritty @{{ target_environment }} config file
+  copy:
+    src: "{{ target_environment }}@alacritty.yml"
+    dest: ~/.config/alacritty/alacritty.yml

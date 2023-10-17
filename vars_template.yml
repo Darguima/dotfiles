@@ -1,5 +1,8 @@
 ---
-#### Syncthing Vars
 
-syncthing_gui_user: The user that will be prompted to login on the Syncthing Webpage Interface
-# syncthing_gui_password: The password that will be prompted to login on the Syncthing Webpage Interface
+#### Dotfiles Environment Vars
+target_environment: desktop # desktop | laptop
+
+#### Syncthing Vars
+syncthing_gui_user: "{{ ansible_user_id }}" # Default: your Linux username
+# syncthing_gui_password: The password that will be prompted to login on the Syncthing Webpage Interface (need be encrypted)
