@@ -1,0 +1,56 @@
+- name: Installing AwesomeWM and a bunch of dependencies
+  pacman:
+    name:
+      - awesome
+      - network-manager-applet
+      - acpid
+      - acpilight
+      - imagemagick
+      - i3lock
+      - rofi
+    state: latest
+  become: true
+
+- name: Installing AwesomeWM AUR dependencies
+  pacman:
+    executable: yay
+    name: pa-applet-git
+    state: latest
+
+- name: Enabling and starting acpid service
+  systemd:
+    name: acpid
+    state: started
+    enabled: yes
+  become: true
+
+- name: Cloning AwesomeWM widgets
+  git:
+    repo: https://github.com/{{ item.src }}.git
+    dest: "{{ item.dst }}"
+  loop:
+    - src: deficient/battery-widget
+      dst: ~/.config/awesome/battery-widget
+    - src: deficient/brightness
+      dst: ~/.config/awesome/brightness
+  
+- name: Copying AwesomeWM config files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - src: rc.lua
+      dest: ~/.config/awesome/rc.lua
+    - src: darguima-theme/
+      dest: ~/.config/awesome/themes/darguima-theme/
+    - src: darguima-wibar/
+      dest: ~/.config/awesome/darguima-wibar/
+    - src: awesome_modules/
+      dest: ~/.config/awesome/awesome_modules/
+  
+- name: Copying lockscreen script
+  copy:
+    src: lockscreen
+    dest: /usr/bin/lockscreen
+    mode: 0755
+  become: true

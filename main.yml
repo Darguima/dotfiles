@@ -34,6 +34,12 @@
   roles:
     - picom
 
+- name: awesome_wm
+  hosts: all
+  tags: awesome_wm
+  roles:
+    - awesome_wm
+
 - name: rofi
   hosts: all
   tags: rofi
