@@ -1,6 +1,10 @@
-- name: Installing blueman
+- name: Installing Bluetooth Drivers & Apps
   pacman:
-    name: blueman
+    name: 
+      - bluez
+      - bluez-utils
+      - pulseaudio-bluetooth
+      - blueman
     state: latest
   become: true
 
