@@ -6,10 +6,18 @@
     state: latest
   become: true
 
+- name: Checking if `yay` is already installed
+  ansible.builtin.command: "which yay"
+  register: is_yay_installed
+  ignore_errors: True
+  changed_when: False
+  failed_when: False
+
 - name: Cloning yay binary
   git:
     repo: https://aur.archlinux.org/yay.git
     dest: "/tmp/yay"
+  when: is_yay_installed.rc != 0
 
 - name: Building and installing yay package
   register: command_output
@@ -17,10 +25,10 @@
   command:
     chdir: "/tmp/yay"
     cmd: "makepkg -si --noconfirm --needed"
+  when: is_yay_installed.rc != 0
   
 - name: Updating & Upgrading yay
   pacman:
     executable: yay
     update_cache: yes
     upgrade: yes
-    
