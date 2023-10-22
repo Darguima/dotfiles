@@ -32,3 +32,4 @@
     executable: yay
     update_cache: yes
     upgrade: yes
+    update_cache_extra_args: "--devel"
