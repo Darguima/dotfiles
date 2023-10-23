@@ -19,6 +19,13 @@
   become: True
   become_user: aur_builder
 
+- name: "Adding user '{{ user }}' to 'video' group"
+  user:
+    name: "{{ user }}"
+    groups: video
+    append: True
+  become: True
+
 - name: Enabling and starting acpid service
   systemd:
     name: acpid
