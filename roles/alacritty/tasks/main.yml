@@ -4,6 +4,11 @@
     state: latest
   become: true
 
+- name: Ensuring config folder exists
+  file:
+    path: ~/.config/alacritty
+    state: directory
+
 - name: Copying Alacritty @{{ target_environment }} config file
   copy:
     src: "{{ target_environment }}@alacritty.yml"

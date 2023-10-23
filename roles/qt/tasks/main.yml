@@ -4,6 +4,11 @@
     state: latest
   become: true
 
+- name: Ensuring config folder exists
+  file:
+    path: ~/.config/qt5ct
+    state: directory
+
 # It's dependent from ~/.xprofile variables
 - name: Copying qt5ct config file
   copy:
