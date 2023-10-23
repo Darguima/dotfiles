@@ -12,10 +12,12 @@
   become: true
 
 - name: Installing AwesomeWM AUR dependencies
-  pacman:
-    executable: yay
+  kewlfft.aur.aur:
+    use: yay
     name: pa-applet-git
     state: latest
+  become: True
+  become_user: aur_builder
 
 - name: Enabling and starting acpid service
   systemd:

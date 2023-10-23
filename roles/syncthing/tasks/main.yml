@@ -93,10 +93,12 @@
     scope: "user"
 
 - name: Installing Syncthing Tray
-  pacman:
-    executable: yay
+  kewlfft.aur.aur:
+    use: yay
     name:
       - "c++utilities"
       - "qtforkawesome"
       - "syncthingtray"
     state: latest
+  become: True
+  become_user: aur_builder

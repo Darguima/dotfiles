@@ -30,6 +30,16 @@ Now, on the machine from where you configure every device, the master, you need 
 $ sudo pacman -S ansible-core ansible
 ```
 
+### Downloading Ansible Dependencies
+
+This project uses some external modules from Ansible Galaxy. You can find which ones on the `requirements.yml`. To install them run:
+
+```bash
+# Arch Linux
+$ ansible-galaxy collection install -r requirements.yml
+```
+
+
 ### Defining your variables
 
 To protect my (and yours) personal information (like e-mails and passwords) some variables are defined externally.

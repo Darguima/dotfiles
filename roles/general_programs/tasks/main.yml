@@ -62,16 +62,20 @@
 
 # Internet
 - name: Installing RealVNC Server
-  pacman:
-    executable: yay
+  kewlfft.aur.aur:
+    use: yay
     name: realvnc-vnc-server
     state: latest
+  become: True
+  become_user: aur_builder
 
 - name: Installing RealVNC Viewer
-  pacman:
-    executable: yay
+  kewlfft.aur.aur:
+    use: yay
     name: realvnc-vnc-viewer
     state: latest
+  become: True
+  become_user: aur_builder
 
 - name: Installing KDE Connect
   pacman:
@@ -87,23 +91,28 @@
   become: true
 
 - name: Installing VS Code
-  pacman:
-    executable: yay
+  kewlfft.aur.aur:
+    use: yay
     name: visual-studio-code-bin
     state: latest
-  become: true
+  become: True
+  become_user: aur_builder
 
 # - name: Installing nvm
-#   pacman:
-#     executable: yay
-#     name: nvm
-#     state: latest
+#  kewlfft.aur.aur:
+#    use: yay
+#    name: nvm
+#    state: latest
+#  become: True
+#  become_user: aur_builder
 
 # - name: Installing Android Studio
-#   pacman:
-#     executable: yay
-#     name: android-studio
-#     state: latest
+#  kewlfft.aur.aur:
+#    use: yay
+#    name: android-studio
+#    state: latest
+#  become: True
+#  become_user: aur_builder
 
 # Utilities:
 
@@ -130,10 +139,12 @@
   become: true
 
 - name: Installing Spotify
-  pacman:
-    executable: yay
+  kewlfft.aur.aur:
+    use: yay
     name: spotify
     state: latest
+  become: True
+  become_user: aur_builder
 
 - name: Installing Discord
   pacman:
@@ -142,16 +153,20 @@
   become: true
 
 - name: Installing Slack
-  pacman:
-    executable: yay
+  kewlfft.aur.aur:
+    use: yay
     name: slack-desktop
     state: latest
+  become: True
+  become_user: aur_builder
 
 - name: Installing Figma
-  pacman:
-    executable: yay
+  kewlfft.aur.aur:
+    use: yay
     name: figma-linux
     state: latest
+  become: True
+  become_user: aur_builder
 
 # - name: Installing Steam
 #   pacman:
