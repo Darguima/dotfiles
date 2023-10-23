@@ -1,22 +1,16 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Some Configs =========================================================
 export EDITOR="vim"
-# . $HOME/.asdf/asdf.sh
 
 # Don't forget override the systemctl unit
 export SSH_AUTH_SOCK=/run/user/$(id -u)/keyring/ssh
 
 # Importing Modules ====================================================
 
-for module in $(ls $HOME/.zsh_modules/*.zsh); do
-  source $module
-done
+source $HOME/.zsh_modules/includes.zsh
+source $HOME/.zsh_modules/aliases.zsh
+# source $HOME/.zsh_modules/androidStudio.zsh
+source $HOME/.zsh_modules/path.zsh
+source $HOME/.zsh_modules/plugins.zsh
 
 # ZSH Config ===========================================================
 export ZSH="$HOME/.oh-my-zsh"
