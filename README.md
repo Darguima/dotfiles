@@ -39,7 +39,6 @@ This project uses some external modules from Ansible Galaxy. You can find which 
 $ ansible-galaxy collection install -r requirements.yml
 ```
 
-
 ### Defining your variables
 
 To protect my (and yours) personal information (like e-mails and passwords) some variables are defined externally.

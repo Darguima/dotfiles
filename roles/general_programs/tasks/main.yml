@@ -128,6 +128,20 @@
     state: latest
   become: true
 
+- name: Installing Gnome Calculator
+  pacman:
+    name: gnome-calculator
+    state: latest
+  become: true
+  
+- name: Installing NumWorks
+  kewlfft.aur.aur:
+   use: yay
+   name: numworks-epsilon
+   state: latest
+  become: True
+  become_user: aur_builder
+
 # - name: Installing wine, wine-gecko & wine-mono
 #   pacman:
 #     name:
