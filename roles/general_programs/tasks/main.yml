@@ -122,6 +122,12 @@
     state: latest
   become: true
 
+- name: Installing z
+  pacman:
+    name: z
+    state: latest
+  become: true
+
 # - name: Installing wine, wine-gecko & wine-mono
 #   pacman:
 #     name:
@@ -138,6 +144,18 @@
     state: latest
   become: true
 
+- name: Installing Discord
+  pacman:
+    name: discord
+    state: latest
+  become: true
+
+- name: Installing Okular
+  pacman:
+    name: okular
+    state: latest
+  become: true
+
 - name: Installing Spotify
   kewlfft.aur.aur:
     use: yay
@@ -145,12 +163,6 @@
     state: latest
   become: True
   become_user: aur_builder
-
-- name: Installing Discord
-  pacman:
-    name: discord
-    state: latest
-  become: true
 
 - name: Installing Slack
   kewlfft.aur.aur:
