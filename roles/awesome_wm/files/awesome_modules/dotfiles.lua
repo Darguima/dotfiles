@@ -19,7 +19,7 @@ local function convertHostnameToEnvirnment(hostname)
         dotfiles_environment = "desktop"
     end
 
-    return dotfiles_environment
+    return "laptop" --[[ dotfiles_environment]]
 end
 
 local function get_dotfiles_environment()
