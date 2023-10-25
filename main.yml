@@ -58,11 +58,11 @@
   roles:
     - qt
 
-- name: Docker
+- name: UFW
   hosts: all
-  tags: docker
+  tags: ufw
   roles:
-    - docker
+    - ufw
 
 - name: Syncthing
   hosts: all
@@ -76,17 +76,23 @@
   roles:
     - bluetooth
 
+- name: Docker
+  hosts: all
+  tags: docker
+  roles:
+    - docker
+
 - name: Gimp
   hosts: all
   tags: gimp
   roles:
     - gimp
 
-- name: UFW
+- name: OBS
   hosts: all
-  tags: ufw
+  tags: obs
   roles:
-    - ufw
+    - obs
 
 - name: General Programs
   hosts: all
