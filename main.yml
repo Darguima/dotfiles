@@ -82,6 +82,12 @@
   roles:
     - docker
 
+- name: NodeJS Lang
+  hosts: all
+  tags: nodejs_lang
+  roles:
+    - nodejs_lang
+
 - name: Gimp
   hosts: all
   tags: gimp
