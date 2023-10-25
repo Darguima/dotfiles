@@ -58,8 +58,8 @@
     dest: "{{ item.dest }}"
   loop:
     - src: zshrc
-      dest: ~/.zshrc
+      dest: "{{ ansible_env.HOME }}/.zshrc"
     - src: p10k.zsh
-      dest: ~/.p10k.zsh
+      dest: "{{ ansible_env.HOME }}/.p10k.zsh"
     - src: modules/
-      dest: ~/.zsh_modules/
+      dest: "{{ ansible_env.HOME }}/.zsh_modules/"

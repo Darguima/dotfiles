@@ -6,11 +6,11 @@
 
 - name: Ensuring config folder exists
   file:
-    path: ~/.config/qt5ct
+    path: "{{ ansible_env.HOME }}/.config/qt5ct"
     state: directory
 
 # It's dependent from ~/.xprofile variables
 - name: Copying qt5ct config file
   copy:
     src: qt5ct.conf
-    dest: ~/.config/qt5ct/qt5ct.conf
+    dest: "{{ ansible_env.HOME }}/.config/qt5ct/qt5ct.conf"

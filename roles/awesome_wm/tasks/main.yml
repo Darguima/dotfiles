@@ -39,9 +39,9 @@
     dest: "{{ item.dst }}"
   loop:
     - src: deficient/battery-widget
-      dst: ~/.config/awesome/battery-widget
+      dst: "{{ ansible_env.HOME }}/.config/awesome/battery-widget"
     - src: deficient/brightness
-      dst: ~/.config/awesome/brightness
+      dst: "{{ ansible_env.HOME }}/.config/awesome/brightness"
   
 - name: Copying AwesomeWM config files
   copy:
@@ -49,13 +49,13 @@
     dest: "{{ item.dest }}"
   loop:
     - src: rc.lua
-      dest: ~/.config/awesome/rc.lua
+      dest: "{{ ansible_env.HOME }}/.config/awesome/rc.lua"
     - src: darguima-theme/
-      dest: ~/.config/awesome/themes/darguima-theme/
+      dest: "{{ ansible_env.HOME }}/.config/awesome/themes/darguima-theme/"
     - src: darguima-wibar/
-      dest: ~/.config/awesome/darguima-wibar/
+      dest: "{{ ansible_env.HOME }}/.config/awesome/darguima-wibar/"
     - src: awesome_modules/
-      dest: ~/.config/awesome/awesome_modules/
+      dest: "{{ ansible_env.HOME }}/.config/awesome/awesome_modules/"
   
 - name: Copying lockscreen script
   copy:

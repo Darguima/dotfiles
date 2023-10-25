@@ -7,7 +7,7 @@
   changed_when: "'nvm is already installed' not in command_output.stdout"
 
 - name: Installing NodeJS
-  shell: . ~/.nvm/nvm.sh && nvm install --lts
+  shell: . "{{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install --lts"
   args:
     executable: /bin/bash
     chdir: ~
@@ -16,7 +16,7 @@
 
 # I would like to use "community.general.npm" module, but it doesn't work because nvm was not sourced
 - name: Installing yarn
-  shell: . ~/.nvm/nvm.sh && npm install --global yarn
+  shell: . "{{ ansible_env.HOME }}/.nvm/nvm.sh && npm install --global yarn"
   args:
     executable: /bin/bash
     chdir: ~

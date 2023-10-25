@@ -32,7 +32,7 @@
 - name: Copying arandr layouts folder
   copy:
     src: arandr/
-    dest: ~/.screenlayout
+    dest: "{{ ansible_env.HOME }}/.screenlayout"
 
 - name: Copying autorandr profiles folder
   copy:
@@ -43,4 +43,4 @@
 - name: Copying xprofile
   copy:
     src: xorg/xprofile
-    dest: ~/.xprofile
+    dest: "{{ ansible_env.HOME }}/.xprofile"

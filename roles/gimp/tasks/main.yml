@@ -7,4 +7,4 @@
 - name: Copying gimp config folder
   copy:
     src: ./2.10
-    dest: ~/.config/GIMP/
+    dest: "{{ ansible_env.HOME }}/.config/GIMP/"

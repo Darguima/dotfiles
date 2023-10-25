@@ -14,67 +14,67 @@
 # From https://github.com/eddyhub/ansible-syncthing/blob/master/tasks/main.yml
 
 - name: Waiting for config file (toke some time)
-  wait_for: path=~/.config/syncthing/config.xml
+  wait_for: path="{{ ansible_env.HOME }}/.config/syncthing/config.xml"
 
 - name: Setting private WebInterface address
   xml:
-    path: ~/.config/syncthing/config.xml
+    path: "{{ ansible_env.HOME }}/.config/syncthing/config.xml"
     xpath: /configuration/gui/address
     value: "{{ private_address }}"
 
 - name: Setting listen address
   xml:
-    path: ~/.config/syncthing/config.xml
+    path: "{{ ansible_env.HOME }}/.config/syncthing/config.xml"
     xpath: /configuration/options/listenAddress
     value: "{{ listen_address }}"
 
 - name: Setting localAnnounceEnabled
   xml:
-    path: ~/.config/syncthing/config.xml
+    path: "{{ ansible_env.HOME }}/.config/syncthing/config.xml"
     xpath: /configuration/options/localAnnounceEnabled
     value: "{{ local_announce | lower }}"
 
 - name: Setting globalAnnounceEnabled
   xml:
-    path: ~/.config/syncthing/config.xml
+    path: "{{ ansible_env.HOME }}/.config/syncthing/config.xml"
     xpath: /configuration/options/globalAnnounceEnabled
     value: "{{ global_announce | lower }}"
 
 - name: Setting login user
   xml:
-    path: ~/.config/syncthing/config.xml
+    path: "{{ ansible_env.HOME }}/.config/syncthing/config.xml"
     xpath: /configuration/gui/user
     value: "{{ syncthing_gui_user }}"
   when: syncthing_gui_user is defined
 
 - name: Setting login password
   xml:
-    path: ~/.config/syncthing/config.xml
+    path: "{{ ansible_env.HOME }}/.config/syncthing/config.xml"
     xpath: /configuration/gui/password
     value: "{{ syncthing_gui_password }}"
   when: syncthing_gui_password is defined
 
 - name: Deleting Default Folder
   xml:
-    path: ~/.config/syncthing/config.xml
+    path: "{{ ansible_env.HOME }}/.config/syncthing/config.xml"
     xpath: /configuration/folder[@id="default"]
     state: absent
 
 - name: Changing folder defaults update order
   xml:
-    path: ~/.config/syncthing/config.xml
+    path: "{{ ansible_env.HOME }}/.config/syncthing/config.xml"
     xpath: /configuration/defaults/folder/order
     value: smallestFirst
 
 - name: Removing all devices defaults addresses
   xml:
-    path: ~/.config/syncthing/config.xml
+    path: "{{ ansible_env.HOME }}/.config/syncthing/config.xml"
     xpath: /configuration/defaults/device/address
     state: absent
 
 - name: Adding devices defaults addresses
   xml:
-    path: ~/.config/syncthing/config.xml
+    path: "{{ ansible_env.HOME }}/.config/syncthing/config.xml"
     xpath: /configuration/defaults/device
     add_children:
       - address: tcp://192.168.1.70:22000

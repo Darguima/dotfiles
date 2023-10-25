@@ -6,10 +6,10 @@
 
 - name: Ensuring rofi config directory
   file:
-    path: ~/.config/rofi
+    path: "{{ ansible_env.HOME }}/.config/rofi"
     state: directory
 
 - name: Copying picom config file
   copy:
     src: config.rasi
-    dest: ~/.config/rofi/config.rasi
+    dest: "{{ ansible_env.HOME }}/.config/rofi/config.rasi"

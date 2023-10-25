@@ -8,4 +8,4 @@
 - name: Copying OBS scenes folder
   copy:
     src: ./scenes
-    dest: ~/.config/obs-studio/basic/
+    dest: "{{ ansible_env.HOME }}/.config/obs-studio/basic/"

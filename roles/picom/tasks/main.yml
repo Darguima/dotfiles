@@ -7,4 +7,4 @@
 - name: Copying picom config file
   copy:
     src: picom.conf
-    dest: ~/.config/picom.conf
+    dest: "{{ ansible_env.HOME }}/.config/picom.conf"
