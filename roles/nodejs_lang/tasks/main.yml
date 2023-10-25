@@ -3,9 +3,22 @@
   args:
     executable: /bin/bash
     chdir: ~
+  register: command_output
+  changed_when: "'nvm is already installed' not in command_output.stdout"
 
 - name: Installing NodeJS
   shell: . ~/.nvm/nvm.sh && nvm install --lts
   args:
     executable: /bin/bash
     chdir: ~
+  register: command_output
+  changed_when: "'is already installed.' not in command_output.stderr"
+
+# I would like to use "community.general.npm" module, but it doesn't work because nvm was not sourced
+- name: Installing yarn
+  shell: . ~/.nvm/nvm.sh && npm install --global yarn
+  args:
+    executable: /bin/bash
+    chdir: ~
+  register: command_output
+  changed_when: "'changed' not in command_output.stdout"
