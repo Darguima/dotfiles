@@ -69,6 +69,12 @@
   become: True
   become_user: aur_builder
 
+- name: Installing net-tools
+  pacman:
+    name: net-tools
+    state: latest
+  become: True
+
 - name: Installing RealVNC Viewer
   kewlfft.aur.aur:
     use: yay
