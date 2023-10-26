@@ -1,0 +1,12 @@
+- name: Installing Wireshark
+  pacman:
+    name: wireshark-qt
+    state: latest
+  become: True
+
+- name: "Adding user '{{ user }}' to 'wireshark' group"
+  user:
+    name: "{{ user }}"
+    groups: wireshark
+    append: True
+  become: True
