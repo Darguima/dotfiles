@@ -42,9 +42,11 @@
   register: command_output
   changed_when: "'already added' not in command_output.stdout"
 
-- name: Installing Phoenix Framework dependencies
+- name: Installing Elixir development dependencies
   pacman:
-    name: inotify-tools
+    name:
+      - inotify-tools # Required by Phoenix LiveReload
+      - postgresql
     state: latest
   become: True
 
