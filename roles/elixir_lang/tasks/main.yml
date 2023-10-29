@@ -41,3 +41,10 @@
     executable: /bin/bash
   register: command_output
   changed_when: "'already added' not in command_output.stdout"
+
+- name: Installing Phoenix Framework dependencies
+  pacman:
+    name: inotify-tools
+    state: latest
+  become: True
+
