@@ -104,6 +104,14 @@
   become: True
   become_user: aur_builder
 
+- name: Installing docker & docker-compose
+  pacman:
+    name:
+      - docker
+      - docker-compose
+    state: latest
+  become: true
+
 # - name: Installing nvm
 #  kewlfft.aur.aur:
 #    use: yay

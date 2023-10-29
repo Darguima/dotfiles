@@ -76,12 +76,6 @@
   roles:
     - bluetooth
 
-- name: Docker
-  hosts: all
-  tags: docker
-  roles:
-    - docker
-
 - name: NodeJS Lang
   hosts: all
   tags: nodejs_lang
