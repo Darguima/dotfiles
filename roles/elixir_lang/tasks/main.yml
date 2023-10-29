@@ -1,0 +1,43 @@
+- name: Cloning asdf
+  git:
+    repo: https://github.com/asdf-vm/asdf.git
+    dest: "{{ ansible_env.HOME }}/.asdf"
+    single_branch: yes
+    version: v0.13.1
+
+- name: Installing NodeJS plugin
+  shell: ". {{ ansible_env.HOME }}/.asdf/asdf.sh && asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git"
+  args:
+    executable: /bin/bash
+  register: command_output
+  changed_when: "'already added' not in command_output.stdout"
+
+- name: Installing Erlang plugin dependencies
+  pacman:
+    name:
+      - base-devel
+      - libssh
+      - libxslt
+      - fop
+    state: latest
+  become: True
+
+- name: Installing Erlang plugin
+  shell: ". {{ ansible_env.HOME }}/.asdf/asdf.sh && asdf plugin add erlang https://github.com/asdf-vm/asdf-erlang.git"
+  args:
+    executable: /bin/bash
+  register: command_output
+  changed_when: "'already added' not in command_output.stdout"
+
+- name: Installing Elixir plugin dependencies
+  pacman:
+    name: unzip
+    state: latest
+  become: True
+
+- name: Installing Elixir plugin
+  shell: ". {{ ansible_env.HOME }}/.asdf/asdf.sh && asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git"
+  args:
+    executable: /bin/bash
+  register: command_output
+  changed_when: "'already added' not in command_output.stdout"
