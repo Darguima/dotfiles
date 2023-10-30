@@ -1,0 +1,14 @@
+- name: Installing Arduino-IDE
+  kewlfft.aur.aur:
+    use: yay
+    name: arduino-ide-bin
+    state: latest
+  become: True
+  become_user: aur_builder
+
+- name: "Adding user '{{ user }}' to 'uucp' group"
+  user:
+    name: "{{ user }}"
+    groups: uucp
+    append: True
+  become: True
