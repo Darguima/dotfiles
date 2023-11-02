@@ -1,3 +1,9 @@
+- name: Installing Arduino-CLI
+  pacman:
+    name: arduino-cli
+    state: latest
+  become: True
+
 - name: Installing Arduino-IDE
   kewlfft.aur.aur:
     use: yay
