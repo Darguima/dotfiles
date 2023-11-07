@@ -89,6 +89,20 @@
     state: latest
   become: true
 
+- name: Installing OpenVPN
+  pacman:
+    name: openvpn
+    state: latest
+  become: true
+
+- name: Installing ProtonVPN
+  kewlfft.aur.aur:
+    use: yay
+    name: protonvpn-cli
+    state: latest
+  become: True
+  become_user: aur_builder
+
 # Coding:
 - name: Installing vim
   pacman:
