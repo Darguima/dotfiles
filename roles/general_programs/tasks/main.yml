@@ -153,6 +153,12 @@
     name: gnome-calculator
     state: latest
   become: true
+
+- name: Installing Spectacle
+  pacman:
+    name: spectacle
+    state: latest
+  become: true
   
 - name: Installing NumWorks
   kewlfft.aur.aur:
