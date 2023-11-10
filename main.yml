@@ -64,6 +64,12 @@
   roles:
     - ufw
 
+- name: VS Code
+  hosts: all
+  tags: vscode
+  roles:
+    - vscode
+
 - name: Syncthing
   hosts: all
   tags: syncthing

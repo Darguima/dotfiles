@@ -110,14 +110,6 @@
     state: latest
   become: true
 
-- name: Installing VS Code
-  kewlfft.aur.aur:
-    use: yay
-    name: visual-studio-code-bin
-    state: latest
-  become: True
-  become_user: aur_builder
-
 # - name: Installing nvm
 #  kewlfft.aur.aur:
 #    use: yay

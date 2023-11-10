@@ -1,0 +1,28 @@
+- name: Installing VS Code
+  kewlfft.aur.aur:
+    use: yay
+    name: visual-studio-code-bin
+    state: latest
+  become: True
+  become_user: aur_builder
+
+- name: Cloning Darguima's IDE-Extensions Repository
+  git:
+    repo: https://github.com/darguima/IDE-Extensions
+    dest: /tmp/IDE-Extensions
+
+- name: Find VSCode extensions installers at IDE-Extensions
+  register: extensions_installers_files
+  find:
+    paths: /tmp/IDE-Extensions
+    use_regex: yes
+    patterns: ".+.vsix$"
+    recurse: yes
+
+- name: Installing VSCode Darguima's IDE-Extensions
+  command:
+    cmd: "code --install-extension {{ item.path }}"
+  loop: "{{ extensions_installers_files.files|flatten(levels=1) }}"
+  loop_control:
+    label: "{{ item.path }}"
+
