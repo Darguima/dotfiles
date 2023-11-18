@@ -60,6 +60,13 @@
     state: latest
   become: true
 
+- name: Installing gwenview
+  pacman:
+    name: gwenview
+    state: latest
+  become: true
+
+
 # Internet
 - name: Installing RealVNC Server
   kewlfft.aur.aur:
