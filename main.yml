@@ -16,6 +16,12 @@
   roles:
     - zsh
 
+- name: SSH
+  hosts: all
+  tags: ssh
+  roles:
+    - ssh
+
 - name: Xorg
   hosts: all
   tags: xorg
