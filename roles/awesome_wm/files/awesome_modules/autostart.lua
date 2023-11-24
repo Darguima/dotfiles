@@ -7,6 +7,7 @@ local function autostart()
   awful.spawn.with_shell("blueman-applet")
   awful.spawn.with_shell("kill $(pgrep syncthingtray --exact); syncthingtray")
   awful.spawn.with_shell("kdeconnect-indicator")
+  awful.spawn.with_shell("slack -u")
 
   -- Others
   awful.spawn.with_shell("libinput-gestures-setup start")
