@@ -28,11 +28,11 @@
   roles:
     - xorg
 
-- name: Lightdm
+- name: SDDM
   hosts: all
-  tags: lightdm
+  tags: sddm
   roles:
-    - lightdm
+    - sddm
 
 - name: picom
   hosts: all

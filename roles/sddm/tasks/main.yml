@@ -1,0 +1,17 @@
+- name: Installing SDDM
+  pacman:
+    name: sddm
+    state: latest
+  become: true
+
+- name: Enabling SDDM service
+  systemd:
+    name: sddm
+    enabled: yes
+  become: true
+
+- name: Copying SDDM X setup file
+  copy:
+    src: xsetup_script
+    dest: /usr/share/sddm/scripts/Xsetup
+  become: True
