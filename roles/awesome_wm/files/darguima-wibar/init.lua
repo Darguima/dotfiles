@@ -7,6 +7,7 @@ local dpi = require("beautiful.xresources").apply_dpi
 local wibox = require("wibox")
 local gears = require("gears")
 
+-- https://awesomewm.org/doc/api/classes/awful.wibar.html
 -- https://awesomewm.org/doc/api/classes/wibox.html
 
 -- Taglist Mouse events
@@ -53,55 +54,49 @@ local function add_widgets_to_wibox(screen)
 
   -- Create a tasklist widget
   screen.mytasklist = awful.widget.tasklist {
-    screen  = screen,
-    filter  = awful.widget.tasklist.filter.currenttags,
-    buttons = tasklist_buttons,
+    screen          = screen,
+    filter          = awful.widget.tasklist.filter.currenttags,
+    buttons         = tasklist_buttons,
 
-    layout  = {
-      spacing_widget = {
-        {
-          forced_width  = 5,
-          forced_height = 24,
-          thickness     = 1,
-          color         = '#777777',
-          widget        = wibox.widget.separator
-        },
-        valign = 'center',
-        halign = 'center',
-        widget = wibox.container.place,
-      },
+    layout          = {
       spacing        = 1,
-      layout         = wibox.layout.fixed.horizontal,
+      spacing_widget = wibox.widget.separator,
+      layout         = wibox.layout.fixed.horizontal
     },
 
+    widget_template = {
+      {
+        {
+          id     = 'icon_role',
+          widget = wibox.widget.imagebox,
+        },
+        left   = 10,
+        right  = 10,
+        id     = 'margin',
+        widget = wibox.container.margin
+      },
+      id     = 'background_role',
+      widget = wibox.container.background,
+    },
   }
 
-  screen.leftwibar:setup {
+  screen.mywibox:setup {
     layout = wibox.layout.align.horizontal,
     {
+      -- Left widgets
       layout = wibox.layout.fixed.horizontal,
       screen.mytaglist,
       screen.mypromptbox,
-    }
-  }
+    },
 
-  screen.centerwibar:setup {
-    layout = wibox.layout.align.horizontal,
-    nil,
-    screen.mytasklist,
-  }
+    screen.mytasklist, -- Middle widget
 
-  screen.rightwibar:setup {
-    layout = wibox.layout.align.horizontal,
-    nil,
     {
+      -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       wibox.widget.systray(),
       BatteryWidget,
       BrightnessWidget,
-    },
-    {
-      layout = wibox.layout.fixed.horizontal,
       wibox.widget.textclock(),
       screen.mylayoutbox,
     },
@@ -111,57 +106,34 @@ local function add_widgets_to_wibox(screen)
 end
 
 local function create(screen, theme)
-  local margin = {
-    x = 24,
-    y = 4
-  }
+  screen.mywibox = awful.wibar({
+    position = "bottom", -- string The position.
+    -- stretch = nil, -- string If the wibar need to be stretched to fill the screen.
+    -- border_width = nil, -- integer Border width.
+    -- border_color = nil, -- string Border color.
+    -- ontop = nil, -- boolean On top of other windows. (default false)
+    -- cursor = nil, -- string The mouse cursor.
+    -- visible = nil, -- boolean Visibility.
+    -- opacity = nil, -- number The opacity, between 0 and 1. (default 1)
+    -- type = nil, -- string The window type (desktop, normal, dock, …).
+    -- x = nil, -- integer The x coordinates.
+    -- y = nil, -- integer The y coordinates.
+    -- width = nil, -- integer The width.
+    height = dpi(22), -- integer The height.
+    screen = screen,  -- screen The wibox screen.
+    -- widget = nil, -- wibox.widget The widget that the wibox displays.
+    -- shape_bounding = nil, -- The wibox’s bounding shape as a (native) cairo surface.
+    -- shape_clip = nil, -- The wibox’s clip shape as a (native) cairo surface.
+    -- shape_input = nil, -- The wibox’s input shape as a (native) cairo surface.
+    bg = theme.bg_normal, -- color The background.
+    -- bgimage = nil, -- surface The background image of the drawable.
+    -- fg = nil, -- color The foreground (text) color.
+    -- shape = nil, -- gears.shape The shape.
+    -- input_passthrough = nil, -- boolean If the inputs are forward to the element below. (default false)
 
-  local height = dpi(20)
-
-  screen.leftwibar = wibox({
-    width = screen.geometry.width * 0.1,
-    height = height,
-
-    x = screen.geometry.x + margin.x,
-    y = screen.geometry.y + margin.y,
-
-    ontop = true,
-    visible = true,
-
-    screen = screen,
-  })
-
-  screen.centerwibar = wibox({
-    width = screen.geometry.width * 0.7 - margin.x * 4,
-    height = height,
-
-    x = screen.leftwibar.x + screen.leftwibar.width + margin.x,
-    y = screen.leftwibar.y,
-
-    ontop = true,
-    visible = true,
-
-    screen = screen,
-  })
-
-  screen.rightwibar = wibox({
-    width = screen.geometry.width * 0.2,
-    height = height,
-
-    x = screen.centerwibar.x + screen.centerwibar.width + margin.x,
-    y = screen.centerwibar.y,
-
-    ontop = true,
-    visible = true,
-
-    screen = screen,
   })
 
   screen = add_widgets_to_wibox(screen)
-
-  screen.padding = {
-    top = screen.centerwibar.y + screen.centerwibar.height, -- + useless_gap of the client
-  }
 
   return screen
 end
