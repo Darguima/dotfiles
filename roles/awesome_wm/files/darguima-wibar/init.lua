@@ -1,4 +1,4 @@
--- dotfiles_environment = `desktop`, `laptop` or ...
+-- dotfiles_environment = `fallback`, `desktop`, `laptop` or ...
 -- Why? In `desktop`, for example, isn't needed to load battery or brightness widgtes.
 local DotfilesEnvironment = require("awesome_modules/dotfiles").get_dotfiles_environment()
 
@@ -31,7 +31,7 @@ local tasklist_buttons = gears.table.join(
 )
 
 local function add_widgets_to_wibox(screen)
-  if DotfilesEnvironment == "laptop" then
+  if DotfilesEnvironment == "fallback" or DotfilesEnvironment == "laptop" then
     BatteryWidget = require("battery-widget") {}
     BrightnessWidget = require("brightness")({ backend = "xbacklight" }).widget
   end

@@ -1,39 +1,31 @@
--- https://gist.github.com/h1k3r/089d43771bdf811eefe8
-local function getHostname()
-    local f = io.popen("/bin/hostname")
-    local hostname = f:read("*a") or ""
-    f:close()
-    hostname = string.gsub(hostname, "\n$", "")
-    return hostname
-end
-
-local function convertHostnameToEnvirnment(hostname)
-    -- Check the complete list of hostnames on '/etc/hosts'
-    local dotfiles_environment
-
-    if hostname == "darguimaDesktop" then
-        dotfiles_environment = "desktop"
-    elseif hostname == "darguimaLaptop" then
-        dotfiles_environment = "laptop"
-    else
-        dotfiles_environment = "desktop"
-    end
-
-    return "laptop" --[[ dotfiles_environment]]
-end
-
 local function get_dotfiles_environment()
     --[[
-        Althought `DOTFILES_ENVIRONMENT` bash variable is setted when installing my
-        dotfiles from https://github.com/Darguima/dotfiles, this LUA script can't access it.
-        So to find out what this computer is, we run a check with its hostname. Every computer
-        has is unique hostname and the complete list can be cheched at `/etc/hosts` file.
+        In order to find out what this computer is (desktop | laptop | etc), we run a check against dotfiles config file.
+        My dotfiles write the property ENV at ~/.config/dotfiles_config, and we will read it.
 
-        `dotfiles_environment` variable can be `desktop`, `laptop`, or ...
+        `Env` variable can be `desktop`, `laptop`, or ...
 
         Why use this? In `desktop`, for example, isn't needed to load battery or brightness widgtes.
     --]]
-    return convertHostnameToEnvirnment(getHostname())
+
+    local env = "fallback"
+    local dotfiles_config_path = os.getenv("HOME") .. "/.config/dotfiles_config"
+
+    local f = io.open(dotfiles_config_path, "rb")
+
+    if f then
+        for line in io.lines(dotfiles_config_path) do 
+            local _, _, extractedValue = line:find("ENV=(%S+)")
+
+            if extractedValue then
+    		    env = extractedValue
+                break
+            end
+        end
+        f:close()
+    end 
+
+    return env
 end
 
 return {
