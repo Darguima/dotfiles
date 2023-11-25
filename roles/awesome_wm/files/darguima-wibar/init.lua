@@ -107,7 +107,7 @@ end
 
 local function create(screen, theme)
   screen.mywibox = awful.wibar({
-    position = "bottom", -- string The position.
+    position = "top", -- string The position.
     -- stretch = nil, -- string If the wibar need to be stretched to fill the screen.
     -- border_width = nil, -- integer Border width.
     -- border_color = nil, -- string Border color.
@@ -119,7 +119,7 @@ local function create(screen, theme)
     -- x = nil, -- integer The x coordinates.
     -- y = nil, -- integer The y coordinates.
     -- width = nil, -- integer The width.
-    height = dpi(22), -- integer The height.
+    height = dpi(20), -- integer The height.
     screen = screen,  -- screen The wibox screen.
     -- widget = nil, -- wibox.widget The widget that the wibox displays.
     -- shape_bounding = nil, -- The wibox’s bounding shape as a (native) cairo surface.
