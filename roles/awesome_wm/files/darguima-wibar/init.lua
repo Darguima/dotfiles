@@ -65,18 +65,28 @@ local function add_widgets_to_wibox(screen)
     },
 
     widget_template = {
-      {
         {
-          id     = 'icon_role',
-          widget = wibox.widget.imagebox,
+            {
+                {
+                    {
+                        id     = 'icon_role',
+                        widget = wibox.widget.imagebox,
+                    },
+                    right = 2,
+                    widget  = wibox.container.margin,
+                },
+                {
+                    id     = 'text_role',
+                    widget = wibox.widget.textbox,
+                },
+                layout = wibox.layout.fixed.horizontal,
+            },
+            left  = 10,
+            right = 10,
+            widget = wibox.container.margin
         },
-        left   = 10,
-        right  = 10,
-        id     = 'margin',
-        widget = wibox.container.margin
-      },
-      id     = 'background_role',
-      widget = wibox.container.background,
+        id     = 'background_role',
+        widget = wibox.container.background,
     },
   }
 
