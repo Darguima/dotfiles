@@ -1,13 +1,4 @@
 all:
-  
-  children:
-    desktop:
-      hosts:
-        archDesktop:
-    laptop:
-      hosts:
-        archLaptop:
-  
   hosts:
     localhost:
       ansible_connection: local
