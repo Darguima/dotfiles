@@ -1,8 +1,32 @@
 ---
 
-#### Dotfiles Environment Vars
+# ========================
+# Introduction
+# ========================
+#   Where you will can define all the data that will be used across the dotfiles
+#   This allow to prevent push sensitive information an increase the personalization of the project
+#   Follow the instructions to fill, at least, the required vars.
+
+
+# ========================
+# Dotfiles Environment
+# ========================
+#   Description: Will affect some specific features that can be active/disable or work differently depending the environment
+#   Values: desktop | laptop
+#   Default: desktop
+#   Required: true
 target_environment: desktop # desktop | laptop
 
-#### Syncthing Vars
-syncthing_gui_user: "{{ ansible_user_id }}" # Default: your Linux username
-# syncthing_gui_password: The password that will be prompted to login on the Syncthing Webpage Interface (need be encrypted)
+# ========================
+# Syncthing
+# ========================
+#   Description: Syncthing allow synchronize folders across multiple devices with a P2P connection
+
+#   Values: string
+#   Default: your Linux username
+#   Required: false
+syncthing_gui_user: "{{ ansible_user_id }}"
+
+#   Values: string (bcrypt password hash)
+#   Required: false
+# syncthing_gui_password: Put here your bcrypt password hash
