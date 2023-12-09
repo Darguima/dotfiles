@@ -80,12 +80,12 @@ A role is folder with yaml files that organize the tasks, files, vars, etc for a
 
 While some of the roles are very intuitive in what they do (because are just the app name), here is a list for the ones that do more specific and uncommon tasks:
 
-##### system_prepare
+#### system_prepare
 
 Every configuration that is needed to be done before run all the tasks, like install some general dependency, or create a dotfile config file, will be done here. 
 This is the first role that runs.
 
-##### general_programs
+#### general_programs
 
 Here will be installed all the programs that don't need any configuration, just need to be installed (e.g. `LibreOffice`, `Discord`).
 
