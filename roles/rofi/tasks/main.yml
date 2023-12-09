@@ -9,7 +9,7 @@
     path: "{{ ansible_env.HOME }}/.config/rofi"
     state: directory
 
-- name: Copying picom config file
+- name: Copying picom config folder
   copy:
-    src: config.rasi
-    dest: "{{ ansible_env.HOME }}/.config/rofi/config.rasi"
+    src: config/
+    dest: "{{ ansible_env.HOME }}/.config/rofi/"
