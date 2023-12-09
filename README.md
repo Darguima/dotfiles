@@ -46,7 +46,7 @@ $ cp vars_template.yml vars.yml
 With everything ready, we can run the main playbook:
 
 ```bash
-$ ansible-playbook main.yml -K --extra-vars "@vars.yml"
+$ ansible-playbook main.yml --extra-vars "@vars.yml"
 ```
 
 #### Filtering roles
@@ -56,10 +56,10 @@ If you just want install/update some of the roles you can filter them with tags:
 
 ```bash
 # To just run the roles docker and syncthing
-$ ansible-playbook main.yml -K --extra-vars "@vars.yml" --tags "docker, syncthing"
+$ ansible-playbook main.yml --extra-vars "@vars.yml" --tags "docker, syncthing"
 
 # To run all roles except docker and syncthing
-$ ansible-playbook main.yml -K --extra-vars "@vars.yml" --skip-tags "docker, syncthing"
+$ ansible-playbook main.yml --extra-vars "@vars.yml" --skip-tags "docker, syncthing"
 
 # To list all available tags
 $ ansible-playbook main.yml --list-tags
