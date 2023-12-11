@@ -85,6 +85,10 @@ While some of the roles are very intuitive in what they do (because are just the
 Every configuration that is needed to be done before run all the tasks, like install some general dependency, or create a dotfile config file, will be done here. 
 This is the first role that runs.
 
+#### appearance
+
+This role will configure the window manager, QT and GTK apps appearance, installing themes and icons packages.
+
 #### general_programs
 
 Here will be installed all the programs that don't need any configuration, just need to be installed (e.g. `LibreOffice`, `Discord`).

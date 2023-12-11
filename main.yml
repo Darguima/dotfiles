@@ -58,11 +58,11 @@
   roles:
     - alacritty
 
-- name: QT Interfaces Theming
+- name: Appearance
   hosts: all
-  tags: qt
+  tags: appearance
   roles:
-    - qt
+    - appearance
 
 - name: UFW
   hosts: all

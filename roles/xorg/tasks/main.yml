@@ -39,8 +39,3 @@
     src: autorandr/
     dest: /etc/xdg/autorandr
   become: true
-
-- name: Copying xprofile
-  copy:
-    src: xorg/xprofile
-    dest: "{{ ansible_env.HOME }}/.xprofile"
