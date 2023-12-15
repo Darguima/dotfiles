@@ -14,7 +14,9 @@
 - name: Installing AwesomeWM AUR dependencies
   kewlfft.aur.aur:
     use: yay
-    name: pa-applet-git
+    name:
+      - pa-applet-git
+      - emote
     state: latest
   become: True
   become_user: aur_builder

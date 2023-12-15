@@ -9,6 +9,8 @@ local function global_keys(modkey)
       { description = "open firefox", group = "launcher" }),
     awful.key({ modkey, }, "d", function() awful.spawn("rofi -show run"); end,
       { description = "rofi", group = "launcher" }),
+    awful.key({ modkey, }, "e", function() awful.spawn("emote"); end,
+      { description = "emote - emoji picker", group = "launcher" }),
     awful.key({ modkey, "Control" }, "l", function() awful.spawn("lockscreen") end,
       { description = "Lock Screen", group = "System" }),
     awful.key({ modkey, "Control" }, "s", function()
