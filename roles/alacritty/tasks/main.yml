@@ -11,5 +11,5 @@
 
 - name: Copying Alacritty @{{ target_environment }} config file
   copy:
-    src: "{{ target_environment }}@alacritty.yml"
-    dest: "{{ ansible_env.HOME }}/.config/alacritty/alacritty.yml"
+    src: "{{ target_environment }}@alacritty.toml"
+    dest: "{{ ansible_env.HOME }}/.config/alacritty/alacritty.toml"

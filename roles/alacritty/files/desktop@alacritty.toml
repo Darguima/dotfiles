@@ -1,0 +1,14 @@
+[cursor]
+# ▇ Block
+# _ Underline
+# | Beam
+style = "Beam"
+
+[font]
+size = 12
+
+[font.normal]
+family = "MesloLGS NF"
+
+[window]
+opacity = 0.98
