@@ -1,0 +1,19 @@
+- name: Installing playerctl
+  pacman:
+    name: playerctl
+    state: latest
+  become: true
+
+- name: Copying playerctld service file
+  copy:
+    src: playerctld.service
+    dest: "{{ ansible_env.HOME }}/.config/systemd/user/playerctld.service"
+
+- name: Enabling and Starting service
+  systemd:
+    name: playerctld
+    state: restarted
+    enabled: yes
+    scope: user
+    daemon_reload: yes
+

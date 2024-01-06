@@ -3,7 +3,7 @@ local awful = require("awful") -- Standard awesome library
 local function autostart()
   -- Applets
   awful.spawn.with_shell("nm-applet")
-  awful.spawn.with_shell("kill $(pgrep pa-applet --exact); pa-applet --disable-notifications")
+  awful.spawn.with_shell("kill $(pgrep pa-applet --exact); pa-applet --disable-notifications --disable-key-grabbing")
   awful.spawn.with_shell("blueman-applet")
   awful.spawn.with_shell("kill $(pgrep syncthingtray --exact); syncthingtray")
   awful.spawn.with_shell("kdeconnect-indicator")

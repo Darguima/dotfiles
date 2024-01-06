@@ -1,0 +1,9 @@
+[Unit]
+Description=playerctld
+
+[Service]
+ExecStart=/usr/bin/playerctld
+Restart=always
+
+[Install]
+WantedBy=default.target

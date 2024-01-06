@@ -1,0 +1,32 @@
+- name: Installing xbindkeys and playerctl
+  pacman:
+    name:
+      - xbindkeys
+      - playerctl
+    state: latest
+  become: true
+
+- name: Copying change_pa_output script
+  copy:
+    src: change_pa_output
+    dest: /usr/bin/change_pa_output
+    mode: 0755
+  become: true
+
+- name: Copying xbindkeys config file
+  copy:
+    src: xbindkeysrc
+    dest: "{{ ansible_env.HOME }}/.xbindkeysrc"
+
+- name: Copying xbindkeys service file
+  copy:
+    src: xbindkeys.service
+    dest: "{{ ansible_env.HOME }}/.config/systemd/user/xbindkeys.service"
+
+- name: Enabling and Starting service
+  systemd:
+    name: xbindkeys
+    state: restarted
+    enabled: yes
+    scope: user
+    daemon_reload: yes

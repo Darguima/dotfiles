@@ -34,6 +34,18 @@
   roles:
     - sddm
 
+- name: playerctl
+  hosts: all
+  tags: playerctl
+  roles:
+    - playerctl
+
+- name: xbindkeys
+  hosts: all
+  tags: xbindkeys
+  roles:
+    - xbindkeys
+
 - name: picom
   hosts: all
   tags: picom
