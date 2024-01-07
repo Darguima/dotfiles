@@ -182,6 +182,14 @@
     name: firefox
     state: latest
   become: true
+ 
+- name: Installing Google Chrome
+  kewlfft.aur.aur:
+   use: yay
+   name: google-chrome
+   state: latest
+  become: True
+  become_user: aur_builder
 
 - name: Installing Libre-Office
   pacman:
