@@ -1,0 +1,28 @@
+- name: Installing DroidCam
+  kewlfft.aur.aur:
+   use: yay
+   name: droidcam
+   state: latest
+  become: True
+  become_user: aur_builder
+
+- name: Installing linux-headers, v4l2loopback-dkms & android-tools
+  pacman:
+    name:
+      - linux-headers
+      - v4l2loopback-dkms
+      - android-tools
+    state: latest
+  become: true
+
+- name: Copying v4l2 module config file
+  copy:
+    src: module_v4l2loopback.conf
+    dest: /etc/modules-load.d/v4l2loopback.conf
+  become: true
+
+- name: Copying v4l2 modprobe config file
+  copy:
+    src: modprobe_v4l2loopback.conf
+    dest: /etc/modprobe.d/v4l2loopback.conf
+  become: true

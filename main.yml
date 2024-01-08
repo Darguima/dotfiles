@@ -124,6 +124,12 @@
   roles:
     - arduino
 
+- name: DroidCam
+  hosts: all
+  tags: droidcam
+  roles:
+    - droidcam
+
 - name: Gimp
   hosts: all
   tags: gimp
