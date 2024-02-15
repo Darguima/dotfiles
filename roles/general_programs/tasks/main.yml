@@ -117,6 +117,12 @@
     state: latest
   become: true
 
+- name: Installing JDK
+  pacman:
+    name: jdk-openjdk
+    state: latest
+  become: true
+
 # - name: Installing nvm
 #  kewlfft.aur.aur:
 #    use: yay
