@@ -66,7 +66,6 @@
     state: latest
   become: true
 
-
 # Internet
 - name: Installing RealVNC Server
   kewlfft.aur.aur:
@@ -140,6 +139,11 @@
 #  become_user: aur_builder
 
 # Utilities:
+- name: Installing man pages
+  pacman:
+    name: man-db
+    state: latest
+  become: true
 
 - name: Installing wget
   pacman:
