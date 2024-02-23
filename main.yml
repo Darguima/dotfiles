@@ -148,6 +148,12 @@
   roles:
     - wireshark
 
+- name: BlackboardSync
+  hosts: all
+  tags: blackboard_sync
+  roles:
+    - blackboard_sync
+
 - name: General Programs
   hosts: all
   tags: general_programs

@@ -8,6 +8,7 @@ local function autostart()
   awful.spawn.with_shell("kill $(pgrep syncthingtray --exact); syncthingtray")
   awful.spawn.with_shell("kdeconnect-indicator")
   awful.spawn.with_shell("kill $(pgrep slack --exact); slack -u")
+  awful.spawn.with_shell("kill $(pgrep blackboardsync --exact); export QT_XCB_GL_INTEGRATION=none; flatpak run --filesystem=/home/darguima/Documents/Universidade app.bbsync.BlackboardSync")
 
   -- Others
   awful.spawn.with_shell("libinput-gestures-setup start")

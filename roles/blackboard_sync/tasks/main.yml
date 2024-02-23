@@ -1,0 +1,31 @@
+- name: Installing Flatpak
+  pacman:
+    name: flatpak
+    state: latest
+  become: true
+
+- name: Installing BlackboardSync
+  flatpak:
+    name: app.bbsync.BlackboardSync
+    state: present
+
+- name: Copying universities config file
+  copy:
+    src: "universities.json"
+    dest: "/var/lib/flatpak/app/app.bbsync.BlackboardSync/x86_64/stable/active/files/lib/python3.10/site-packages/blackboard_sync/universities.json"
+  become: true
+
+- name: Ensuring config folder exists
+  file:
+    path: "{{ ansible_env.HOME }}/.var/app/app.bbsync.BlackboardSync/config/"
+    state: directory
+
+- name: Copying config file
+  copy:
+    src: "blackboard_sync"
+    dest: "{{ ansible_env.HOME }}/.var/app/app.bbsync.BlackboardSync/config/blackboard_sync"
+
+- name: Ensuring destination folder exists
+  file:
+    path: "{{ ansible_env.HOME }}/Documents/Universidade"
+    state: directory
