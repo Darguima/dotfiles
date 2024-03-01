@@ -9,10 +9,15 @@
     name: app.bbsync.BlackboardSync
     state: present
 
-- name: Copying universities config file
+- name: Cloning updated code
+  git:
+    repo: https://github.com/sanjacob/BlackboardSync.git
+    dest: /tmp/BlackboardSync
+
+- name: Copying updated code
   copy:
-    src: "universities.json"
-    dest: "/var/lib/flatpak/app/app.bbsync.BlackboardSync/x86_64/stable/active/files/lib/python3.10/site-packages/blackboard_sync/universities.json"
+    src: /tmp/BlackboardSync/
+    dest: "/var/lib/flatpak/app/app.bbsync.BlackboardSync/x86_64/stable/active/files/lib/python3.10/site-packages/blackboard_sync/"
   become: true
 
 - name: Ensuring config folder exists
