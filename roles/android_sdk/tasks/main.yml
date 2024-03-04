@@ -1,0 +1,29 @@
+- name: Installing JDK 8 & 17
+  pacman:
+    name:
+      - jdk8-openjdk
+      - jdk17-openjdk
+    state: latest
+  become: True
+
+- name: Installing Android SDK & tools
+  kewlfft.aur.aur:
+    use: yay
+    name:
+      - android-sdk
+      - android-tools
+    state: latest
+  become: True
+  become_user: aur_builder
+
+- name: Changing Android home path ownership
+  file:
+    path: /opt/android-sdk/
+    owner: "{{ user }}"
+    recurse: True
+  become: True
+
+- name: Accepting Android SDK licenses
+  shell: "yes | {{ java_8_home }} /opt/android-sdk/tools/bin/sdkmanager --licenses"
+  register: command_output
+  changed_when: "'licenses that have not been accepted' in command_output.stdout"

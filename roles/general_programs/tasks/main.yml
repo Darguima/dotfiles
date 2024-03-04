@@ -122,26 +122,10 @@
     state: latest
   become: true
 
-- name: Installing Android SDK
-  kewlfft.aur.aur:
-   use: yay
-   name: android-sdk
-   state: latest
-  become: True
-  become_user: aur_builder
-
 # - name: Installing nvm
 #  kewlfft.aur.aur:
 #    use: yay
 #    name: nvm
-#    state: latest
-#  become: True
-#  become_user: aur_builder
-
-# - name: Installing Android Studio
-#  kewlfft.aur.aur:
-#    use: yay
-#    name: android-studio
 #    state: latest
 #  become: True
 #  become_user: aur_builder

@@ -118,6 +118,22 @@
   roles:
     - elixir_lang
 
+- name: Android SDK
+  hosts: all
+  tags:
+    - android_sdk
+    - android_emulator
+  roles:
+    - android_sdk
+
+- name: Android Emulator
+  hosts: all
+  tags:
+    - never
+    - android_emulator
+  roles:
+    - android_emulator
+
 - name: Arduino
   hosts: all
   tags: arduino

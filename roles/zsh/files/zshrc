@@ -8,7 +8,7 @@ export SSH_AUTH_SOCK=/run/user/$(id -u)/keyring/ssh
 
 source $HOME/.zsh_modules/includes.zsh
 source $HOME/.zsh_modules/aliases.zsh
-# source $HOME/.zsh_modules/androidStudio.zsh
+source $HOME/.zsh_modules/androidStudio.zsh
 source $HOME/.zsh_modules/path.zsh
 source $HOME/.zsh_modules/plugins.zsh
 

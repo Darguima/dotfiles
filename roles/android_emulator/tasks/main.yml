@@ -1,0 +1,51 @@
+- name: Installing Android emulator
+  kewlfft.aur.aur:
+    use: yay
+    name: android-emulator
+    state: latest
+  become: True
+  become_user: aur_builder
+
+- name: Changing Android home path ownership
+  file:
+    path: /opt/android-sdk/
+    owner: "{{ user }}"
+    recurse: True
+  become: True
+
+- name: Getting last SDK Version Number
+  shell: "{{ java_8_home }} /opt/android-sdk/tools/bin/sdkmanager --list | grep -o 'android-[0-9]*' | sed 's/android-//' | sort -n | tail -n 1"
+  register: lts_android_sdk_version
+  changed_when: False
+
+- name: Getting current /tmp size
+  shell: df | grep /tmp | awk -F' ' '{print $2}'
+  register: tmp_size 
+  changed_when: False
+
+- name: Remounting /tmp to increase space
+  mount:
+    path: /tmp/
+    state: remounted
+    opts: size=10G
+  become: True
+  when: tmp_size.stdout | int < 10000000
+
+- name: "Installing Android Platform Tools {{ lts_android_sdk_version.stdout }}"
+  shell: "{{ java_8_home }} /opt/android-sdk/tools/bin/sdkmanager --install 'platform-tools' 'platforms;android-{{ lts_android_sdk_version.stdout }}'"
+  register: command_output
+  changed_when: "'Unzipping... platform-tools' in command_output.stdout"
+
+- name: "Installing Android System Image {{ lts_android_sdk_version.stdout }}"
+  shell: "{{ java_8_home }} /opt/android-sdk/tools/bin/sdkmanager --install 'system-images;android-{{ lts_android_sdk_version.stdout }};google_apis_playstore;x86_64'"
+  register: command_output
+  changed_when: "'Unzipping... x86_64' in command_output.stdout"
+
+- name: Getting already existent Android emulators
+  shell: "{{ java_8_home }} /opt/android-sdk/tools/bin/avdmanager list avd"
+  register: available_android_emulators
+  changed_when: False
+
+- name: Creating Android Emulator
+  shell: "echo 'no' | {{ java_8_home }} /opt/android-sdk/tools/bin/avdmanager create avd -n 'phone' -k 'system-images;android-{{ lts_android_sdk_version.stdout }};google_apis_playstore;x86_64'"
+  when: "'phone' not in available_android_emulators.stdout"
