@@ -49,3 +49,8 @@
 - name: Creating Android Emulator
   shell: "echo 'no' | {{ java_8_home }} /opt/android-sdk/tools/bin/avdmanager create avd -n 'phone' -k 'system-images;android-{{ lts_android_sdk_version.stdout }};google_apis_playstore;x86_64'"
   when: "'phone' not in available_android_emulators.stdout"
+
+- name: Copying ZSH emulator aliases file
+  copy:
+    src: aliases_android_emulator.zsh
+    dest: "{{ ansible_env.HOME }}/.zshrc.d/"

@@ -27,3 +27,13 @@
   shell: "yes | {{ java_8_home }} /opt/android-sdk/tools/bin/sdkmanager --licenses"
   register: command_output
   changed_when: "'licenses that have not been accepted' in command_output.stdout"
+
+- name: Copying ZSH export ANDROID_SDK_ROOT file
+  copy:
+    src: export_android_sdk.zsh
+    dest: "{{ ansible_env.HOME }}/.zshrc.d/"
+
+- name: Copying ZSH export JAVA_HOME file
+  copy:
+    src: export_java_home.zsh
+    dest: "{{ ansible_env.HOME }}/.zshrc.d/"

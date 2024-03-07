@@ -5,6 +5,11 @@
     single_branch: yes
     version: v0.13.1
 
+- name: Copying ZSH asdf include file
+  copy:
+    src: include_asdf.zsh
+    dest: "{{ ansible_env.HOME }}/.zshrc.d/"
+
 - name: Installing NodeJS plugin
   shell: ". {{ ansible_env.HOME }}/.asdf/asdf.sh && asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git"
   args:
