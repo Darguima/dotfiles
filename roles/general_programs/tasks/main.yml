@@ -4,36 +4,66 @@
     name: grub
     state: latest
   become: true
+  tags:
+    - MINIMAL_TUI
+    - TUI
+    - MINIMAL_GUI
+    - GUI
 
 - name: Installing efibootmgr
   pacman:
     name: efibootmgr
     state: latest
   become: true
+  tags:
+    - MINIMAL_TUI
+    - TUI
+    - MINIMAL_GUI
+    - GUI
 
 - name: Installing sudo
   pacman:
     name: sudo
     state: latest
   become: true
+  tags:
+    - MINIMAL_TUI
+    - TUI
+    - MINIMAL_GUI
+    - GUI
 
 - name: Installing git
   pacman:
     name: git
     state: latest
   become: true
+  tags:
+    - MINIMAL_TUI
+    - TUI
+    - MINIMAL_GUI
+    - GUI
 
 - name: Installing base
   pacman:
     name: base
     state: latest
   become: true
+  tags:
+    - MINIMAL_TUI
+    - TUI
+    - MINIMAL_GUI
+    - GUI
 
 - name: Installing NetworkManager
   pacman:
     name: networkmanager
     state: latest
   become: true
+  tags:
+    - MINIMAL_TUI
+    - TUI
+    - MINIMAL_GUI
+    - GUI
 
 # Video and Sound:
 - name: Installing alsa-utils
@@ -41,32 +71,55 @@
     name: alsa-utils
     state: latest
   become: true
-
-- name: Installing pavucontrol
-  pacman:
-    name: pavucontrol
-    state: latest
-  become: true
+  tags:
+    - MINIMAL_GUI
+    - GUI
 
 - name: Installing pulseaudio
   pacman:
     name: pulseaudio
     state: latest
   become: true
+  tags:
+    - MINIMAL_GUI
+    - GUI
+
+- name: Installing pavucontrol
+  pacman:
+    name: pavucontrol
+    state: latest
+  become: true
+  tags:
+    - MINIMAL_GUI
+    - GUI
 
 - name: Installing vlc
   pacman:
     name: vlc
     state: latest
   become: true
+  tags:
+    - GUI
 
 - name: Installing gwenview
   pacman:
     name: gwenview
     state: latest
   become: true
+  tags:
+    - GUI
 
 # Internet
+- name: Installing net-tools
+  pacman:
+    name: net-tools
+    state: latest
+  become: True
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
+
 - name: Installing RealVNC Server
   kewlfft.aur.aur:
     use: yay
@@ -74,12 +127,8 @@
     state: latest
   become: True
   become_user: aur_builder
-
-- name: Installing net-tools
-  pacman:
-    name: net-tools
-    state: latest
-  become: True
+  tags:
+    - GUI
 
 - name: Installing RealVNC Viewer
   kewlfft.aur.aur:
@@ -88,18 +137,26 @@
     state: latest
   become: True
   become_user: aur_builder
+  tags:
+    - GUI
 
 - name: Installing KDE Connect
   pacman:
     name: kdeconnect
     state: latest
   become: true
+  tags:
+    - GUI
 
 - name: Installing OpenVPN
   pacman:
     name: openvpn
     state: latest
   become: true
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
 
 - name: Installing ProtonVPN
   kewlfft.aur.aur:
@@ -108,6 +165,10 @@
     state: latest
   become: True
   become_user: aur_builder
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
 
 # Coding:
 - name: Installing vim
@@ -115,20 +176,21 @@
     name: vim
     state: latest
   become: true
+  tags:
+    - MINIMAL_TUI
+    - TUI
+    - MINIMAL_GUI
+    - GUI
 
 - name: Installing JDK
   pacman:
     name: jdk-openjdk
     state: latest
   become: true
-
-# - name: Installing nvm
-#  kewlfft.aur.aur:
-#    use: yay
-#    name: nvm
-#    state: latest
-#  become: True
-#  become_user: aur_builder
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
 
 # Utilities:
 - name: Installing man pages
@@ -136,31 +198,48 @@
     name: man-db
     state: latest
   become: true
+  tags:
+    - MINIMAL_TUI
+    - TUI
+    - MINIMAL_GUI
+    - GUI
 
 - name: Installing wget
   pacman:
     name: wget
     state: latest
   become: true
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
 
 - name: Installing z
   pacman:
     name: z
     state: latest
   become: true
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
 
 - name: Installing Gnome Calculator
   pacman:
     name: gnome-calculator
     state: latest
   become: true
+  tags:
+    - GUI
 
 - name: Installing Spectacle
   pacman:
     name: spectacle
     state: latest
   become: true
-  
+  tags:
+    - GUI
+ 
 - name: Installing NumWorks
   kewlfft.aur.aur:
    use: yay
@@ -168,6 +247,8 @@
    state: latest
   become: True
   become_user: aur_builder
+  tags:
+    - GUI
 
 # - name: Installing wine, wine-gecko & wine-mono
 #   pacman:
@@ -177,6 +258,8 @@
 #       - wine-mono
 #     state: latest
 #   become: true
+#   tags:
+#     - GUI
 
 # Apps:
 - name: Installing Firefox
@@ -184,7 +267,10 @@
     name: firefox
     state: latest
   become: true
- 
+  tags:
+    - MINIMAL_GUI
+    - GUI
+
 - name: Installing Google Chrome
   kewlfft.aur.aur:
    use: yay
@@ -192,24 +278,32 @@
    state: latest
   become: True
   become_user: aur_builder
+  tags:
+    - GUI
 
 - name: Installing Libre-Office
   pacman:
     name: libreoffice-still
     state: latest
   become: true
+  tags:
+    - GUI
 
 - name: Installing Discord
   pacman:
     name: discord
     state: latest
   become: true
+  tags:
+    - GUI
 
 - name: Installing Okular
   pacman:
     name: okular
     state: latest
   become: true
+  tags:
+    - GUI
 
 - name: Installing Spotify
   kewlfft.aur.aur:
@@ -218,6 +312,8 @@
     state: latest
   become: True
   become_user: aur_builder
+  tags:
+    - GUI
 
 - name: Installing Slack
   kewlfft.aur.aur:
@@ -226,6 +322,8 @@
     state: latest
   become: True
   become_user: aur_builder
+  tags:
+    - GUI
 
 - name: Installing Figma
   kewlfft.aur.aur:
@@ -234,12 +332,16 @@
     state: latest
   become: True
   become_user: aur_builder
+  tags:
+    - GUI
 
 # - name: Installing Steam
 #   pacman:
 #     name: steam
 #     state: latest
 #   become: true
+#   tags:
+#     - GUI
 
 # Others:
 - name: Installing Deja Dup
@@ -247,11 +349,23 @@
     name: deja-dup
     state: latest
   become: true
+  tags:
+    - GUI
 
-- name: Installing Gnome Keyring & seahorse
+- name: Installing Gnome Keyring
   pacman:
-    name:
-      - gnome-keyring
-      - seahorse
+    name: gnome-keyring
     state: latest
   become: true
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
+
+- name: Installing seahorse (Gnome Keyring GUI)
+  pacman:
+    name: seahorse
+    state: latest
+  become: true
+  tags:
+    - GUI

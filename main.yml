@@ -1,177 +1,268 @@
 - name: System Prepare
   hosts: all
-  tags: system_prepare
   roles:
+    - system_prepare
+  tags:
+    - MINIMAL_TUI
+    - TUI
+    - MINIMAL_GUI
+    - GUI
     - system_prepare
 
 - name: yay
   hosts: all
-  tags: yay
   roles:
+    - yay
+  tags:
+    - MINIMAL_TUI
+    - TUI
+    - MINIMAL_GUI
+    - GUI
     - yay
 
 - name: Z Shell
   hosts: all
-  tags: zsh
   roles:
+    - zsh
+  tags:
+    - MINIMAL_TUI
+    - TUI
+    - MINIMAL_GUI
+    - GUI
     - zsh
 
 - name: SSH
   hosts: all
-  tags: ssh
   roles:
+    - ssh
+  tags:
+    - MINIMAL_TUI
+    - TUI
+    - MINIMAL_GUI
+    - GUI
     - ssh
 
 - name: Xorg
   hosts: all
-  tags: xorg
   roles:
+    - xorg
+  tags:
+    - MINIMAL_GUI
+    - GUI
     - xorg
 
 - name: SDDM
   hosts: all
-  tags: sddm
   roles:
+    - sddm
+  tags:
+    - MINIMAL_GUI
+    - GUI
     - sddm
 
 - name: playerctl
   hosts: all
-  tags: playerctl
   roles:
+    - playerctl
+  tags:
+    - MINIMAL_GUI
+    - GUI
     - playerctl
 
 - name: xbindkeys
   hosts: all
-  tags: xbindkeys
   roles:
+    - xbindkeys
+  tags:
+    - MINIMAL_GUI
+    - GUI
     - xbindkeys
 
 - name: picom
   hosts: all
-  tags: picom
   roles:
+    - picom
+  tags:
+    - MINIMAL_GUI
+    - GUI
     - picom
 
 - name: awesome_wm
   hosts: all
-  tags: awesome_wm
   roles:
+    - awesome_wm
+  tags:
+    - MINIMAL_GUI
+    - GUI
     - awesome_wm
 
 - name: rofi
   hosts: all
-  tags: rofi
   roles:
+    - rofi
+  tags:
+    - MINIMAL_GUI
+    - GUI
     - rofi
 
 - name: alacritty
   hosts: all
-  tags: alacritty
   roles:
+    - alacritty
+  tags:
+    - MINIMAL_GUI
+    - GUI
     - alacritty
 
 - name: Appearance
   hosts: all
-  tags: appearance
   roles:
+    - appearance
+  tags:
+    - MINIMAL_GUI
+    - GUI
     - appearance
 
 - name: UFW
   hosts: all
-  tags: ufw
   roles:
+    - ufw
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
     - ufw
 
 - name: VS Code
   hosts: all
-  tags: vscode
   roles:
+    - vscode
+  tags:
+    - GUI
     - vscode
 
 - name: Syncthing
   hosts: all
-  tags: syncthing
   roles:
+    - syncthing
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
     - syncthing
 
 - name: Bluetooth
   hosts: all
-  tags: bluetooth
   roles:
+    - bluetooth
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
     - bluetooth
 
 - name: Docker
   hosts: all
-  tags: docker
   roles:
+    - docker
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
     - docker
 
 - name: NodeJS Lang
   hosts: all
-  tags: nodejs_lang
   roles:
+    - nodejs_lang
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
     - nodejs_lang
 
 - name: Elixir Lang
   hosts: all
-  tags: elixir_lang
   roles:
+    - elixir_lang
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
     - elixir_lang
 
 - name: Android SDK
   hosts: all
-  tags:
-    - android_sdk
-    - android_emulator
   roles:
     - android_sdk
-
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
+    - android_sdk
+    - android_emulator
+  
 - name: Android Emulator
   hosts: all
+  roles:
+    - android_emulator
   tags:
     - never
-    - android_emulator
-  roles:
     - android_emulator
 
 - name: Arduino
   hosts: all
-  tags: arduino
   roles:
+    - arduino
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
     - arduino
 
 - name: DroidCam
   hosts: all
-  tags: droidcam
   roles:
+    - droidcam
+  tags:
+    - GUI
     - droidcam
 
 - name: Gimp
   hosts: all
-  tags: gimp
   roles:
+    - gimp
+  tags:
+    - GUI
     - gimp
 
 - name: OBS
   hosts: all
-  tags: obs
   roles:
+    - obs
+  tags:
+    - GUI
     - obs
 
 - name: Wireshark
   hosts: all
-  tags: wireshark
   roles:
+    - wireshark
+  tags:
+    - GUI
     - wireshark
 
 - name: BlackboardSync
   hosts: all
-  tags: blackboard_sync
   roles:
+    - blackboard_sync
+  tags:
+    - GUI
     - blackboard_sync
 
 - name: General Programs
   hosts: all
-  tags: general_programs
   roles:
+    - general_programs
+  tags:
     - general_programs
