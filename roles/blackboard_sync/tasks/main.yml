@@ -9,17 +9,6 @@
     name: app.bbsync.BlackboardSync
     state: present
 
-- name: Cloning updated code
-  git:
-    repo: https://github.com/sanjacob/BlackboardSync.git
-    dest: /tmp/BlackboardSync
-
-- name: Copying updated code
-  copy:
-    src: /tmp/BlackboardSync/blackboard_sync/
-    dest: "/var/lib/flatpak/app/app.bbsync.BlackboardSync/x86_64/stable/active/files/lib/python3.10/site-packages/blackboard_sync/"
-  become: true
-
 - name: Ensuring config folder exists
   file:
     path: "{{ ansible_env.HOME }}/.var/app/app.bbsync.BlackboardSync/config/"
