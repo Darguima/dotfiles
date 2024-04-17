@@ -9,31 +9,9 @@
     path: "{{ ansible_env.HOME }}/.ssh"
     state: directory
 
-- name: Copying SSH config file
-  copy:
-    src: "config"
-    dest: "{{ ansible_env.HOME }}/.ssh/config"
-
-- name: Enabling and Starting SSH Agent service
+- name: Enabling and Starting GCR SSH Agent service
   systemd:
-    name: ssh-agent
-    state: restarted
-    enabled: yes
-    scope: "user"
-
-- name: Ensuring Gnome Keyring Daemon override system unit folder exists
-  file:
-    path: "{{ ansible_env.HOME }}/.config/systemd/user/gnome-keyring-daemon.service.d"
-    state: directory
-
-- name: Copying Gnome Keyring Daemon override system unit file
-  copy:
-    src: gnome-keyring-daemon-override.service
-    dest: "{{ ansible_env.HOME }}/.config/systemd/user/gnome-keyring-daemon.service.d/override.conf"
-
-- name: Enabling and Starting Gnome Keyring daemon service
-  systemd:
-    name: gnome-keyring-daemon
+    name: gcr-ssh-agent.socket
     state: restarted
     enabled: yes
     scope: "user"

@@ -2,7 +2,7 @@
 export EDITOR="vim"
 
 # Don't forget override the systemctl unit
-export SSH_AUTH_SOCK=/run/user/$(id -u)/keyring/ssh
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
 
 # Importing Modules ====================================================
 
