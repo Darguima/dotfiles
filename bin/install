@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ ! -f vars.yml ]; then
+    printf "\n[ERROR] - Firstly you need to setup the environment.\n"
+    printf "[HINT] - Run \`./bin/setup\`.\n"
+    printf "[LOG] - Read the documentation for more info.\n"
+fi
+
+ansible-playbook main.yml --extra-vars "@vars.yml" "$@"

@@ -1,10 +1,11 @@
 # .dotfiles
 
-A collection of my [Ansible](https://docs.ansible.com/ansible/latest/index.html) roles to automatize my Arch Linux environment setup in any device.
+A collection of my [Ansible](https://docs.ansible.com/ansible/latest/index.html) roles, and a bootstrap, to automatize my Arch Linux environment setup in any device.
 
-Down below is a section about [Ansible](#ansible) for the ones that never hear about, and other about [how the project is organized](#how-the-project-is-organized).
+Down below is a [section about Ansible](#ansible) for the ones that never had heard about, and other about [how the project is organized](#how-the-project-is-organized).
 
 ## Installing the dotfiles 🐧
+
 ### Clone the repo 📥
 
 ```bash
@@ -15,78 +16,31 @@ $ git clone https://github.com/Darguima/dotfiles ~/.dotfiles
 $ git clone git@github.com:Darguima/dotfiles.git ~/.dotfiles
 ```
 
-### Installing Ansible 🚀
+Now you can go to the folder `~/.dotfiles` and start the setup.
 
-Let's start by installing Ansible - from their [installation guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#pip-install) we can use pip, but since we are on Arch:
+### Setting up the environment 🏗️
+
+To install all the dependencies (like Ansible), you can run the setup bootstrap bin. If you want to understand what it does, or setup everything manually, check the [manual setup documentation](./documentation/MANUAL_SETUP.md).
 
 ```bash
-$ sudo pacman -S ansible-core ansible
+$ ./bin/setup
 ```
 
-### Downloading Ansible Collections
+### Installing dotfiles 🚀
 
-This project uses some external _modules_ (called collections) from Ansible Galaxy. You can find which ones on the `requirements.yml`. To install them run:
-
-```bash
-$ ansible-galaxy collection install -r requirements.yml
-```
-
-### Defining your variables
-
-To prevent pushing sensitive data, like usernames and password, and increase the personalization of this project, an external variables file was created. If you create it from the template, follow its instructions to fill, at least, all the needed vars.
-
-Copy the template file and then edit `vars.yml`. 
+To avoid run Ansible command manually, with all the needed flags, I set up a bootstrap bin to run everything for you. If you want to understand what it does, or run Ansible manually, check the [manual installation documentation](./documentation/MANUAL_INSTALLATION.md).
 
 ```bash
-$ cp vars_template.yml vars.yml
-```
-
-### Installing dotfiles
-
-With everything ready, we can run the main playbook:
-
-```bash
-$ ansible-playbook main.yml --extra-vars "@vars.yml"
+$ ./bin/install <pass any ansible flag here>
 ```
 
 #### Filtering roles
 
-If you just want install/update some of the roles you can filter them with tags. Find what tags you want to install down below.
-
-```bash
-# To just run the roles MINIMAL_GUI and docker
-$ ansible-playbook main.yml --extra-vars "@vars.yml" --tags "MINIMAL_TUI, docker"
-
-# To run all roles except docker and syncthing
-$ ansible-playbook main.yml --extra-vars "@vars.yml" --skip-tags "docker, syncthing"
-
-# To list all available tags
-$ ansible-playbook main.yml --list-tags
-```
-
-##### Available tags
-
-In order to install some set of roles, that create a specific environment, here is a list of all the available tags and what setup they create. Note that here are only tags that group roles to create some setup (eg. `TUI`, `GUI`), but tags for each role also exists - so, for example, if you want setup 'docker' you can use the tag `docker`.
-
-###### MINIMAL_TUI
-
-This tag will install only the necessary apps to use on the terminal, creating the most basic setup - no window managers and just a few apps like `ZSH`, `yay`, `nmtui` and `SSH`.
-
-###### TUI
-
-This tag will add to the `MINIMAL_TUI` setup all the TUI apps that I use, like `openvpn`, `protonvpn-cli`, `docker`, etc.
-
-###### MINIMAL_GUI
-
-Similarly to `MINIMAL_TUI`, this tag will install just install the necessary apps to create a GUI setup, like the window manager, `firefox` and `alacritty`, alongside with all the `TUI` apps.
-
-###### GUI
-
-Finally the `GUI` setup will install all the apps that I use, complementing the `MINIMAL_GUI` with apps like `GIMP`, `VSCode`, `Spotify`, etc.
+If you just want install/update some of the roles, or even skip some of them, you can do it with tags. Find what tags you want to use on the [filtering documentation](./documentation/MANUAL_INSTALLATION.md).
 
 ## Ansible
 
-Before do anything you should learn a little about [Ansible](https://docs.ansible.com/ansible/latest/index.html) if you never hear about it.
+Before do anything, you should learn a little about [Ansible](https://docs.ansible.com/ansible/latest/index.html), if you had never heard about it.
 
 Ansible will run a bunch of commands, organized in yaml files. You can run Ansible in an `host machine` to install the dotfiles on the `target machine`, with ansible using SSH on the background. Although, on our case, we aren't using this remote feature.
 

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+printf "\n[LOG] - Installing Ansbile Pacman packages.\n\n"
+sudo pacman -S ansible-core ansible --needed --noconfirm
+
+printf "\n[LOG] - Installing Ansible modules.\n\n"
+ansible-galaxy collection install -r requirements.yml
+
+if [ ! -f vars.yml ]; then
+    printf "\n[LOG] - Edit vars.yml with your own values. "
+    read -p "Press any key to open EDITOR ..."
+
+    cp vars_template.yml vars.yml
+    $EDITOR vars.yml
+else
+    printf "\n[LOG] - vars.yml already exists.\n"
+fi
+
+printf "\n[LOG] - Everything done.\n"
