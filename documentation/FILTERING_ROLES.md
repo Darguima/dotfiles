@@ -12,6 +12,15 @@ $ ./bin/install --tags "MINIMAL_TUI, docker"
 $ ./bin/install --skip-tags "docker, syncthing"
 ```
 
+## Always Tag
+
+This is an Ansible built-in special tag, that will always run the role, unless you specifically skip it. This roles, like `system_prepare` and `yay`, will install and configure dependencies for other roles and should be executed at least on the first run and after each update.
+
+```bash
+# To skip the always tag roles
+$ ./bin/install --skip-tags "always"
+```
+
 ## Available tags
 
 In order to install some set of roles, that create a specific environment, here is a list of all the available tags and what setup they create. Note that here are only tags that group roles to create some setup (eg. `TUI`, `GUI`), but tags for each role also exists - so, for example, if you want setup 'docker' you can use the tag `docker`.

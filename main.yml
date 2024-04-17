@@ -3,6 +3,7 @@
   roles:
     - system_prepare
   tags:
+    - always
     - MINIMAL_TUI
     - TUI
     - MINIMAL_GUI
@@ -14,6 +15,7 @@
   roles:
     - yay
   tags:
+    - always
     - MINIMAL_TUI
     - TUI
     - MINIMAL_GUI
