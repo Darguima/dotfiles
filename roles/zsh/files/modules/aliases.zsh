@@ -4,6 +4,8 @@ alias _="sudo"
 alias la="ls -la"
 alias keyMouse="setxkbmap -option keypad:pointerkeys"
 
+alias upgrade="yay -Suy --devel --noconfirm"
+
 alias init_mic0="pacmd load-module module-alsa-source device=hw:Loopback,1,0"
 alias init_mic1="pacmd load-module module-alsa-source device=hw:Loopback,1,1"
 alias kill_mics="pacmd unload-module module-alsa-source"
