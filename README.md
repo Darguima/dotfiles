@@ -36,7 +36,7 @@ $ ./bin/install <pass any ansible flag here>
 
 #### Filtering roles
 
-If you just want install/update some of the roles, or even skip some of them, you can do it with tags. Find what tags you want to use on the [filtering documentation](./documentation/MANUAL_INSTALLATION.md).
+If you just want install/update some of the roles, or even skip some of them, you can do it with tags. Find what tags you want to use on the [filtering documentation](./documentation/FILTERING_ROLES.md).
 
 ## Ansible
 
