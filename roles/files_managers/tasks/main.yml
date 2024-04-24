@@ -1,0 +1,20 @@
+- name: Installing Nautilus & xdg-utils (xdg-open)
+  pacman:
+    name:
+      - nautilus
+      - xdg-utils
+    state: latest
+  become: True
+
+- name: Configuring MIME Types default applications
+  copy:
+    src: mimeapps.list
+    dest: "{{ ansible_env.HOME }}/.config/"
+
+- name: Copying ZSH `xdg-open` aliases file
+  copy:
+    src: aliases_xdg_open.zsh
+    dest: "{{ ansible_env.HOME }}/.zshrc.d/"
+
+
+

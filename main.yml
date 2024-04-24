@@ -125,6 +125,15 @@
     - GUI
     - appearance
 
+- name: files_managers
+  hosts: all
+  roles:
+    - files_managers
+  tags:
+    - MINIMAL_GUI
+    - GUI
+    - files_managers
+
 - name: UFW
   hosts: all
   roles:
