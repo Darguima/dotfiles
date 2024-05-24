@@ -1,5 +1,3 @@
-output None-1-1
-off
 output DVI-D-0
 crtc 1
 mode 1920x1080
