@@ -305,6 +305,14 @@
   tags:
     - GUI
 
+- name: Installing Obsidian
+  pacman:
+    name: obsidian
+    state: latest
+  become: true
+  tags:
+    - GUI
+
 - name: Installing Spotify
   kewlfft.aur.aur:
     use: yay
