@@ -1,7 +1,10 @@
 # GLOBAL ALIASES
 
 alias _="sudo"
+alias l="ls -la"
 alias la="ls -la"
+alias c="clear"
+
 alias keyMouse="setxkbmap -option keypad:pointerkeys"
 
 alias upgrade="yay -Suy --devel --noconfirm"
