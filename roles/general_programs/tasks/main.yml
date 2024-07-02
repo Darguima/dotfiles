@@ -262,15 +262,6 @@
 #     - GUI
 
 # Apps:
-- name: Installing Firefox
-  pacman:
-    name: firefox
-    state: latest
-  become: true
-  tags:
-    - MINIMAL_GUI
-    - GUI
-
 - name: Installing Google Chrome
   kewlfft.aur.aur:
    use: yay

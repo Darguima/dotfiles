@@ -144,6 +144,15 @@
     - GUI
     - ufw
 
+- name: Firefox
+  hosts: all
+  roles:
+    - firefox
+  tags:
+    - MINIMAL_GUI
+    - GUI
+    - firefox
+
 - name: VS Code
   hosts: all
   roles:

@@ -1,0 +1,12 @@
+- name: Installing Firefox
+  pacman:
+    name: firefox
+    state: latest
+  become: True
+
+- name: Installing firefox_fav_tabs script
+  copy:
+    src: firefox_fav_tas
+    dest: /bin/firefox_fav_tabs
+    mode: 0755
+  become: True
