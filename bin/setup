@@ -1,5 +1,21 @@
 #!/bin/bash
 
+command_exists () {
+    type "$1" &> /dev/null ;
+}
+
+# Check if $EDITOR is set
+if [ -z "$EDITOR" ]; then
+    if command_exists nano; then
+        EDITOR="nano"
+    elif command_exists vim; then
+        EDITOR="vim"
+    else
+        echo "No suitable editor found. Please install nano or vim or set $EDITOR."
+        exit 1
+    fi
+fi
+
 printf "\n[LOG] - Installing Ansbile Pacman packages.\n\n"
 sudo pacman -S ansible-core ansible --needed --noconfirm
 
