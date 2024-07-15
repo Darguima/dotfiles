@@ -75,15 +75,6 @@
     - MINIMAL_GUI
     - GUI
 
-- name: Installing pulseaudio
-  pacman:
-    name: pulseaudio
-    state: latest
-  become: true
-  tags:
-    - MINIMAL_GUI
-    - GUI
-
 - name: Installing pavucontrol
   pacman:
     name: pavucontrol
