@@ -204,6 +204,26 @@
     - MINIMAL_GUI
     - GUI
 
+- name: Installing less
+  pacman:
+    name: less
+    state: latest
+  become: true
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
+
+- name: Installing tree
+  pacman:
+    name: tree
+    state: latest
+  become: true
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
+
 - name: Installing wget
   pacman:
     name: wget
