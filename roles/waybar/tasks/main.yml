@@ -1,0 +1,19 @@
+- name: Installing waybar and a bunch of dependencies
+  pacman:
+    name:
+      - waybar
+      - ttf-font-awesome
+    state: latest
+  become: true
+
+- name: Ensuring waybar config directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/waybar"
+    state: directory
+
+- name: Copying waybar config folder
+  copy:
+    src: ./
+    dest: "{{ ansible_env.HOME }}/.config/waybar/"
+
+

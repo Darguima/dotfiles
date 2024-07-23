@@ -9,7 +9,7 @@
     path: "{{ ansible_env.HOME }}/.config/alacritty"
     state: directory
 
-- name: Copying Alacritty @{{ target_environment }} config file
+- name: Copying Alacritty config file
   copy:
-    src: "{{ target_environment }}@alacritty.toml"
+    src: alacritty.toml
     dest: "{{ ansible_env.HOME }}/.config/alacritty/alacritty.toml"

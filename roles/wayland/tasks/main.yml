@@ -1,0 +1,59 @@
+- name: Installing Wayland tools
+  pacman:
+    name:
+      # Wayland is installed by sway
+      - xorg-xwayland
+      - xdg-desktop-portal
+      - xdg-desktop-portal-wlr
+      - xdg-desktop-portal-gtk
+
+    state: latest
+  become: true
+
+- name: Installing Wayland AUR tools
+  kewlfft.aur.aur:
+    use: yay
+    name:
+      - wdisplays
+    state: latest
+  become: True
+  become_user: aur_builder
+
+- name: Checking GPU brand
+  shell: lspci | grep -i 'VGA\|3D'
+  register: gpu_output
+  changed_when: false
+
+- name: Installing nvidia drivers
+  pacman:
+    name: nvidia
+    state: latest
+  become: true
+  when: "'nvidia' in gpu_output.stdout | lower"
+
+- name: Copying nvidia_drm modprobe module configuration
+  copy:
+    src: nvidia_drm.conf
+    dest: /etc/modprobe.d/nvidia_drm.conf
+  become: true
+  when: "'nvidia' in gpu_output.stdout | lower"
+
+- name: Copying nvidia modprobe module configuration
+  copy:
+    src: nvidia.conf
+    dest: /etc/modprobe.d/nvidia.conf
+  become: true
+  when: "'nvidia' in gpu_output.stdout | lower"
+
+- name: Adding Wayland Nvidia compatibility Env Vars to /etc/environment
+  blockinfile:
+    path: /etc/environment
+    append_newline: true
+    prepend_newline: true
+    create: true
+    block: |
+      export WLR_RENDERER=vulkan
+      export WLR_NO_HARDWARE_CURSORS=1
+      export XWAYLAND_NO_GLAMOR=1
+  become: true
+  when: "'nvidia' in gpu_output.stdout | lower"

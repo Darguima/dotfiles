@@ -1,0 +1,277 @@
+### === Variables ===============================================
+
+# Keys
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Apps
+set $term alacritty
+set $menu wofi --show run | xargs swaymsg exec --
+set $browser firefox
+set $file_manager nautilus
+
+set $lock_screen swaylock -f -c 000000
+set $suspend systemctl suspend
+
+### === Input configuration =====================================
+
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+input "type:keyboard" {
+    xkb_layout us
+    xkb_variant altgr-intl
+    xkb_numlock enabled
+}
+
+input "type:touchpad" {
+    tap enabled                 # enables click-on-tap
+    pointer_accel 0.7           # acceleration factor
+    scroll_factor 0.4           # scroll speed factor
+    natural_scroll enabled      # invert scroll direction
+}
+
+### === Output configuration ====================================
+
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+#Laptop
+output eDP-1 pos 0 0 res 1920x1080 scale 1.4
+
+# Desktop
+output 'LG Electronics M2262D 0x01010101' pos 0 0 res 1920x1080@59.934Hz transform 180
+output 'Lenovo Group Limited D27q-30 URHKV2PP' pos 1920 0 res 2560x1440@60Hz scale 1.4
+
+# Workspaces
+workspace 1 output 'Lenovo Group Limited D27q-30 URHKV2PP'
+workspace 2 output 'Lenovo Group Limited D27q-30 URHKV2PP'
+workspace 3 output 'Lenovo Group Limited D27q-30 URHKV2PP'
+workspace 4 output 'LG Electronics M2262D 0x01010101'
+
+### === Idle configuration ======================================
+
+# Lock screen & turn off the screen
+
+exec swayidle -w \
+         timeout 300 '$lock_screen' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep '$lock_screen'
+
+### === Appearance ==============================================
+
+for_window {
+  [shell="xwayland"] title_format "%title [XWayland]"
+
+  [window_role="pop-up"] floating enable
+  [window_role="bubble"] floating enable
+  [window_role="dialog"] floating enable
+  [window_type="dialog"] floating enable
+
+  [app_id="org.gnome.Calculator"] floating enable
+  [app_id="blueman-manager"] floating enable
+
+  # [app_id=Alacritty] move to scratchpad, scratchpad show, $t_pos # Try understand the use
+}
+
+# gaps
+# default_border pixel 3
+# smart_borders on
+# smart_gaps off
+# gaps {
+#   inner 0
+#   outer 0
+# }
+# 
+# # class                 border   backgr.   text    indicator  child border
+# client.focused          #689D6A  #D65D0EAA #EBDBB2 #00DA8E    #4B610B
+# client.focused_inactive #689D6A  #D79921AA #504945 #484E50    #4B610B
+# client.unfocused        #689D6A  #282828AA #FADB2F #282828    #4B610B
+# client.urgent           #689D6A  #CC241DAA #A89984 #FB4934    #4B610B
+
+### === Key bindings ============================================
+
+# List of codes - https://wiki.linuxquestions.org/wiki/XF86_keyboard_symbols
+
+# Behaviour:
+    bindsym $mod+Ctrl+l exec $lock_screen
+    bindsym --locked $mod+Ctrl+s exec $suspend
+
+# Apps:
+    bindsym $mod+Return exec $term
+    # bindsym Ctrl+Return exec $term
+    bindsym $mod+f exec $browser
+    bindsym $mod+e exec $file_manager
+    bindsym XF86Calculator exec gnome-calculator
+
+    bindsym $mod+b exec blueman-manager
+    bindsym $mod+n exec swaync-client -t -sw
+
+    bindsym $mod+d exec $menu
+    bindsym $mod+v exec clipman pick -t wofi
+    bindsym $mod+z exec emote
+
+# ScreenShoot:
+    bindsym Print exec swappy -f $(grimshot save anything $(mktemp --suffix=.png))
+    bindsym $mod+Print exec swappy -f $(grimshot save active $(mktemp --suffix=.png))
+    bindsym $mod+Shift+Print exec swappy -f $(grimshot save output $(mktemp --suffix=.png))
+    bindsym $mod+Ctrl+Shift+Print exec swappy -f $(grimshot save screen $(mktemp --suffix=.png))
+
+# Fn keys:
+    # PlayerCtl
+    bindsym --locked XF86AudioPlay exec playerctl play-pause
+    bindsym --locked XF86AudioPause exec playerctl play-pause
+    bindsym --locked XF86AudioStop exec playerctl stop --all-players
+    bindsym --locked XF86AudioPrev exec playerctl previous
+    bindsym --locked XF86AudioNext exec playerctl next
+
+    # PlayerCtl - ThinkPad workaround
+    bindsym --locked F12 exec playerctl play-pause
+    bindsym --locked F9 exec playerctl stop --all-players
+    bindsym --locked F10 exec playerctl previous
+    bindsym --locked F11 exec playerctl next
+
+    # Change to Headphones
+    bindsym --locked XF86Back exec playerctl /usr/bin/change_pa_output headphones
+    # Change to Speakers
+    bindsym --locked XF86Close exec playerctl /usr/bin/change_pa_output speakers
+
+    # PulseAudio
+    bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+    # Brightness
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl s 10%+
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl s 10%-
+
+# Sway Basics:
+
+    bindsym $mod+q kill
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+# Moving around:
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+
+    # Move the focused window with the same keys + Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    
+# Workspaces:
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+
+    # Toggle between the current and last workspace
+    bindsym $mod+Escape workspace back_and_forth
+
+# Layout stuff:
+
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively - this was disabled because can be done with
+    # $mod+e
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+t layout tabbed
+    bindsym $mod+w layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+Shift+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+# Scratchpad:
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+
+# Resizing containers:
+mode "resize" {
+    # left  - shrink width
+    # right - grow width
+    # up    - shrink height
+    # down  - grow height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+### === Status Bar ==============================================
+bar swaybar_command waybar
+
+include /etc/sway/config.d/*
+
+### === Startup Apps ============================================
+
+exec nm-applet
+exec blueman-applet
+exec kdeconnect-indicator
+exec sleep 3 && syncthingtray --wait
+exec slack -u
+exec QT_XCB_GL_INTEGRATION=none flatpak run --filesystem=/home/darguima/Documents/Universidade app.bbsync.BlackboardSync
+
+exec swaync
+
+exec wl-paste -t text --watch clipman store --max-items=50
+
+exec emote

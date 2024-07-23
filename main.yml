@@ -44,23 +44,32 @@
     - GUI
     - ssh
 
-- name: Xorg
+- name: Wayland
   hosts: all
   roles:
-    - xorg
+    - wayland
   tags:
     - MINIMAL_GUI
     - GUI
-    - xorg
+    - wayland
 
-- name: SDDM
+- name: waybar
   hosts: all
   roles:
-    - sddm
+    - waybar
   tags:
     - MINIMAL_GUI
     - GUI
-    - sddm
+    - waybar
+
+- name: sway
+  hosts: all
+  roles:
+    - sway
+  tags:
+    - MINIMAL_GUI
+    - GUI
+    - sway
 
 - name: playerctl
   hosts: all
@@ -71,41 +80,23 @@
     - GUI
     - playerctl
 
-- name: xbindkeys
+- name: Appearance
   hosts: all
   roles:
-    - xbindkeys
+    - appearance
   tags:
     - MINIMAL_GUI
     - GUI
-    - xbindkeys
+    - appearance
 
-- name: picom
+- name: wofi
   hosts: all
   roles:
-    - picom
+    - wofi
   tags:
     - MINIMAL_GUI
     - GUI
-    - picom
-
-- name: awesome_wm
-  hosts: all
-  roles:
-    - awesome_wm
-  tags:
-    - MINIMAL_GUI
-    - GUI
-    - awesome_wm
-
-- name: rofi
-  hosts: all
-  roles:
-    - rofi
-  tags:
-    - MINIMAL_GUI
-    - GUI
-    - rofi
+    - wofi
 
 - name: alacritty
   hosts: all
@@ -115,15 +106,6 @@
     - MINIMAL_GUI
     - GUI
     - alacritty
-
-- name: Appearance
-  hosts: all
-  roles:
-    - appearance
-  tags:
-    - MINIMAL_GUI
-    - GUI
-    - appearance
 
 - name: files_managers
   hosts: all

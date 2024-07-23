@@ -1,0 +1,5 @@
+- name: Installing wofi
+  pacman:
+    name: wofi
+    state: latest
+  become: true

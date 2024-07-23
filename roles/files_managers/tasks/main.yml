@@ -6,6 +6,16 @@
     state: latest
   become: True
 
+- name: Ensuring gtk3 bookmarks folder exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config/gtk-3.0"
+    state: directory
+
+- name: Copying gtk3 bookmarks file
+  copy:
+    src: gtk3_bookmarks
+    dest: "{{ ansible_env.HOME }}/.config/gtk-3.0/bookmarks"
+
 - name: Configuring MIME Types default applications
   copy:
     src: mimeapps.list

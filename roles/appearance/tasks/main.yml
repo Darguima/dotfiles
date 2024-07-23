@@ -1,40 +1,45 @@
-- name: Installing Papirus icon theme, breeze, qt5ct, lxappearance
+- name: Installing qt6ct, lxappearance
+  pacman:
+    name:
+      - qt6ct
+      - lxappearance
+    state: latest
+  become: true
+
+- name: Installing Papirus icon theme, breeze
   pacman:
     name:
       - papirus-icon-theme
       - breeze
-      - qt5ct
-      - lxappearance-gtk3
     state: latest
   become: true
 
-- name: Ensuring qt5ct config folder exists
+- name: Ensuring qt6ct config folder exists
   file:
-    path: "{{ ansible_env.HOME }}/.config/qt5ct"
+    path: "{{ ansible_env.HOME }}/.config/qt6ct"
     state: directory
 
-- name: Copying qt5ct config file
+- name: Copying qt6ct config file
   copy:
-    src: qt5ct.conf
-    dest: "{{ ansible_env.HOME }}/.config/qt5ct/qt5ct.conf"
+    src: qt6ct.conf
+    dest: "{{ ansible_env.HOME }}/.config/qt6ct/qt6ct.conf"
 
 - name: Copying GTK2 config file
   copy:
     src: "gtkrc-2.0"
     dest: "{{ ansible_env.HOME }}/.gtkrc-2.0"
 
+- name: Ensuring GTK3 config folder exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config/gtk-3.0"
+    state: directory
+
 - name: Copying GTK3 config file
   copy:
     src: gtk3_settings.ini
     dest: "{{ ansible_env.HOME }}/.config/gtk-3.0/settings.ini"
 
-- name: Exporting appearance variables from ~/.xprofile
-  lineinfile:
-    path: "{{ ansible_env.HOME }}/.xprofile"
-    line: "{{ item }}"
-    create: yes
-  with_items:
-    - "export QT_QPA_PLATFORMTHEME=qt5ct"
-    - "export GTK2_RC_FILES=\"{{ ansible_env.HOME }}/.gtkrc-2.0\""
-    - "export GTK_THEME=Adwaita:dark"
-
+- name: Copying Appearance Env Vars to ZSH import
+  copy:
+    src: export_appearance.zsh
+    dest: "{{ ansible_env.HOME }}/.zshrc.d/"

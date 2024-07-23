@@ -1,0 +1,50 @@
+- name: Installing Sway and a bunch of dependencies
+  pacman:
+    name:
+      - sway
+      - swaybg
+
+      - polkit
+
+      - swayidle
+      - swaylock
+
+      - swappy
+
+      - swaync
+      - brightnessctl
+      - network-manager-applet
+      - wl-clipboard
+    state: latest
+  become: true
+
+- name: Installing Sway AUR dependencies
+  kewlfft.aur.aur:
+    use: yay
+    name:
+      - emote
+      - clipman
+      - grimshot
+    state: latest
+  become: True
+  become_user: aur_builder
+
+- name: Ensuring sway config directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/sway"
+    state: directory
+
+- name: Copying sway config file
+  copy:
+    src: sway_config
+    dest: "{{ ansible_env.HOME }}/.config/sway/config"
+
+- name: Ensuring swaync config directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/swaync"
+    state: directory
+
+- name: Copying swaync config file
+  copy:
+    src: swaync_config.json
+    dest: "{{ ansible_env.HOME }}/.config/swaync/config.json"

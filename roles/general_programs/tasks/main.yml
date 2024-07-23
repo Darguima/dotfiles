@@ -111,26 +111,6 @@
     - MINIMAL_GUI
     - GUI
 
-- name: Installing RealVNC Server
-  kewlfft.aur.aur:
-    use: yay
-    name: realvnc-vnc-server
-    state: latest
-  become: True
-  become_user: aur_builder
-  tags:
-    - GUI
-
-- name: Installing RealVNC Viewer
-  kewlfft.aur.aur:
-    use: yay
-    name: realvnc-vnc-viewer
-    state: latest
-  become: True
-  become_user: aur_builder
-  tags:
-    - GUI
-
 - name: Installing KDE Connect
   pacman:
     name: kdeconnect
@@ -149,17 +129,17 @@
     - MINIMAL_GUI
     - GUI
 
-- name: Installing ProtonVPN
-  kewlfft.aur.aur:
-    use: yay
-    name: protonvpn-cli
-    state: latest
-  become: True
-  become_user: aur_builder
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
+    # - name: Installing ProtonVPN
+    #   kewlfft.aur.aur:
+    #     use: yay
+    #     name: protonvpn-cli
+    #     state: latest
+    #   become: True
+    #   become_user: aur_builder
+    #   tags:
+    #     - TUI
+    #     - MINIMAL_GUI
+    #     - GUI
 
 # Coding:
 - name: Installing vim
@@ -243,14 +223,6 @@
   tags:
     - GUI
 
-- name: Installing Spectacle
-  pacman:
-    name: spectacle
-    state: latest
-  become: true
-  tags:
-    - GUI
- 
 - name: Installing NumWorks
   kewlfft.aur.aur:
    use: yay
@@ -354,14 +326,6 @@
 #     - GUI
 
 # Others:
-- name: Installing Deja Dup
-  pacman:
-    name: deja-dup
-    state: latest
-  become: true
-  tags:
-    - GUI
-
 - name: Installing Gnome Keyring
   pacman:
     name: gnome-keyring

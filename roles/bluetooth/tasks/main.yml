@@ -3,10 +3,8 @@
     name: 
       - bluez
       - bluez-utils
-      - pulseaudio-bluetooth
       - blueman
       - bluedevil
-
     state: latest
   become: true
 
@@ -15,7 +13,6 @@
     use: yay
     name: 
       - bluetuith
-      # - bluez-rfcomm
     state: latest
   become: True
   become_user: aur_builder
