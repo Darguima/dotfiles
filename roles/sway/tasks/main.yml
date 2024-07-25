@@ -16,6 +16,7 @@
       - network-manager-applet
       - wl-clipboard
       - kanshi
+      - bc
     state: latest
   become: true
 

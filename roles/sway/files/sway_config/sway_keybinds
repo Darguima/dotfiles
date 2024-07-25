@@ -3,6 +3,10 @@
 # Behaviour:
     bindsym $mod+Ctrl+l exec $lock_screen
     bindsym --locked $mod+Ctrl+s exec $suspend
+    # Scale focused screen 
+    bindsym $mod+plus exec "swaymsg output $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') scale $(echo $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .scale') + 0.1 | bc)"
+    bindsym $mod+Alt+plus exec "swaymsg output $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') scale $(echo $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .scale') - 0.1 | bc)"
+
 
 # Apps:
     bindsym $mod+Return exec $term
