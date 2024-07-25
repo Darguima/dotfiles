@@ -15,6 +15,7 @@
       - brightnessctl
       - network-manager-applet
       - wl-clipboard
+      - kanshi
     state: latest
   become: true
 
@@ -38,6 +39,11 @@
   copy:
     src: sway_config/
     dest: "{{ ansible_env.HOME }}/.config/sway"
+
+- name: Copying kanshi config file
+  copy:
+    src: kanshi_config
+    dest: "{{ ansible_env.HOME }}/.config/kanshi"
 
 - name: Ensuring swaync config directory
   file:

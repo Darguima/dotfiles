@@ -17,20 +17,23 @@ set $desktop_monitor_2 'LG Electronics M2262D 0x01010101'
 
 #Laptop
 output $laptop_monitor {
-  pos 0 0
   res 1920x1080
   scale 1.4
 }
 
 # Desktop
 output $desktop_monitor_2  {
-  pos 0 0
   res 1920x1080@59.934Hz
   transform 180
 }
 
 output $desktop_monitor_1   {
-  pos 1920 0
   res 2560x1440@60Hz
   scale 1.4
+}
+
+# Start kanshi to handle monitor modifications on live
+exec_always {
+  pkill kanshi
+  kanshi &
 }
