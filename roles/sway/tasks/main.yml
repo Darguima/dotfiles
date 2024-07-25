@@ -48,3 +48,8 @@
   copy:
     src: swaync_config.json
     dest: "{{ ansible_env.HOME }}/.config/swaync/config.json"
+
+- name: Copying Sway exec file to ZSH import
+  copy:
+    src: exec_sway.zsh
+    dest: "{{ ansible_env.HOME }}/.zshrc.d/"

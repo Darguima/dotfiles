@@ -17,8 +17,6 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 # Dark Mode
 export GTK_THEME=Adwaita:dark
 
-# VS Code
-
 # Electron Apps
 export MOZ_ENABLE_WAYLAND=1
 export ELECTRON_OZONE_PLATFORM_HINT=auto
