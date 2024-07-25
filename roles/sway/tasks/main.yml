@@ -41,10 +41,15 @@
     src: sway_config/
     dest: "{{ ansible_env.HOME }}/.config/sway"
 
+- name: Ensuring kanshi config directory exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config/kanshi"
+    state: directory
+
 - name: Copying kanshi config file
   copy:
     src: kanshi_config
-    dest: "{{ ansible_env.HOME }}/.config/kanshi"
+    dest: "{{ ansible_env.HOME }}/.config/kanshi/config"
 
 - name: Ensuring swaync config directory
   file:
