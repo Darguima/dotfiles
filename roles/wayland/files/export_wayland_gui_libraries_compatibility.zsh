@@ -1,7 +1,3 @@
-export OZONE_PLATFORM='wayland'
-export CLUTTER_BACKEND='wayland'
-export XDG_SESSION_TYPE='wayland'
-
 # Electron Apps
 export MOZ_ENABLE_WAYLAND=1
 
@@ -27,6 +23,7 @@ export ELM_DISPLAY='wl'
 
 # Electron
 export ELECTRON_OZONE_PLATFORM_HINT='auto'
+export OZONE_PLATFORM='wayland'
 export ENABLE_FEATURES="UseOzonePlatform,WaylandWindowDecorations,WebRTCPipeWireCapturer" 
 
 # Java (workaround for blank screen)
