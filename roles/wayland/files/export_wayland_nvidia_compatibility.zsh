@@ -1,0 +1,5 @@
+export GBM_BACKEND=nvidia-drm
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export WLR_RENDERER=vulkan
+export WLR_NO_HARDWARE_CURSORS=1
+export XWAYLAND_NO_GLAMOR=1

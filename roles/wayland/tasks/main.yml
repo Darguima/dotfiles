@@ -1,11 +1,16 @@
-- name: Installing Wayland tools
+- name: Installing Wayland tools and dependencies
   pacman:
     name:
       # Wayland is installed by sway
       - xorg-xwayland
+
       - xdg-desktop-portal
       - xdg-desktop-portal-wlr
       - xdg-desktop-portal-gtk
+
+      - qt5-wayland
+      - qt6-wayland
+      - libdecor # Recommended by SDL2
 
     state: latest
   become: true
@@ -15,9 +20,17 @@
     use: yay
     name:
       - wdisplays
+      - glew-wayland # Maybe required by GLEW
     state: latest
   become: True
   become_user: aur_builder
+
+- name: Copying Wayland GUI Libraries Compatibility Env Vars to ZSH import
+  copy:
+    src: export_wayland_gui_libraries_compatibility.zsh
+    dest: "{{ ansible_env.HOME }}/.zshrc.d/"
+
+# Nvidia Drivers:
 
 - name: Checking GPU brand
   shell: lspci | grep -i 'VGA\|3D'
@@ -45,15 +58,8 @@
   become: true
   when: "'nvidia' in gpu_output.stdout | lower"
 
-- name: Adding Wayland Nvidia compatibility Env Vars to /etc/environment
-  blockinfile:
-    path: /etc/environment
-    append_newline: true
-    prepend_newline: true
-    create: true
-    block: |
-      export WLR_RENDERER=vulkan
-      export WLR_NO_HARDWARE_CURSORS=1
-      export XWAYLAND_NO_GLAMOR=1
-  become: true
+- name: Copying Wayland Nvidia compatibility Env Vars to ZSH import
+  copy:
+    src: export_wayland_nvidia_compatibility.zsh
+    dest: "{{ ansible_env.HOME }}/.zshrc.d/"
   when: "'nvidia' in gpu_output.stdout | lower"
