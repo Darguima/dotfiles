@@ -11,7 +11,7 @@ exec swayidle -w \
 
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
-set $laptop_monitor 'CHIMEI-INNOLUX-Corporation-0x14D4'
+set $laptop_monitor 'Chimei Innolux Corporation 0x14D4 Unknown'
 set $desktop_monitor_1 'Lenovo Group Limited D27q-30 URHKV2PP'
 set $desktop_monitor_2 'LG Electronics M2262D 0x01010101'
 

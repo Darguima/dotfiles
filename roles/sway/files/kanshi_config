@@ -1,4 +1,4 @@
-output 'CHIMEI-INNOLUX-Corporation-0x14D4' alias $laptop_monitor
+output 'Chimei Innolux Corporation 0x14D4 Unknown' alias $laptop_monitor
 
 output 'Lenovo Group Limited D27q-30 URHKV2PP' alias $desktop_monitor_1
 output 'LG Electronics M2262D 0x01010101' alias $desktop_monitor_2
