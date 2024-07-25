@@ -2,6 +2,6 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && command -v sway &> /dev/null
 
 	export XDG_CURRENT_DESKTOP=sway
 
-	exec sway
+	exec sway --unsupported-gpu
 
 fi
