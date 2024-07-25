@@ -1,0 +1,44 @@
+### === Variables ===============================================
+
+# Keys
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Apps
+set $term alacritty
+set $menu wofi --show run | xargs swaymsg exec --
+set $browser firefox
+set $file_manager nautilus
+
+set $lock_screen swaylock -f -c 000000
+set $suspend systemctl suspend
+
+
+### === General Configs =========================================
+
+include ./sway_inputs
+include ./sway_outputs
+include ./sway_appearance
+include ./sway_keybinds
+
+bar swaybar_command waybar
+
+include /etc/sway/config.d/*
+
+### === Startup Apps ============================================
+
+exec nm-applet
+exec blueman-applet
+exec kdeconnect-indicator
+exec sleep 3 && syncthingtray --wait
+exec slack -u
+exec QT_XCB_GL_INTEGRATION=none flatpak run --filesystem=/home/darguima/Documents/Universidade app.bbsync.BlackboardSync
+
+exec swaync
+
+exec wl-paste -t text --watch clipman store --max-items=50
+
+exec emote

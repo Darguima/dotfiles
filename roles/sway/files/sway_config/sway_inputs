@@ -1,0 +1,15 @@
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+input "type:keyboard" {
+    xkb_layout us
+    xkb_variant altgr-intl
+    xkb_numlock enabled
+}
+
+input "type:touchpad" {
+    tap enabled                 # enables click-on-tap
+    pointer_accel 0.7           # acceleration factor
+    scroll_factor 0.4           # scroll speed factor
+    natural_scroll enabled      # invert scroll direction
+}

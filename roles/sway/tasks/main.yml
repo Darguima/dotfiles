@@ -36,8 +36,8 @@
 
 - name: Copying sway config file
   copy:
-    src: sway_config
-    dest: "{{ ansible_env.HOME }}/.config/sway/config"
+    src: sway_config/
+    dest: "{{ ansible_env.HOME }}/.config/sway"
 
 - name: Ensuring swaync config directory
   file:

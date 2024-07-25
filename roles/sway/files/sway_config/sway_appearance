@@ -1,0 +1,11 @@
+for_window {
+  [shell="xwayland"] title_format "%title [XWayland]"
+
+  [window_role="pop-up"] floating enable
+  [window_role="bubble"] floating enable
+  [window_role="dialog"] floating enable
+  [window_type="dialog"] floating enable
+
+  [app_id="org.gnome.Calculator"] floating enable
+  [app_id="blueman-manager"] floating enable
+}
