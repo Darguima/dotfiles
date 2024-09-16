@@ -19,6 +19,7 @@
     bindsym $mod+n exec swaync-client -t -sw
 
     bindsym $mod+d exec $menu
+    bindsym $mod+Shift+b exec rofi-rbw
     bindsym $mod+v exec clipman pick -t wofi
     bindsym $mod+z exec emote
 

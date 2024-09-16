@@ -325,7 +325,7 @@
 #   tags:
 #     - GUI
 
-# Others:
+# Keyring
 - name: Installing Gnome Keyring
   pacman:
     name: gnome-keyring
@@ -342,4 +342,17 @@
     state: latest
   become: true
   tags:
+    - GUI
+
+- name: Installing Rofi Bitwarden (rbw, rofi-rbw, wtype)
+  pacman:
+    name:
+      - rbw
+      - rofi-rbw
+      - wtype
+    state: latest
+  become: true
+  tags:
+    - TUI
+    - MINIMAL_GUI
     - GUI
