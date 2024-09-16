@@ -129,17 +129,17 @@
     - MINIMAL_GUI
     - GUI
 
-    # - name: Installing ProtonVPN
-    #   kewlfft.aur.aur:
-    #     use: yay
-    #     name: protonvpn-cli
-    #     state: latest
-    #   become: True
-    #   become_user: aur_builder
-    #   tags:
-    #     - TUI
-    #     - MINIMAL_GUI
-    #     - GUI
+- name: Installing ProtonVPN
+  kewlfft.aur.aur:
+    use: yay
+    name: protonvpn-cli
+    state: latest
+  become: True
+  become_user: aur_builder
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
 
 # Coding:
 - name: Installing vim
