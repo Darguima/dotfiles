@@ -27,4 +27,4 @@ export OZONE_PLATFORM='wayland'
 export ENABLE_FEATURES="UseOzonePlatform,WaylandWindowDecorations,WebRTCPipeWireCapturer" 
 
 # Java (workaround for blank screen)
-# export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_AWT_WM_NONREPARENTING=1
