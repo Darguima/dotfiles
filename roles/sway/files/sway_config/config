@@ -35,7 +35,7 @@ exec blueman-applet
 exec kdeconnect-indicator
 exec sleep 3 && syncthingtray --wait
 exec slack -u
-exec QT_XCB_GL_INTEGRATION=none flatpak run --filesystem=/home/darguima/Documents/Universidade app.bbsync.BlackboardSync
+exec QT_XCB_GL_INTEGRATION=none flatpak run --filesystem=/home/darguima/Documents/Universidade_BB app.bbsync.BlackboardSync
 
 exec swaync
 
