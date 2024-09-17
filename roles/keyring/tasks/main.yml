@@ -1,0 +1,19 @@
+- name: Installing Gnome Keyring and seahorse (Gnome Keyring GUI)
+  pacman:
+    name:
+      - gnome-keyring
+      - seahorse
+    state: latest
+  become: true
+
+- name: Installing Rofi Bitwarden (rbw, rofi-rbw, wtype)
+  pacman:
+    name:
+      - rbw
+      - rofi-rbw
+      - wtype
+    state: latest
+  become: true
+
+- name: Configuring RBW timeouts
+  shell: rbw config set lock_timeout 240

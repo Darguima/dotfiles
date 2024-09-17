@@ -163,6 +163,16 @@
     - GUI
     - bluetooth
 
+- name: Keyring
+  hosts: all
+  roles:
+    - keyring
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
+    - keyring
+
 - name: Docker
   hosts: all
   roles:
