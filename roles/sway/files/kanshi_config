@@ -9,6 +9,19 @@ profile only_laptop {
   }
 }
 
+profile laptop_with_external_monitor {
+  output * {
+    position 0,0
+    mode 1920x1080
+  }
+
+  output $laptop_monitor {
+    position 0,1080
+  }
+
+  exec swaymsg workspace 1 && swaymsg move workspace to output HDMI-A-1 && swaymsg workspace 10 && swaymsg move workspace to output eDP-1 && swaymsg workspace 1
+}
+
 profile normal_desktop {
   output $desktop_monitor_2 {
     position 0,0
