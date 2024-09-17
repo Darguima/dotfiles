@@ -1,23 +1,19 @@
-- name: Installing Flatpak
+- name: Installing python-pip
   pacman:
-    name: flatpak
+    name: python-pip
     state: latest
   become: true
 
 - name: Installing BlackboardSync
-  flatpak:
-    name: app.bbsync.BlackboardSync
-    state: present
-
-- name: Ensuring config folder exists
-  file:
-    path: "{{ ansible_env.HOME }}/.var/app/app.bbsync.BlackboardSync/config/"
-    state: directory
+  pip:
+    name: blackboardsync
+    state: latest
+    break_system_packages: true
 
 - name: Copying config file
   copy:
     src: "blackboard_sync"
-    dest: "{{ ansible_env.HOME }}/.var/app/app.bbsync.BlackboardSync/config/blackboard_sync"
+    dest: "{{ ansible_env.HOME }}/.config/blackboard_sync"
 
 - name: Ensuring destination folder exists
   file:
