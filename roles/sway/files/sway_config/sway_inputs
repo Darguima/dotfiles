@@ -9,7 +9,7 @@ input "type:keyboard" {
 
 input "type:touchpad" {
     tap enabled                 # enables click-on-tap
-    pointer_accel 0.7           # acceleration factor
+    pointer_accel 0.2           # acceleration factor
     scroll_factor 0.4           # scroll speed factor
     natural_scroll enabled      # invert scroll direction
 }
