@@ -272,6 +272,14 @@
     - GUI
     - blackboard_sync
 
+- name: MMEX
+  hosts: all
+  roles:
+    - mmex
+  tags:
+    - GUI
+    - mmex
+
 - name: General Programs
   hosts: all
   roles:

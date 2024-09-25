@@ -1,0 +1,20 @@
+- name: Installing Flatpak
+  pacman:
+    name: flatpak
+    state: latest
+  become: true
+
+- name: Installing Money Manager Ex
+  flatpak:
+    name: org.moneymanagerex.MMEX
+    state: latest
+
+- name: Ensuring config folder exists
+  file:
+    path: "{{ ansible_env.HOME }}/.mmex"
+    state: directory
+
+- name: Copying config file
+  copy:
+    src: "mmexini.db3"
+    dest: "{{ ansible_env.HOME }}/.mmex/mmexini.db3"
