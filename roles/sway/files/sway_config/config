@@ -9,7 +9,7 @@ set $right l
 
 # Apps
 set $term alacritty
-set $menu wofi --show run | xargs swaymsg exec --
+set $menu wofi --show run --insensitive | xargs swaymsg exec --
 set $browser firefox
 set $file_manager nautilus
 
