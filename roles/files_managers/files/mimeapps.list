@@ -61,6 +61,23 @@ application/vnd.ms-powerpoint=libreoffice-impress.desktop
 application/vnd.openxmlformats-officedocument.presentationml.presentation=libreoffice-impress.desktop
 application/vnd.visio=libreoffice-draw.desktop
 
+application/zip=org.gnome.Nautilus.desktop;
+application/x-7z-compressed=org.gnome.Nautilus.desktop;
+application/x-bzip=org.gnome.Nautilus.desktop;
+application/x-bzip-compressed-tar=org.gnome.Nautilus.desktop;
+application/x-compressed-tar=org.gnome.Nautilus.desktop;
+application/x-gzip=org.gnome.Nautilus.desktop;
+application/x-xz=org.gnome.Nautilus.desktop;
+application/x-rar-compressed=org.gnome.Nautilus.desktop;
+application/x-tar=org.gnome.Nautilus.desktop;
+application/x-iso9660-image=org.gnome.Nautilus.desktop;
+application/x-lzip=org.gnome.Nautilus.desktop;
+application/x-lzma=org.gnome.Nautilus.desktop;
+application/x-xar=org.gnome.Nautilus.desktop;
+application/x-archive=org.gnome.Nautilus.desktop;
+application/vnd.ms-cab-compressed=org.gnome.Nautilus.desktop;
+application/x-apple-diskimage=org.gnome.Nautilus.desktop;
+
 # Fallback
 [Added Associations]
 text/plain=code.desktop;
