@@ -65,6 +65,18 @@
     - MINIMAL_GUI
     - GUI
 
+# Drivers and stuff like that
+
+- name: Installing android-file-transfer
+  pacman:
+    name: android-file-transfer
+    state: latest
+  become: true
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
+
 # Video and Sound:
 - name: Installing alsa-utils
   pacman:
@@ -215,22 +227,16 @@
     - MINIMAL_GUI
     - GUI
 
-- name: Installing Gnome Calculator
-  pacman:
-    name: gnome-calculator
-    state: latest
-  become: true
-  tags:
-    - GUI
-
-- name: Installing NumWorks
+- name: Installing WoeUSB
   kewlfft.aur.aur:
    use: yay
-   name: numworks-epsilon
+   name: woeusb
    state: latest
   become: True
   become_user: aur_builder
   tags:
+    - TUI
+    - MINIMAL_GUI
     - GUI
 
 # - name: Installing wine, wine-gecko & wine-mono
@@ -312,6 +318,24 @@
     use: yay
     name: figma-linux
     state: latest
+  become: True
+  become_user: aur_builder
+  tags:
+    - GUI
+
+- name: Installing Gnome Calculator
+  pacman:
+    name: gnome-calculator
+    state: latest
+  become: true
+  tags:
+    - GUI
+
+- name: Installing NumWorks
+  kewlfft.aur.aur:
+   use: yay
+   name: numworks-epsilon
+   state: latest
   become: True
   become_user: aur_builder
   tags:
