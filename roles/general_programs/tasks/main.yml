@@ -239,6 +239,26 @@
     - MINIMAL_GUI
     - GUI
 
+- name: Installing android-tools
+  pacman:
+    name: android-tools
+    state: latest
+  become: true
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
+
+- name: Installing scrcpy (Android Screen Share)
+  pacman:
+    name: scrcpy
+    state: latest
+  become: true
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
+
 # - name: Installing wine, wine-gecko & wine-mono
 #   pacman:
 #     name:
@@ -313,13 +333,11 @@
   tags:
     - GUI
 
-- name: Installing Figma
-  kewlfft.aur.aur:
-    use: yay
-    name: figma-linux
+- name: Installing Inkscape
+  pacman:
+    name: inkscape
     state: latest
-  become: True
-  become_user: aur_builder
+  become: true
   tags:
     - GUI
 
