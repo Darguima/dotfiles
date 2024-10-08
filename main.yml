@@ -116,16 +116,6 @@
     - GUI
     - files_managers
 
-- name: UFW
-  hosts: all
-  roles:
-    - ufw
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
-    - ufw
-
 - name: Firefox
   hosts: all
   roles:
