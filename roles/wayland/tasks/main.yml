@@ -29,37 +29,3 @@
   copy:
     src: export_wayland_gui_libraries_compatibility.zsh
     dest: "{{ ansible_env.HOME }}/.zshrc.d/"
-
-# Nvidia Drivers:
-
-- name: Checking GPU brand
-  shell: lspci | grep -i 'VGA\|3D'
-  register: gpu_output
-  changed_when: false
-
-- name: Installing nvidia drivers
-  pacman:
-    name: nvidia
-    state: latest
-  become: true
-  when: "'nvidia' in gpu_output.stdout | lower"
-
-- name: Copying nvidia_drm modprobe module configuration
-  copy:
-    src: nvidia_drm.conf
-    dest: /etc/modprobe.d/nvidia_drm.conf
-  become: true
-  when: "'nvidia' in gpu_output.stdout | lower"
-
-- name: Copying nvidia modprobe module configuration
-  copy:
-    src: nvidia.conf
-    dest: /etc/modprobe.d/nvidia.conf
-  become: true
-  when: "'nvidia' in gpu_output.stdout | lower"
-
-- name: Copying Wayland Nvidia compatibility Env Vars to ZSH import
-  copy:
-    src: export_wayland_nvidia_compatibility.zsh
-    dest: "{{ ansible_env.HOME }}/.zshrc.d/"
-  when: "'nvidia' in gpu_output.stdout | lower"
