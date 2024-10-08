@@ -20,6 +20,7 @@ profile laptop_with_external_monitor {
   }
 
   exec swaymsg workspace 1 && swaymsg move workspace to output HDMI-A-1 && swaymsg workspace 10 && swaymsg move workspace to output eDP-1 && swaymsg workspace 1
+  exec swaymsg workspace 1 && swaymsg move workspace to output HDMI-A-2 && swaymsg workspace 10 && swaymsg move workspace to output eDP-1 && swaymsg workspace 1
   exec swaymsg workspace 1 && swaymsg move workspace to output DP-1 && swaymsg workspace 10 && swaymsg move workspace to output eDP-1 && swaymsg workspace 1
   exec swaymsg workspace 1 && swaymsg move workspace to output DP-2 && swaymsg workspace 10 && swaymsg move workspace to output eDP-1 && swaymsg workspace 1
   exec swaymsg workspace 1 && swaymsg move workspace to output DP-3 && swaymsg workspace 10 && swaymsg move workspace to output eDP-1 && swaymsg workspace 1
@@ -35,4 +36,5 @@ profile normal_desktop {
   }
    
   exec swaymsg workspace 1 && swaymsg move workspace to output HDMI-A-1 && swaymsg workspace 10 && swaymsg move workspace to output DVI-D-1 && swaymsg workspace 1
+  exec swaymsg workspace 1 && swaymsg move workspace to output HDMI-A-2 && swaymsg workspace 10 && swaymsg move workspace to output DVI-D-1 && swaymsg workspace 1
 }
