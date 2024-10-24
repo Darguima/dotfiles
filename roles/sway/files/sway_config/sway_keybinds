@@ -29,6 +29,13 @@
     bindsym $mod+Shift+Print exec swappy -f $(grimshot save output $(mktemp --suffix=.png))
     bindsym $mod+Ctrl+Shift+Print exec swappy -f $(grimshot save screen $(mktemp --suffix=.png))
 
+# Output control
+    set $rotate_focused_monitor swaymsg output "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" transform
+    bindsym $mod+Alt+Up exec $rotate_focused_monitor 0
+    bindsym $mod+Alt+Right exec $rotate_focused_monitor 90
+    bindsym $mod+Alt+Down exec $rotate_focused_monitor 180
+    bindsym $mod+Alt+Left exec $rotate_focused_monitor 270
+
 # Fn keys:
     # PlayerCtl
     bindsym --locked XF86AudioPlay exec playerctl play-pause
