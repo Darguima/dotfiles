@@ -51,9 +51,9 @@
     bindsym --locked F11 exec playerctl next
 
     # Change to Headphones
-    bindsym --locked XF86Back exec playerctl /usr/bin/change_pa_output headphones
+    bindsym --locked XF86Back exec /usr/bin/change_pa_output.sh headphones
     # Change to Speakers
-    bindsym --locked XF86Close exec playerctl /usr/bin/change_pa_output speakers
+    bindsym --locked XF86Close exec /usr/bin/change_pa_output.sh speakers
 
     # PulseAudio
     bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle

@@ -31,6 +31,7 @@
   become: True
   become_user: aur_builder
 
+# Sway
 - name: Ensuring sway config directory
   file:
     path: "{{ ansible_env.HOME }}/.config/sway"
@@ -41,6 +42,19 @@
     src: sway_config/
     dest: "{{ ansible_env.HOME }}/.config/sway"
 
+- name: Copying Sway exec file to ZSH import
+  copy:
+    src: zzz_exec_sway.zsh
+    dest: "{{ ansible_env.HOME }}/.zshrc.d/"
+
+- name: Copying `change_pa_output.sh` script to `/usr/bin/` # needed on keybinds
+  copy:
+    src: change_pa_output.sh
+    dest: /usr/bin/
+    mode: 0755
+  become: true
+
+# Kanshi
 - name: Ensuring kanshi config directory exists
   file:
     path: "{{ ansible_env.HOME }}/.config/kanshi"
@@ -51,6 +65,7 @@
     src: kanshi_config
     dest: "{{ ansible_env.HOME }}/.config/kanshi/config"
 
+# Sway Notification Center
 - name: Ensuring swaync config directory
   file:
     path: "{{ ansible_env.HOME }}/.config/swaync"
@@ -60,8 +75,3 @@
   copy:
     src: swaync_config.json
     dest: "{{ ansible_env.HOME }}/.config/swaync/config.json"
-
-- name: Copying Sway exec file to ZSH import
-  copy:
-    src: zzz_exec_sway.zsh
-    dest: "{{ ansible_env.HOME }}/.zshrc.d/"
