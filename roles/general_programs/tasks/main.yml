@@ -141,6 +141,16 @@
     - MINIMAL_GUI
     - GUI
 
+- name: Installing qBittorrent
+  pacman:
+    name: qbittorrent
+    state: latest
+  become: true
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
+
 # Coding:
 - name: Installing vim
   pacman:

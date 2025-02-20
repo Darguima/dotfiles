@@ -78,6 +78,8 @@ application/x-archive=org.gnome.Nautilus.desktop;
 application/vnd.ms-cab-compressed=org.gnome.Nautilus.desktop;
 application/x-apple-diskimage=org.gnome.Nautilus.desktop;
 
+application/x-bittorrent=org.qbittorrent.qBittorrent.desktop;
+
 # Fallback
 [Added Associations]
 text/plain=code.desktop;
