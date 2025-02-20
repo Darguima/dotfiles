@@ -8,4 +8,5 @@ for_window {
 
   [app_id="org.gnome.Calculator"] floating enable
   [app_id="blueman-manager"] floating enable
+  [app_id="org.gnome.Characters"] floating enable
 }

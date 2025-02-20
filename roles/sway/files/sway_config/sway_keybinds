@@ -21,7 +21,7 @@
     bindsym $mod+d exec $menu
     bindsym $mod+Shift+b exec rofi-rbw --selector-args="--insensitive"
     bindsym $mod+v exec clipman pick -t wofi
-    bindsym $mod+z exec emote
+    bindsym $mod+z exec gnome-characters
 
 # ScreenShoot:
     bindsym Print exec swappy -f $(grimshot save anything $(mktemp --suffix=.png))

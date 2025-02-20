@@ -17,6 +17,7 @@
       - wl-clipboard
       - kanshi
       - bc
+      - gnome-characters
     state: latest
   become: true
 
@@ -24,7 +25,6 @@
   kewlfft.aur.aur:
     use: yay
     name:
-      - emote
       - clipman
       - grimshot
     state: latest
