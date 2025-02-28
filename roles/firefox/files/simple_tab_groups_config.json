@@ -149,14 +149,7 @@
         "rename",
         "reload-all-tabs"
     ],
-    "autoBackupEnable": true,
-    "autoBackupLastBackupTimeStamp": 1737318662,
-    "autoBackupIntervalKey": "days",
-    "autoBackupIntervalValue": 1,
-    "autoBackupIncludeTabThumbnails": true,
-    "autoBackupIncludeTabFavIcons": true,
-    "autoBackupFolderName": "STG-backups-FF-134.0",
-    "autoBackupByDayIndex": true,
+    "autoBackupEnable": false,
     "theme": "auto",
     "hotkeys": [
         {
@@ -171,10 +164,5 @@
         }
     ],
     "pinnedTabs": [
-        {
-            "url": "moz-extension://8c4ede02-9716-46d1-ac8d-8ede1d94aee2/manage/manage.html",
-            "title": "Manage groups",
-            "id": 100
-        }
     ]
 }
