@@ -50,7 +50,7 @@ video/quicktime=vlc.desktop
 
 # PDF and similar formats
 application/pdf=okularApplication_pdf.desktop
-application/epub=koreader.desktop;
+application/epub+zip=koreader.desktop; # need to have a zip entry after this to don't mess with the ZIP
 
 # Office (MS Office, Libre Office)
 application/vnd.oasis.opendocument.text=libreoffice-writer.desktop
