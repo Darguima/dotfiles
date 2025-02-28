@@ -12,6 +12,12 @@
     state: latest
   become: true
 
+- name: Ensuring .config directory exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config"
+    state: directory
+    mode: '0755'
+
 - name: Ensuring dotfiles config file exists
   file:
     path: "{{ ansible_env.HOME }}/.config/dotfiles_config"
