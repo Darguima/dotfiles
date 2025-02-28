@@ -1,5 +1,6 @@
 [Default Applications]
 
+# XML, etc
 text/html=firefox.desktop
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
@@ -13,6 +14,7 @@ application/xhtml+xml=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
 
+# Images
 image/bmp=org.kde.gwenview.desktop
 image/gif=org.kde.gwenview.desktop
 image/jpeg=org.kde.gwenview.desktop
@@ -23,6 +25,7 @@ image/webp=org.kde.gwenview.desktop
 image/x-xbitmap=org.kde.gwenview.desktop
 image/x-xpixmap=org.kde.gwenview.desktop
 
+# Audio
 audio/mpeg=vlc.desktop
 audio/x-wav=vlc.desktop
 audio/x-ms-wma=vlc.desktop
@@ -34,6 +37,7 @@ audio/x-m4a=vlc.desktop
 audio/x-aiff=vlc.desktop
 audio/x-matroska=vlc.desktop
 
+# Video
 video/mp4=vlc.desktop
 video/x-msvideo=vlc.desktop
 video/x-ms-wmv=vlc.desktop
@@ -44,8 +48,11 @@ video/ogg=vlc.desktop
 video/mpeg=vlc.desktop
 video/quicktime=vlc.desktop
 
+# PDF and similar formats
 application/pdf=okularApplication_pdf.desktop
+application/epub=koreader.desktop;
 
+# Office (MS Office, Libre Office)
 application/vnd.oasis.opendocument.text=libreoffice-writer.desktop
 application/vnd.oasis.opendocument.spreadsheet=libreoffice-calc.desktop
 application/vnd.oasis.opendocument.presentation=libreoffice-impress.desktop
@@ -61,6 +68,7 @@ application/vnd.ms-powerpoint=libreoffice-impress.desktop
 application/vnd.openxmlformats-officedocument.presentationml.presentation=libreoffice-impress.desktop
 application/vnd.visio=libreoffice-draw.desktop
 
+# Compressed Files
 application/zip=org.gnome.Nautilus.desktop;
 application/x-7z-compressed=org.gnome.Nautilus.desktop;
 application/x-bzip=org.gnome.Nautilus.desktop;
@@ -78,6 +86,7 @@ application/x-archive=org.gnome.Nautilus.desktop;
 application/vnd.ms-cab-compressed=org.gnome.Nautilus.desktop;
 application/x-apple-diskimage=org.gnome.Nautilus.desktop;
 
+# Torrent
 application/x-bittorrent=org.qbittorrent.qBittorrent.desktop;
 
 # Fallback
