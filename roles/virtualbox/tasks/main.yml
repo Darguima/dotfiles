@@ -1,0 +1,25 @@
+- name: Installing virtualbox, virtualbox-host-modules-arch & virtualbox-guest-iso
+  pacman:
+    name:
+      - virtualbox
+      - virtualbox-host-modules-arch
+      - virtualbox-guest-iso
+    state: latest
+  become: true
+
+- name: Installing AUR Extension pack
+  kewlfft.aur.aur:
+    use: yay
+    name:
+      - virtualbox-ext-oracle
+    state: latest
+  become: True
+  become_user: aur_builder
+
+- name: "Adding user '{{ user }}' to 'vboxusers' group"
+  user:
+    name: "{{ user }}"
+    groups: vboxusers 
+    append: True
+  become: True
+  

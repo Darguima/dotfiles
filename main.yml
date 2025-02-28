@@ -212,6 +212,16 @@
     - never
     - android_emulator
 
+- name: VirtualBox
+  hosts: all
+  roles:
+    - virtualbox
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
+    - virtualbox
+
 - name: Arduino
   hosts: all
   roles:
