@@ -3,6 +3,7 @@
     name:
       - docker
       - docker-compose
+      - docker-buildx
     state: latest
   become: true
 
