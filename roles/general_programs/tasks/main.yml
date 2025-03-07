@@ -141,6 +141,18 @@
     - MINIMAL_GUI
     - GUI
 
+- name: Installing Wireguard and dependecy openresolv
+  pacman:
+    name:
+      - wireguard-tools
+      - openresolv
+    state: latest
+  become: true
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
+
 - name: Installing qBittorrent
   pacman:
     name: qbittorrent
