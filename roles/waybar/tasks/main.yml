@@ -16,4 +16,9 @@
     src: ./
     dest: "{{ ansible_env.HOME }}/.config/waybar/"
 
-
+# Done on previous task, but without correct mode
+- name: Copying disable-keyboard.sh script into config folder
+  copy:
+    src: ./disable-keyboard.sh
+    dest: "{{ ansible_env.HOME }}/.config/waybar/"
+    mode: '0755'

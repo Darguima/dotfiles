@@ -9,7 +9,7 @@ exec swayidle -w \
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /usr/share/backgrounds/sway/wallpaper.jpg fill
 
 set $laptop_monitor 'Chimei Innolux Corporation 0x14D4 Unknown'
 set $desktop_monitor_1 'Lenovo Group Limited D27q-30 URHKV2PP'
@@ -18,7 +18,7 @@ set $desktop_monitor_2 'LG Electronics M2262D 0x01010101'
 #Laptop
 output $laptop_monitor {
   res 1920x1080
-  scale 1.4
+  scale 1.2
 }
 
 # Desktop

@@ -37,10 +37,17 @@
     path: "{{ ansible_env.HOME }}/.config/sway"
     state: directory
 
-- name: Copying sway config file
+- name: Copying sway config folder
   copy:
     src: sway_config/
     dest: "{{ ansible_env.HOME }}/.config/sway"
+
+- name: Copying wallpaper
+  copy:
+    src: wallpaper.jpg
+    dest: /usr/share/backgrounds/sway/wallpaper.jpg
+    mode: 0644
+  become: true
 
 - name: Copying Sway exec file to ZSH import
   copy:
