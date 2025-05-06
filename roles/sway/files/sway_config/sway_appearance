@@ -10,5 +10,7 @@ for_window {
   [app_id="blueman-manager"] floating enable
   [app_id="org.gnome.Characters"] floating enable
 
+  # Styles
   [class=".*"] border pixel 4
+  [app_id="Alacritty"] opacity 0.98
 }

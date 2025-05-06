@@ -13,7 +13,7 @@ set $menu wofi --show run --insensitive | xargs swaymsg exec --
 set $browser firefox
 set $file_manager nautilus
 
-set $lock_screen swaylock -f -c 000000
+set $lock_screen swaylock -f -i /usr/share/backgrounds/sway/wallpaper.jpg
 set $suspend systemctl suspend
 
 
