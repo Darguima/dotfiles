@@ -7,7 +7,7 @@ alias la="ls -la"
 alias c="clear"
 alias co="code ."
 
-alias upgrade="yay -Suy --devel --noconfirm"
+alias upgrade="yay -Suyy --devel --noconfirm"
 alias clean_yay='sudo pacman -Scc --noconfirm && yay -Scc --noconfirm && orphans=$(pacman -Qdtq) && [ -n "$orphans" ] && sudo pacman -Rns $orphans --noconfirm || echo "No orphan packages to remove."'
 
 # DroidCam
