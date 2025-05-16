@@ -8,4 +8,5 @@ plugins=(
 	git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
+	zsh-vi-mode
 )
