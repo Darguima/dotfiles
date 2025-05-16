@@ -19,8 +19,8 @@
     bindsym $mod+n exec swaync-client -t -sw
 
     bindsym $mod+d exec $menu
-    bindsym $mod+Shift+b exec rofi-rbw --selector-args="--insensitive"
-    bindsym $mod+v exec clipman pick -t wofi
+    bindsym $mod+Shift+b exec rofi-rbw --selector-args="--insensitive" --selector-args="-theme $HOME/.config/rofi/text-picker.rasi"
+    bindsym $mod+v exec clipman pick -t rofi --tool-args="-theme $HOME/.config/rofi/text-picker.rasi"
     bindsym $mod+z exec gnome-characters
 
 # ScreenShoot:

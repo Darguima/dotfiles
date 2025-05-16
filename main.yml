@@ -89,14 +89,14 @@
     - GUI
     - appearance
 
-- name: wofi
+- name: rofi
   hosts: all
   roles:
-    - wofi
+    - rofi
   tags:
     - MINIMAL_GUI
     - GUI
-    - wofi
+    - rofi
 
 - name: alacritty
   hosts: all

@@ -1,0 +1,22 @@
+- name: Installing rofi-wayland
+  pacman:
+    name: rofi-wayland
+    state: latest
+  become: true
+
+- name: Copying rofi configuration files
+  copy:
+    src: config/
+    dest: "{{ ansible_env.HOME }}/.config/rofi/"
+
+- name: Ensuring ~/.local/share/fonts directory exists
+  file:
+    path: "{{ ansible_env.HOME }}/.local/share/fonts"
+    state: directory
+    mode: '0755'
+
+- name: Copy all font files to ~/.local/share/fonts
+  copy:
+    src: fonts/
+    dest: "{{ ansible_env.HOME }}/.local/share/fonts/"
+    mode: '0644'
