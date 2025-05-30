@@ -164,17 +164,6 @@
     - GUI
 
 # Coding:
-- name: Installing vim
-  pacman:
-    name: vim
-    state: latest
-  become: true
-  tags:
-    - MINIMAL_TUI
-    - TUI
-    - MINIMAL_GUI
-    - GUI
-
 - name: Installing JDK
   pacman:
     name: jdk-openjdk

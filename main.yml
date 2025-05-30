@@ -125,6 +125,14 @@
     - GUI
     - firefox
 
+- name: vim
+  hosts: all
+  roles:
+    - vim
+  tags:
+    - GUI
+    - vim
+
 - name: VS Code
   hosts: all
   roles:
