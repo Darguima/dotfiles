@@ -83,7 +83,7 @@
       - address: tcp://192.168.1.73:22000
       - address: tcp://192.168.1.74:22000
       - address: tcp://192.168.1.75:22000
-      - address: tcp://dsgdevbraga.ddns.net:22000
+#       - address: tcp://darguima.com:22000 # I didn't add the new one because it requires expose the IP and isn't needed due dynamic
       - address: dynamic
 
 - name: Restarting service
