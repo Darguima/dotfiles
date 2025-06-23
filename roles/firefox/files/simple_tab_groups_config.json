@@ -1,5 +1,5 @@
 {
-    "version": "5.2",
+    "version": "5.3.2",
     "groups": [
         {
             "id": 3,
@@ -30,7 +30,7 @@
         {
             "id": 1,
             "title": "Uni",
-            "iconColor": "#ff0000",
+            "iconColor": "#000000",
             "iconUrl": null,
             "iconViewType": "circle",
             "tabs": [],
@@ -56,7 +56,33 @@
         {
             "id": 2,
             "title": "Dev",
-            "iconColor": "hsla(230, 100%, 50%, 1)",
+            "iconColor": "#597445",
+            "iconUrl": null,
+            "iconViewType": "circle",
+            "tabs": [],
+            "isArchive": false,
+            "discardTabsAfterHide": false,
+            "discardExcludeAudioTabs": false,
+            "prependTitleToWindow": true,
+            "exportToBookmarksWhenAutoBackup": false,
+            "leaveBookmarksOfClosedTabs": false,
+            "newTabContainer": "firefox-default",
+            "ifDifferentContainerReOpen": false,
+            "excludeContainersForReOpen": [],
+            "isSticky": false,
+            "catchTabContainers": [],
+            "catchTabRules": "",
+            "moveToGroupIfNoneCatchTabRules": null,
+            "muteTabsWhenGroupCloseAndRestoreWhenOpen": false,
+            "showTabAfterMovingItIntoThisGroup": false,
+            "showOnlyActiveTabAfterMovingItIntoThisGroup": false,
+            "showNotificationAfterMovingTabIntoThisGroup": true,
+            "bookmarkId": null
+        },
+        {
+            "id": 6,
+            "title": "Dev Study",
+            "iconColor": "#59744570",
             "iconUrl": null,
             "iconViewType": "circle",
             "tabs": [],
@@ -106,7 +132,7 @@
             "bookmarkId": null
         }
     ],
-    "lastCreatedGroupPosition": 4,
+    "lastCreatedGroupPosition": 8,
     "defaultGroupProps": {
         "iconViewType": "circle",
         "prependTitleToWindow": true,
@@ -150,6 +176,13 @@
         "reload-all-tabs"
     ],
     "autoBackupEnable": false,
+    "autoBackupLastBackupTimeStamp": 1740742761,
+    "autoBackupIntervalKey": "days",
+    "autoBackupIntervalValue": 1,
+    "autoBackupIncludeTabThumbnails": true,
+    "autoBackupIncludeTabFavIcons": true,
+    "autoBackupFolderName": "STG-backups-FF-139.0.4",
+    "autoBackupByDayIndex": true,
     "theme": "auto",
     "hotkeys": [
         {
@@ -164,5 +197,55 @@
         }
     ],
     "pinnedTabs": [
+        {
+            "url": "https://web.whatsapp.com/",
+            "title": "WhatsApp",
+            "id": 2
+        },
+        {
+            "url": "https://github.com/Darguima/Trivial-Network-Monitoring-Sys",
+            "title": "Darguima/Trivial-Network-Monitoring-Sys: Distributed network monitoring using custom UDP/TCP protocols for metrics and alerts.",
+            "id": 3
+        },
+        {
+            "url": "https://translate.google.pt/?sl=pt-PT&tl=en&op=translate",
+            "title": "Google Translate",
+            "id": 5
+        },
+        {
+            "url": "https://calendar.google.com/calendar/u/0/r/month/2025/6/1",
+            "title": "Google Calendar - June 2025",
+            "id": 6
+        },
+        {
+            "url": "https://claude.ai/chat/9ee74c80-9191-4ffc-a543-af2f77bd9e29",
+            "title": "Sistemas Engineering Overview - Claude",
+            "id": 7
+        },
+        {
+            "url": "https://chatgpt.com/?model=auto",
+            "title": "ChatGPT",
+            "id": 8
+        },
+        {
+            "url": "https://notebooklm.google.com/notebook/ad1bf04e-ba1f-4fb3-ab11-f45fee35eb59",
+            "title": "Orbitex - NotebookLM",
+            "id": 9
+        },
+        {
+            "url": "https://teams.microsoft.com/v2/",
+            "title": "Activity | IMPORTANT!!!! ACCEPTED grades !!!!!!! | Microsoft Teams",
+            "id": 10
+        },
+        {
+            "url": "https://github.com/Darguima/Trivial-Brick-LI4/settings/rules",
+            "title": "Settings · Rulesets · Trivial-Brick-LI4",
+            "id": 12
+        },
+        {
+            "url": "moz-extension://7453b717-bb44-45ba-bb53-d6a0111d7653/manage/manage.html",
+            "title": "Manage groups",
+            "id": 30
+        }
     ]
 }
