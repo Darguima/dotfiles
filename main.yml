@@ -272,14 +272,6 @@
     - GUI
     - wireshark
 
-- name: BlackboardSync
-  hosts: all
-  roles:
-    - blackboard_sync
-  tags:
-    - GUI
-    - blackboard_sync
-
 - name: MMEX
   hosts: all
   roles:

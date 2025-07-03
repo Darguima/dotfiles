@@ -35,7 +35,6 @@ exec blueman-applet
 exec kdeconnect-indicator
 exec sleep 3 && syncthingtray --wait
 exec slack -u
-exec blackboardsync
 
 exec swaync
 
