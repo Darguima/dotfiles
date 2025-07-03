@@ -28,6 +28,32 @@
             "bookmarkId": null
         },
         {
+            "id": 8,
+            "title": "Study",
+            "iconColor": "hsla(10, 100%, 50%, 1)",
+            "iconUrl": null,
+            "iconViewType": "circle",
+            "tabs": [],
+            "isArchive": false,
+            "discardTabsAfterHide": false,
+            "discardExcludeAudioTabs": false,
+            "prependTitleToWindow": true,
+            "exportToBookmarksWhenAutoBackup": false,
+            "leaveBookmarksOfClosedTabs": false,
+            "newTabContainer": "firefox-default",
+            "ifDifferentContainerReOpen": false,
+            "excludeContainersForReOpen": [],
+            "isSticky": false,
+            "catchTabContainers": [],
+            "catchTabRules": "",
+            "moveToGroupIfNoneCatchTabRules": null,
+            "muteTabsWhenGroupCloseAndRestoreWhenOpen": false,
+            "showTabAfterMovingItIntoThisGroup": false,
+            "showOnlyActiveTabAfterMovingItIntoThisGroup": false,
+            "showNotificationAfterMovingTabIntoThisGroup": true,
+            "bookmarkId": null
+        },
+        {
             "id": 1,
             "title": "Uni",
             "iconColor": "#000000",
@@ -181,7 +207,7 @@
     "autoBackupIntervalValue": 1,
     "autoBackupIncludeTabThumbnails": true,
     "autoBackupIncludeTabFavIcons": true,
-    "autoBackupFolderName": "STG-backups-FF-139.0.4",
+    "autoBackupFolderName": "STG-backups-FF-140.0.2",
     "autoBackupByDayIndex": true,
     "theme": "auto",
     "hotkeys": [
@@ -200,52 +226,37 @@
         {
             "url": "https://web.whatsapp.com/",
             "title": "WhatsApp",
+            "id": 1
+        },
+        {
+            "url": "https://github.com/",
+            "title": "GitHub",
             "id": 2
         },
         {
-            "url": "https://github.com/Darguima/Trivial-Network-Monitoring-Sys",
-            "title": "Darguima/Trivial-Network-Monitoring-Sys: Distributed network monitoring using custom UDP/TCP protocols for metrics and alerts.",
+            "url": "https://translate.google.pt/?sl=pt-PT&tl=es&text=interruptor%20estore%20inteligente&op=translate",
+            "title": "Google Translate",
             "id": 3
         },
         {
-            "url": "https://translate.google.pt/?sl=pt-PT&tl=en&op=translate",
-            "title": "Google Translate",
-            "id": 5
-        },
-        {
-            "url": "https://calendar.google.com/calendar/u/0/r/month/2025/6/1",
-            "title": "Google Calendar - June 2025",
-            "id": 6
-        },
-        {
-            "url": "https://claude.ai/chat/9ee74c80-9191-4ffc-a543-af2f77bd9e29",
-            "title": "Sistemas Engineering Overview - Claude",
-            "id": 7
-        },
-        {
-            "url": "https://chatgpt.com/?model=auto",
-            "title": "ChatGPT",
-            "id": 8
-        },
-        {
-            "url": "https://notebooklm.google.com/notebook/ad1bf04e-ba1f-4fb3-ab11-f45fee35eb59",
-            "title": "Orbitex - NotebookLM",
-            "id": 9
+            "url": "https://chatgpt.com/c/6866675c-1960-800f-b3b0-cd45e5c73e16",
+            "title": "Find and Remove Files",
+            "id": 4
         },
         {
             "url": "https://teams.microsoft.com/v2/",
-            "title": "Activity | IMPORTANT!!!! ACCEPTED grades !!!!!!! | Microsoft Teams",
-            "id": 10
+            "title": "Teams and Channels | General | Microsoft Teams",
+            "id": 5
         },
         {
-            "url": "https://github.com/Darguima/Trivial-Brick-LI4/settings/rules",
-            "title": "Settings · Rulesets · Trivial-Brick-LI4",
-            "id": 12
+            "url": "https://canvas.elte.hu/belepes/",
+            "title": "ELTE Canvas",
+            "id": 6
         },
         {
-            "url": "moz-extension://7453b717-bb44-45ba-bb53-d6a0111d7653/manage/manage.html",
-            "title": "Manage groups",
-            "id": 30
+            "url": "https://github.com/Darguima?tab=projects",
+            "title": "Your projects",
+            "id": 7
         }
     ]
 }
