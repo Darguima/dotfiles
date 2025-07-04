@@ -322,6 +322,26 @@
   tags:
     - GUI
 
+- name: Installing Stremio
+  kewlfft.aur.aur:
+    use: yay
+    name: stremio
+    state: latest
+  become: True
+  become_user: aur_builder
+  tags:
+    - GUI
+
+- name: Installing Grayjay
+  kewlfft.aur.aur:
+    use: yay
+    name: grayjay-bin
+    state: latest
+  become: True
+  become_user: aur_builder
+  tags:
+    - GUI
+
 - name: Installing Slack
   kewlfft.aur.aur:
     use: yay
