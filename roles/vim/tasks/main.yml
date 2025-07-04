@@ -16,26 +16,26 @@
     dest: "{{ ansible_env.HOME }}/.vimrc"
     mode: '0755'
 
-- name: Copying `autoload` folder to ~/.vim
-  copy:
-    src: autoload/
-    dest: "{{ ansible_env.HOME }}/.vim/autoload/"
-    mode: '0755'
+# - name: Copying `autoload` folder to ~/.vim
+#   copy:
+#     src: autoload/
+#     dest: "{{ ansible_env.HOME }}/.vim/autoload/"
+#     mode: '0755'
 
-- name: Copying `backup` folder to ~/.vim
-  copy:
-    src: backup/
-    dest: "{{ ansible_env.HOME }}/.vim/backup/"
-    mode: '0755'
+# - name: Copying `backup` folder to ~/.vim
+#   copy:
+#     src: backup/
+#     dest: "{{ ansible_env.HOME }}/.vim/backup/"
+#     mode: '0755'
 
-- name: Copying `colors` folder to ~/.vim
-  copy:
-    src: colors/
-    dest: "{{ ansible_env.HOME }}/.vim/colors/"
-    mode: '0755'
+# - name: Copying `colors` folder to ~/.vim
+#   copy:
+#     src: colors/
+#     dest: "{{ ansible_env.HOME }}/.vim/colors/"
+#     mode: '0755'
 
-- name: Copying `plugged` folder to ~/.vim
-  copy:
-    src: plugged/
-    dest: "{{ ansible_env.HOME }}/.vim/plugged/"
-    mode: '0755'
+# - name: Copying `plugged` folder to ~/.vim
+#   copy:
+#     src: plugged/
+#     dest: "{{ ansible_env.HOME }}/.vim/plugged/"
+#     mode: '0755'
