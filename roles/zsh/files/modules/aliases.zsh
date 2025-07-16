@@ -8,7 +8,7 @@ alias c="clear"
 alias co="code ."
 
 alias upgrade="yay -Suyy --devel --noconfirm"
-alias clean_yay='sudo pacman -Scc --noconfirm && yay -Scc --noconfirm && orphans=$(pacman -Qdtq) && [ -n "$orphans" ] && sudo pacman -Rns $orphans --noconfirm || echo "No orphan packages to remove."'
+alias clean_yay='sudo pacman -Scc --noconfirm && yay -Scc --noconfirm && orphans=$(pacman -Qtdq); [ -n "$orphans" ] && sudo pacman -Rns $orphans --noconfirm || echo "No pacman orphans"; orphans=$(yay -Qtdq); [ -n "$orphans" ] && yay -Rns $orphans --noconfirm || echo "No yay orphans"'
 
 # DroidCam
 # alias init_mic0="pactl load-module module-alsa-source device=hw:0,1,0"
