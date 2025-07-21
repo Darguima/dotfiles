@@ -221,42 +221,5 @@
             "action": "load-prev-group",
             "groupId": 0
         }
-    ],
-    "pinnedTabs": [
-        {
-            "url": "https://web.whatsapp.com/",
-            "title": "WhatsApp",
-            "id": 1
-        },
-        {
-            "url": "https://github.com/",
-            "title": "GitHub",
-            "id": 2
-        },
-        {
-            "url": "https://translate.google.pt/?sl=pt-PT&tl=es&text=interruptor%20estore%20inteligente&op=translate",
-            "title": "Google Translate",
-            "id": 3
-        },
-        {
-            "url": "https://chatgpt.com/c/6866675c-1960-800f-b3b0-cd45e5c73e16",
-            "title": "Find and Remove Files",
-            "id": 4
-        },
-        {
-            "url": "https://teams.microsoft.com/v2/",
-            "title": "Teams and Channels | General | Microsoft Teams",
-            "id": 5
-        },
-        {
-            "url": "https://canvas.elte.hu/belepes/",
-            "title": "ELTE Canvas",
-            "id": 6
-        },
-        {
-            "url": "https://github.com/Darguima?tab=projects",
-            "title": "Your projects",
-            "id": 7
-        }
     ]
 }
