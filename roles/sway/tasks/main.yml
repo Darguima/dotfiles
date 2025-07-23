@@ -44,8 +44,8 @@
 
 - name: Copying wallpaper
   copy:
-    src: wallpaper.jpg
-    dest: /usr/share/backgrounds/sway/wallpaper.jpg
+    src: wallpaper.svg
+    dest: /usr/share/backgrounds/sway/wallpaper.svg
     mode: 0644
   become: true
 

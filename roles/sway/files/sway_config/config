@@ -13,7 +13,7 @@ set $menu rofi -show drun -theme $HOME/.config/rofi/launcher.rasi | xargs swayms
 set $browser firefox
 set $file_manager nautilus
 
-set $lock_screen swaylock -f -i /usr/share/backgrounds/sway/wallpaper.jpg
+set $lock_screen swaylock -f -i /usr/share/backgrounds/sway/wallpaper.svg
 set $suspend systemctl suspend
 
 
