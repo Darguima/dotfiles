@@ -4,9 +4,8 @@
 choose_headphones() {
     # To get all the sinks and ports names > pactl list sinks
     sorted_headphones=(
-        "bluez_output.74_2A_8A_D2_4D_03.a2dp-sink"
-        "bluez_output.C8_2B_6B_0F_55_68.1"
-        "Microsoft_LifeChat_LX-3000-00"
+        "bluez_output.68_59_32_AB_01_48.1"  # JBL Tune 660NC
+        "Microsoft_LifeChat_LX-3000-00"     # Microsoft LifeChat LX-3000 - Internship Headphones
     )
 
     available_sinks=($(pactl list sinks short | awk '{print $2}'))
