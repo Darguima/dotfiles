@@ -1,0 +1,16 @@
+- name: Copying 50-wired.network configuration file
+  copy:
+    src: 50-wired.network
+    dest: /etc/systemd/network/50-wired.network
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+
+- name: Enabling and starting systemd-networkd service
+  systemd:
+    name: systemd-networkd
+    enabled: true
+    state: started
+    daemon_reload: true
+  become: true

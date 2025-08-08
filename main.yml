@@ -33,6 +33,17 @@
     - GUI
     - zsh
 
+- name: Wake on LAN
+  hosts: all
+  roles:
+    - wake_on_lan
+  tags:
+    - MINIMAL_TUI
+    - TUI
+    - MINIMAL_GUI
+    - GUI
+    - wake_on_lan
+
 - name: SSH
   hosts: all
   roles:
