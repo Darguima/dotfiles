@@ -96,9 +96,9 @@
     - MINIMAL_GUI
     - GUI
 
-- name: Installing vlc
+- name: Installing mpv
   pacman:
-    name: vlc
+    name: mpv
     state: latest
   become: true
   tags:
