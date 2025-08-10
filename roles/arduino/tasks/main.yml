@@ -12,6 +12,12 @@
   become: True
   become_user: aur_builder
 
+- name: Installing PlatformIO
+  pacman:
+    name: platformio-core
+    state: latest
+  become: True
+
 - name: "Adding user '{{ user }}' to 'uucp' group"
   user:
     name: "{{ user }}"
