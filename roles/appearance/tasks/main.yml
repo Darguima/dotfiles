@@ -1,8 +1,10 @@
-- name: Installing qt6ct, lxappearance
+- name: Installing qt6ct, lxappearance, glib, dconf
   pacman:
     name:
       - qt6ct
       - lxappearance
+      - glib2
+      - dconf
     state: latest
   become: true
 
@@ -13,6 +15,15 @@
       - breeze
     state: latest
   become: true
+
+- name: Getting user UID
+  command: id -u
+  register: user_uid
+
+- name: Setting GNOME (gsettings) dark mode
+  command: gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+  environment:
+    DBUS_SESSION_BUS_ADDRESS: "unix:path=/run/user/{{ user_uid.stdout }}/bus"
 
 - name: Ensuring qt6ct config folder exists
   file:
