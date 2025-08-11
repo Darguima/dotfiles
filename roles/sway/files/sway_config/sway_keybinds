@@ -24,10 +24,14 @@
     bindsym $mod+z exec gnome-characters
 
 # ScreenShoot:
-    bindsym Print exec swappy -f $(grimshot save anything $(mktemp --suffix=.png))
-    bindsym $mod+Print exec swappy -f $(grimshot save active $(mktemp --suffix=.png))
-    bindsym $mod+Shift+Print exec swappy -f $(grimshot save output $(mktemp --suffix=.png))
-    bindsym $mod+Ctrl+Shift+Print exec swappy -f $(grimshot save screen $(mktemp --suffix=.png))
+    # Select an arbitrary region
+    bindsym Print exec sh -c 'f=$(mktemp --suffix=.png) && grim -c -g "$(slurp)" "$f" && swappy -f "$f"'
+    # Capture active window
+    bindsym $mod+Print exec sh -c 'f=$(mktemp --suffix=.png); grim -g "$(swaymsg -t get_tree | jq -r ".. | select(.focused?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"")" "$f" && swappy -f "$f"'
+    # Capture current output
+    bindsym $mod+Shift+Print exec sh -c 'f=$(mktemp --suffix=.png); grim -o "$(swaymsg -t get_outputs | jq -r ".. | select(.focused?) | .name")" "$f" && swappy -f "$f"'
+    # Capture all screens
+    bindsym $mod+Ctrl+Shift+Print exec sh -c 'f=$(mktemp --suffix=.png); grim "$f" && swappy -f "$f"'
 
 # Output control
     set $rotate_focused_monitor swaymsg output "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" transform

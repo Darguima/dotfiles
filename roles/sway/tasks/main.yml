@@ -9,6 +9,9 @@
       - swayidle
       - swaylock
 
+      - jq
+      - grim
+      - slurp
       - swappy
 
       - swaync
@@ -26,7 +29,6 @@
     use: yay
     name:
       - clipman
-      - grimshot
     state: latest
   become: True
   become_user: aur_builder
