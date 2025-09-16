@@ -296,9 +296,9 @@
   tags:
     - GUI
 
-- name: Installing Okular
+- name: Installing Evince
   pacman:
-    name: okular
+    name: evince
     state: latest
   become: true
   tags:

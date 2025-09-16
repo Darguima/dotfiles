@@ -49,7 +49,7 @@ video/mpeg=mpv.desktop
 video/quicktime=mpv.desktop
 
 # PDF and similar formats
-application/pdf=okularApplication_pdf.desktop
+application/pdf=org.gnome.Evince.desktop
 application/epub+zip=koreader.desktop; # need to have a zip entry after this to don't mess with the ZIP
 
 # Office (MS Office, Libre Office)
