@@ -182,6 +182,16 @@
     - GUI
     - keyring
 
+- name: rclone (Google Drive)
+  hosts: all
+  roles:
+    - rclone
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
+    - rclone
+
 - name: Docker
   hosts: all
   roles:

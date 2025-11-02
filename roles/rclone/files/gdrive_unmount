@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Stop the user-scoped gdrive systemd service
+systemctl --user stop gdrive.service
+
+exit 0

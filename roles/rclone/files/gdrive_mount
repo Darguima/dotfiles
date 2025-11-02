@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Start the user-scoped gdrive systemd service
+systemctl --user start gdrive.service
+
+exit 0

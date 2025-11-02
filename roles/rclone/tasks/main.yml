@@ -1,0 +1,46 @@
+- name: Installing rclone
+  pacman:
+    name:
+      - rclone
+    state: latest
+  become: true
+
+# Then you should configure mannually rclone
+#   1. Run `rclone config`
+#   2. Create the driver `gdrive` as a Google Drive Remote (22)
+#   3. Set up OAuth2 account from GCP (https://console.cloud.google.com/welcome - dariosguima account - rclone project - Google Drive API)
+#   4. Give Full access all files, excluding Application Data Folder. (1)
+#   5. Login (Enter)
+
+- name: Ensuring Google Drive folder exists
+  file:
+    path: "{{ ansible_env.HOME }}/GoogleDrive"
+    state: directory
+
+- name: Copying rclone gdrive service file
+  copy:
+    src: gdrive.service
+    dest: "{{ ansible_env.HOME }}/.config/systemd/user/gdrive.service"
+
+- name: Reloading systemd daemon
+  systemd:
+    daemon_reload: yes
+    scope: user
+
+- name: Ensure ~/.local/bin exists
+  file:
+    path: "{{ ansible_env.HOME }}/.local/bin"
+    state: directory
+    mode: "0755"
+
+- name: Install gdrive_mount script
+  copy:
+    src: gdrive_mount
+    dest: "{{ ansible_env.HOME }}/.local/bin/gdrive_mount"
+    mode: "0755"
+
+- name: Install gdrive_unmount script
+  copy:
+    src: gdrive_unmount
+    dest: "{{ ansible_env.HOME }}/.local/bin/gdrive_unmount"
+    mode: "0755"
