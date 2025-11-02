@@ -8,7 +8,7 @@ alias c="clear"
 alias co="code ."
 
 alias upgrade="yay -Suyy --devel --noconfirm"
-alias clean_yay='sudo pacman -Scc --noconfirm && yay -Scc --noconfirm && orphans=$(pacman -Qtdq); [ -n "$orphans" ] && sudo pacman -Rns $orphans --noconfirm || echo "No pacman orphans"; orphans=$(yay -Qtdq); [ -n "$orphans" ] && yay -Rns $orphans --noconfirm || echo "No yay orphans"'
+alias clean_yay='sudo pacman -Scc --noconfirm && yay -Scc --noconfirm && orphans=$(pacman -Qtdq); [ -n "$orphans" ] && sudo pacman -Rns $(pacman -Qdtq) --noconfirm || echo "No pacman orphans"; orphans=$(yay -Qtdq); [ -n "$orphans" ] && yay -Rns $(yay -Qtdq) --noconfirm || echo "No yay orphans"'
 
 # Docker aliases
 alias docker='docker'
