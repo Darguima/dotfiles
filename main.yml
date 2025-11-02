@@ -283,14 +283,6 @@
     - GUI
     - wireshark
 
-- name: MMEX
-  hosts: all
-  roles:
-    - mmex
-  tags:
-    - GUI
-    - mmex
-
 - name: General Programs
   hosts: all
   roles:
