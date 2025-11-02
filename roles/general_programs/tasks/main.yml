@@ -153,6 +153,17 @@
     - MINIMAL_GUI
     - GUI
 
+- name: Installing Tailscale
+  pacman:
+    name:
+      - tailscale
+    state: latest
+  become: true
+  tags:
+    - TUI
+    - MINIMAL_GUI
+    - GUI
+
 - name: Installing qBittorrent
   pacman:
     name: qbittorrent
