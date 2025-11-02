@@ -241,15 +241,15 @@
     - GUI
     - virtualbox
 
-- name: Arduino
+- name: Embedded systems (Arduino, PlatformIO, ...)
   hosts: all
   roles:
-    - arduino
+    - embedded_systems
   tags:
     - TUI
     - MINIMAL_GUI
     - GUI
-    - arduino
+    - embedded_systems
 
 - name: DroidCam
   hosts: all
