@@ -4,15 +4,24 @@ After=network-online.target
 
 [Service]
 Type=simple
+
 ExecStart=/usr/bin/rclone mount gdrive: %h/GoogleDrive \
-    --vfs-cache-mode writes \
-    --vfs-cache-max-size 2G \
-    --vfs-cache-max-age 1h \
-    --dir-cache-time 72h \
-    --poll-interval 15s \
-    --umask 022 \
-    --uid=%U \
-    --gid=%U
+  --vfs-cache-mode full \
+  --vfs-cache-max-size 50G \
+  --vfs-cache-max-age 48h \
+  --dir-cache-time 96h \
+  --poll-interval 30s \
+  --buffer-size 64M \
+  --attr-timeout 1s \
+  --drive-skip-gdocs \
+  --vfs-read-chunk-size 128M \
+  --vfs-read-chunk-size-limit off \
+  --transfers 8 \
+  --checkers 8 \
+  --rc \
+  --rc-addr=localhost:5572 \
+  --log-level INFO \
+  --log-file /var/log/rclone-gdrive.log
 ExecStop=/bin/fusermount -u %h/GoogleDrive
 Restart=on-failure
 
