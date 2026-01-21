@@ -1,0 +1,9 @@
+[opener]
+system = [
+  { run = 'xdg-open "$@"', desc = "System Default", orphan = true }
+]
+
+[open]
+rules = [
+  { mime = "*", use = "system" },
+]

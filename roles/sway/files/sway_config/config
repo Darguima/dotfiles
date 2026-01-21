@@ -11,7 +11,7 @@ set $right l
 set $term alacritty
 set $menu rofi -show drun -theme $HOME/.config/rofi/launcher.rasi | xargs swaymsg exec --
 set $browser firefox
-set $file_manager nautilus
+set $file_manager alacritty -e yazi
 
 set $lock_screen swaylock -f -i /usr/share/backgrounds/sway/wallpaper.svg
 set $suspend systemctl suspend

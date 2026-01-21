@@ -1,3 +1,5 @@
+# Nautilus and xdg-utils stuff
+
 - name: Installing Nautilus & xdg-utils (xdg-open)
   pacman:
     name:
@@ -26,5 +28,31 @@
     src: aliases_xdg_open.zsh
     dest: "{{ ansible_env.HOME }}/.zshrc.d/"
 
+# Yazi stuff
+
+- name: Installing Yazi and file previewer dependencies
+  pacman:
+    name:
+      - yazi
+      - ffmpegthumbnailer
+      - 7zip
+      - jq
+      - poppler
+      - fd
+      - ripgrep
+      - fzf
+      - zoxide
+      - imagemagick
+    state: latest
+  become: True
+
+- name: Ensuring yazi config folder exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config/yazi"
+    state: directory
 
 
+- name: Copying Yazi configuration file
+  copy:
+    src: yazi.toml
+    dest: "{{ ansible_env.HOME }}/.config/yazi/yazi.toml"
