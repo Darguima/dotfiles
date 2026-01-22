@@ -109,14 +109,14 @@
     - GUI
     - rofi
 
-- name: alacritty
+- name: foot
   hosts: all
   roles:
-    - alacritty
+    - foot
   tags:
     - MINIMAL_GUI
     - GUI
-    - alacritty
+    - foot
 
 - name: files_managers
   hosts: all

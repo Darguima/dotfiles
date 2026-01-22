@@ -12,5 +12,5 @@ for_window {
 
   # Styles
   [class=".*"] border pixel 4
-  [app_id="Alacritty"] opacity 0.98
+  [app_id="foot"] opacity 0.90
 }

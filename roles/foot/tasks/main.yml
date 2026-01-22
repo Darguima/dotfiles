@@ -1,0 +1,15 @@
+- name: Installing Foot terminal emulator
+  pacman:
+    name: foot
+    state: latest
+  become: true
+
+- name: Ensuring config folder exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config/foot"
+    state: directory
+
+- name: Copying Foot config file
+  copy:
+    src: foot.ini
+    dest: "{{ ansible_env.HOME }}/.config/foot/foot.ini"
