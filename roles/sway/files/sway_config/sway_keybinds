@@ -3,25 +3,27 @@
 # Behaviour:
     bindsym $mod+Ctrl+l exec $lock_screen
     bindsym --locked $mod+Ctrl+s exec $suspend
-    # Scale focused screen 
-    bindsym $mod+plus exec "swaymsg output $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') scale $(echo $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .scale') + 0.1 | bc)"
-    bindsym $mod+Alt+plus exec "swaymsg output $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') scale $(echo $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .scale') - 0.1 | bc)"
+    # Scale focused screen
+    bindsym $mod+Ctrl+plus exec "swaymsg output $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') scale $(echo $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .scale') + 0.1 | bc)"
+    bindsym $mod+Ctrl+equal exec "swaymsg output $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') scale $(echo $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .scale') + 0.1 | bc)"
+    bindsym $mod+Ctrl+minus exec "swaymsg output $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') scale $(echo $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .scale') - 0.1 | bc)"
 
 
 # Apps:
-    bindsym $mod+Return exec $term
-    # bindsym Ctrl+Return exec $term
-    bindsym $mod+f exec $browser
-    bindsym $mod+e exec $file_manager
-    bindsym XF86Calculator exec gnome-calculator
+    bindsym $mod+t exec $term
+    bindsym $mod+w exec $web_browser
+    bindsym $mod+f exec $file_manager
+    bindsym $mod+r exec $run_menu
 
     bindsym $mod+b exec blueman-manager
+    bindsym $mod+Shift+b exec rofi-rbw --selector-args="--insensitive" --selector-args="-theme $HOME/.config/rofi/text-picker.rasi"
+
     bindsym $mod+n exec swaync-client -t -sw
 
-    bindsym $mod+d exec $menu
-    bindsym $mod+Shift+b exec rofi-rbw --selector-args="--insensitive" --selector-args="-theme $HOME/.config/rofi/text-picker.rasi"
     bindsym $mod+v exec clipman pick -t rofi --tool-args="-theme $HOME/.config/rofi/text-picker.rasi"
     bindsym $mod+z exec gnome-characters
+
+    bindsym XF86Calculator exec gnome-calculator
 
 # ScreenShoot:
     # Select an arbitrary region
@@ -64,14 +66,13 @@
     bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
     bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-    bindsym --locked Ctrl+XF86AudioMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    bindsym --locked Alt+XF86AudioMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
     # Brightness
     bindsym --locked XF86MonBrightnessUp exec brightnessctl s 10%+
     bindsym --locked XF86MonBrightnessDown exec brightnessctl s 10%-
 
 # Sway Basics:
-
     bindsym $mod+q kill
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -85,7 +86,7 @@
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 # Moving around:
     # Move your focus around
@@ -135,9 +136,9 @@
     # $mod+e
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+t layout tabbed
-    bindsym $mod+w layout toggle split
+    bindsym $mod+Shift+s layout stacking
+    bindsym $mod+Shift+t layout tabbed
+    bindsym $mod+Shift+w layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+Shift+f fullscreen
@@ -149,19 +150,17 @@
     bindsym $mod+space focus mode_toggle
 
     # Make the focused floating window sticky (will be visible on all workspaces)
-    bindsym $mod+Shift+s sticky toggle
+    bindsym $mod+Ctrl+grave sticky toggle
 
 # Scratchpad:
     # Sway has a "scratchpad", which is a bag of holding for windows.
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
     bindsym $mod+Shift+grave move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
     bindsym $mod+grave scratchpad show
 
 # Resizing containers:
@@ -179,4 +178,4 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+Shift+r mode "resize"
