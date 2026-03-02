@@ -6,4 +6,5 @@ if [ ! -f vars.yml ]; then
     printf "[LOG] - Read the documentation for more info.\n"
 fi
 
+echo "> ansible-playbook main.yml --extra-vars \"@vars.yml\" $@"
 ansible-playbook main.yml --extra-vars "@vars.yml" "$@"
