@@ -25,6 +25,8 @@
         "custom/notification"
     ],
     "sway/window": {
+        "icon": true,
+        "icon-size": 16,
         "max-length": 45
     },
     "tray": {
