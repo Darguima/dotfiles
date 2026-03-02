@@ -127,14 +127,14 @@
     - GUI
     - files_managers
 
-- name: Firefox
+- name: Browsers
   hosts: all
   roles:
-    - firefox
+    - browsers
   tags:
     - MINIMAL_GUI
     - GUI
-    - firefox
+    - browsers
 
 - name: vim
   hosts: all

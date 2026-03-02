@@ -281,16 +281,6 @@
 #     - GUI
 
 # Apps:
-- name: Installing Google Chrome
-  kewlfft.aur.aur:
-   use: yay
-   name: google-chrome
-   state: latest
-  become: True
-  become_user: aur_builder
-  tags:
-    - GUI
-
 - name: Installing Libre-Office
   pacman:
     name: libreoffice-still

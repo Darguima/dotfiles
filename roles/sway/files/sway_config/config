@@ -10,7 +10,7 @@ set $right l
 # Apps
 set $term foot
 set $menu rofi -show drun -theme $HOME/.config/rofi/launcher.rasi | xargs swaymsg exec --
-set $browser firefox
+set $browser zen-browser
 set $file_manager $term yazi
 
 set $lock_screen swaylock -f -i /usr/share/backgrounds/sway/wallpaper.svg

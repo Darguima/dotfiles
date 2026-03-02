@@ -42,7 +42,7 @@ This tag will add to the `MINIMAL_TUI` setup all the TUI apps that I use, like `
 
 ### MINIMAL_GUI
 
-Similarly to `MINIMAL_TUI`, this tag will install just install the necessary apps to create a GUI setup, like the window manager, `firefox` and `foot`, alongside with all the `TUI` apps.
+Similarly to `MINIMAL_TUI`, this tag will install just install the necessary apps to create a GUI setup, like the window manager, `browsers` and `foot`, alongside with all the `TUI` apps.
 
 ### GUI
 

@@ -1,0 +1,16 @@
+- name: Installing Browsers (Zen Browser and Google Chrome)
+  kewlfft.aur.aur:
+    use: yay
+    name:
+      - zen-browser-bin
+      - google-chrome
+    state: latest
+  become: True
+  become_user: aur_builder
+
+- name: Installing browser_fav_tabs script
+  copy:
+    src: browser_fav_tabs 
+    dest: /bin/browser_fav_tabs 
+    mode: 0755
+  become: True
