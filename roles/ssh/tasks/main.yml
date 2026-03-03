@@ -6,7 +6,7 @@
 
 - name: Ensuring SSH folder exists
   file:
-    path: "{{ ansible_env.HOME }}/.ssh"
+    path: "{{ ansible_facts['user_dir'] }}/.ssh"
     state: directory
 
 - name: Enabling and Starting GCR SSH Agent service

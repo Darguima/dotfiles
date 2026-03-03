@@ -14,13 +14,13 @@
 
 - name: Ensuring Google Drive folder exists
   file:
-    path: "{{ ansible_env.HOME }}/GoogleDrive"
+    path: "{{ ansible_facts['user_dir'] }}/GoogleDrive"
     state: directory
 
 - name: Copying rclone gdrive service file
   copy:
     src: gdrive.service
-    dest: "{{ ansible_env.HOME }}/.config/systemd/user/gdrive.service"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/systemd/user/gdrive.service"
 
 - name: Reloading systemd daemon
   systemd:
@@ -29,18 +29,18 @@
 
 - name: Ensure ~/.local/bin exists
   file:
-    path: "{{ ansible_env.HOME }}/.local/bin"
+    path: "{{ ansible_facts['user_dir'] }}/.local/bin"
     state: directory
     mode: "0755"
 
 - name: Install gdrive_mount script
   copy:
     src: gdrive_mount
-    dest: "{{ ansible_env.HOME }}/.local/bin/gdrive_mount"
+    dest: "{{ ansible_facts['user_dir'] }}/.local/bin/gdrive_mount"
     mode: "0755"
 
 - name: Install gdrive_unmount script
   copy:
     src: gdrive_unmount
-    dest: "{{ ansible_env.HOME }}/.local/bin/gdrive_unmount"
+    dest: "{{ ansible_facts['user_dir'] }}/.local/bin/gdrive_unmount"
     mode: "0755"

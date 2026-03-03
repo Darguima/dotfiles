@@ -36,13 +36,13 @@
 # Sway
 - name: Ensuring sway config directory
   file:
-    path: "{{ ansible_env.HOME }}/.config/sway"
+    path: "{{ ansible_facts['user_dir'] }}/.config/sway"
     state: directory
 
 - name: Copying sway config folder
   copy:
     src: sway_config/
-    dest: "{{ ansible_env.HOME }}/.config/sway"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/sway"
 
 - name: Copying wallpaper
   copy:
@@ -54,7 +54,7 @@
 - name: Copying Sway exec file to ZSH import
   copy:
     src: zzz_exec_sway.zsh
-    dest: "{{ ansible_env.HOME }}/.zshrc.d/"
+    dest: "{{ ansible_facts['user_dir'] }}/.zshrc.d/"
 
 - name: Copying `change_pa_output.sh` script to `/usr/bin/` # needed on keybinds
   copy:
@@ -66,21 +66,21 @@
 # Kanshi
 - name: Ensuring kanshi config directory exists
   file:
-    path: "{{ ansible_env.HOME }}/.config/kanshi"
+    path: "{{ ansible_facts['user_dir'] }}/.config/kanshi"
     state: directory
 
 - name: Copying kanshi config file
   copy:
     src: kanshi_config
-    dest: "{{ ansible_env.HOME }}/.config/kanshi/config"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/kanshi/config"
 
 # Sway Notification Center
 - name: Ensuring swaync config directory
   file:
-    path: "{{ ansible_env.HOME }}/.config/swaync"
+    path: "{{ ansible_facts['user_dir'] }}/.config/swaync"
     state: directory
 
 - name: Copying swaync config file
   copy:
     src: swaync_config.json
-    dest: "{{ ansible_env.HOME }}/.config/swaync/config.json"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/swaync/config.json"

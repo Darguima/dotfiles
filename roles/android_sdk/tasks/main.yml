@@ -57,9 +57,9 @@
 - name: Copying ZSH export ANDROID_SDK_ROOT file
   copy:
     src: export_android_sdk.zsh
-    dest: "{{ ansible_env.HOME }}/.zshrc.d/"
+    dest: "{{ ansible_facts['user_dir'] }}/.zshrc.d/"
 
 - name: Copying ZSH export JAVA_HOME file
   copy:
     src: export_java_home.zsh
-    dest: "{{ ansible_env.HOME }}/.zshrc.d/"
+    dest: "{{ ansible_facts['user_dir'] }}/.zshrc.d/"

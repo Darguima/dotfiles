@@ -1,17 +1,17 @@
 - name: Cloning asdf
   git:
     repo: https://github.com/asdf-vm/asdf.git
-    dest: "{{ ansible_env.HOME }}/.asdf"
+    dest: "{{ ansible_facts['user_dir'] }}/.asdf"
     single_branch: yes
     version: v0.13.1
 
 - name: Copying ZSH asdf include file
   copy:
     src: include_asdf.zsh
-    dest: "{{ ansible_env.HOME }}/.zshrc.d/"
+    dest: "{{ ansible_facts['user_dir'] }}/.zshrc.d/"
 
 - name: Installing NodeJS plugin
-  shell: ". {{ ansible_env.HOME }}/.asdf/asdf.sh && asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git"
+  shell: ". {{ ansible_facts['user_dir'] }}/.asdf/asdf.sh && asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git"
   args:
     executable: /bin/bash
   register: command_output
@@ -28,7 +28,7 @@
   become: True
 
 - name: Installing Erlang plugin
-  shell: ". {{ ansible_env.HOME }}/.asdf/asdf.sh && asdf plugin add erlang https://github.com/asdf-vm/asdf-erlang.git"
+  shell: ". {{ ansible_facts['user_dir'] }}/.asdf/asdf.sh && asdf plugin add erlang https://github.com/asdf-vm/asdf-erlang.git"
   args:
     executable: /bin/bash
   register: command_output
@@ -41,7 +41,7 @@
   become: True
 
 - name: Installing Elixir plugin
-  shell: ". {{ ansible_env.HOME }}/.asdf/asdf.sh && asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git"
+  shell: ". {{ ansible_facts['user_dir'] }}/.asdf/asdf.sh && asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git"
   args:
     executable: /bin/bash
   register: command_output

@@ -6,36 +6,36 @@
 
 - name: Ensuring `~/.vim` directory exists
   file:
-    path: "{{ ansible_env.HOME }}/.vim"
+    path: "{{ ansible_facts['user_dir'] }}/.vim"
     state: directory
     mode: '0755'
 
 - name: Copying `.vimrc` file to ~/.vim
   copy:
     src: .vimrc
-    dest: "{{ ansible_env.HOME }}/.vimrc"
+    dest: "{{ ansible_facts['user_dir'] }}/.vimrc"
     mode: '0755'
 
 # - name: Copying `autoload` folder to ~/.vim
 #   copy:
 #     src: autoload/
-#     dest: "{{ ansible_env.HOME }}/.vim/autoload/"
+#     dest: "{{ ansible_facts['user_dir'] }}/.vim/autoload/"
 #     mode: '0755'
 
 # - name: Copying `backup` folder to ~/.vim
 #   copy:
 #     src: backup/
-#     dest: "{{ ansible_env.HOME }}/.vim/backup/"
+#     dest: "{{ ansible_facts['user_dir'] }}/.vim/backup/"
 #     mode: '0755'
 
 # - name: Copying `colors` folder to ~/.vim
 #   copy:
 #     src: colors/
-#     dest: "{{ ansible_env.HOME }}/.vim/colors/"
+#     dest: "{{ ansible_facts['user_dir'] }}/.vim/colors/"
 #     mode: '0755'
 
 # - name: Copying `plugged` folder to ~/.vim
 #   copy:
 #     src: plugged/
-#     dest: "{{ ansible_env.HOME }}/.vim/plugged/"
+#     dest: "{{ ansible_facts['user_dir'] }}/.vim/plugged/"
 #     mode: '0755'

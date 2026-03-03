@@ -8,17 +8,17 @@
 
 - name: Ensuring waybar config directory
   file:
-    path: "{{ ansible_env.HOME }}/.config/waybar"
+    path: "{{ ansible_facts['user_dir'] }}/.config/waybar"
     state: directory
 
 - name: Copying waybar config folder
   copy:
     src: ./
-    dest: "{{ ansible_env.HOME }}/.config/waybar/"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/waybar/"
 
 # Done on previous task, but without correct mode
 - name: Copying disable-keyboard.sh script into config folder
   copy:
     src: ./disable-keyboard.sh
-    dest: "{{ ansible_env.HOME }}/.config/waybar/"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/waybar/"
     mode: '0755'

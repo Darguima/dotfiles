@@ -7,7 +7,7 @@
 - name: Copying playerctld service file
   copy:
     src: playerctld.service
-    dest: "{{ ansible_env.HOME }}/.config/systemd/user/playerctld.service"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/systemd/user/playerctld.service"
 
 - name: Enabling and Starting service
   systemd:

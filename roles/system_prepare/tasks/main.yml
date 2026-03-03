@@ -14,17 +14,17 @@
 
 - name: Ensuring .config directory exists
   file:
-    path: "{{ ansible_env.HOME }}/.config"
+    path: "{{ ansible_facts['user_dir'] }}/.config"
     state: directory
     mode: '0755'
 
 - name: Ensuring dotfiles config file exists
   file:
-    path: "{{ ansible_env.HOME }}/.config/dotfiles_config"
+    path: "{{ ansible_facts['user_dir'] }}/.config/dotfiles_config"
     state: touch
 
 - name: Writing dotfiles environment at config file
   lineinfile:
-    path: "{{ ansible_env.HOME }}/.config/dotfiles_config"
+    path: "{{ ansible_facts['user_dir'] }}/.config/dotfiles_config"
     regexp: '^ENV='
     line: "ENV={{ target_environment }}"

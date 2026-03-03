@@ -63,8 +63,8 @@
     dest: "{{ item.dest }}"
   loop:
     - src: zshrc
-      dest: "{{ ansible_env.HOME }}/.zshrc"
+      dest: "{{ ansible_facts['user_dir'] }}/.zshrc"
     - src: p10k.zsh
-      dest: "{{ ansible_env.HOME }}/.p10k.zsh"
+      dest: "{{ ansible_facts['user_dir'] }}/.p10k.zsh"
     - src: modules/
-      dest: "{{ ansible_env.HOME }}/.zshrc.d/"
+      dest: "{{ ansible_facts['user_dir'] }}/.zshrc.d/"

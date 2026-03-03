@@ -27,30 +27,30 @@
 
 - name: Ensuring qt6ct config folder exists
   file:
-    path: "{{ ansible_env.HOME }}/.config/qt6ct"
+    path: "{{ ansible_facts['user_dir'] }}/.config/qt6ct"
     state: directory
 
 - name: Copying qt6ct config file
   copy:
     src: qt6ct.conf
-    dest: "{{ ansible_env.HOME }}/.config/qt6ct/qt6ct.conf"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/qt6ct/qt6ct.conf"
 
 - name: Copying GTK2 config file
   copy:
     src: "gtkrc-2.0"
-    dest: "{{ ansible_env.HOME }}/.gtkrc-2.0"
+    dest: "{{ ansible_facts['user_dir'] }}/.gtkrc-2.0"
 
 - name: Ensuring GTK3 config folder exists
   file:
-    path: "{{ ansible_env.HOME }}/.config/gtk-3.0"
+    path: "{{ ansible_facts['user_dir'] }}/.config/gtk-3.0"
     state: directory
 
 - name: Copying GTK3 config file
   copy:
     src: gtk3_settings.ini
-    dest: "{{ ansible_env.HOME }}/.config/gtk-3.0/settings.ini"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/gtk-3.0/settings.ini"
 
 - name: Copying Appearance Env Vars to ZSH import
   copy:
     src: export_appearance.zsh
-    dest: "{{ ansible_env.HOME }}/.zshrc.d/"
+    dest: "{{ ansible_facts['user_dir'] }}/.zshrc.d/"

@@ -45,7 +45,7 @@
 
 - name: Improving Android Emulator config file
   lineinfile:
-    path: "{{ ansible_env.HOME }}/.android/avd/phone.avd/config.ini"
+    path: "{{ ansible_facts['user_dir'] }}/.android/avd/phone.avd/config.ini"
     regexp: '^hw.keyboard='
     line: hw.keyboard=yes
   when: "'phone' not in available_android_emulators.stdout"
@@ -53,4 +53,4 @@
 - name: Copying ZSH emulator aliases file
   copy:
     src: aliases_android_emulator.zsh
-    dest: "{{ ansible_env.HOME }}/.zshrc.d/"
+    dest: "{{ ansible_facts['user_dir'] }}/.zshrc.d/"

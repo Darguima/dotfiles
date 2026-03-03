@@ -10,23 +10,23 @@
 
 - name: Ensuring gtk3 bookmarks folder exists
   file:
-    path: "{{ ansible_env.HOME }}/.config/gtk-3.0"
+    path: "{{ ansible_facts['user_dir'] }}/.config/gtk-3.0"
     state: directory
 
 - name: Copying gtk3 bookmarks file
   copy:
     src: gtk3_bookmarks
-    dest: "{{ ansible_env.HOME }}/.config/gtk-3.0/bookmarks"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/gtk-3.0/bookmarks"
 
 - name: Configuring MIME Types default applications
   copy:
     src: mimeapps.list
-    dest: "{{ ansible_env.HOME }}/.config/"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/"
 
 - name: Copying ZSH `xdg-open` aliases file
   copy:
     src: aliases_xdg_open.zsh
-    dest: "{{ ansible_env.HOME }}/.zshrc.d/"
+    dest: "{{ ansible_facts['user_dir'] }}/.zshrc.d/"
 
 # Yazi stuff
 
@@ -48,11 +48,11 @@
 
 - name: Ensuring yazi config folder exists
   file:
-    path: "{{ ansible_env.HOME }}/.config/yazi"
+    path: "{{ ansible_facts['user_dir'] }}/.config/yazi"
     state: directory
 
 
 - name: Copying Yazi configuration file
   copy:
     src: yazi.toml
-    dest: "{{ ansible_env.HOME }}/.config/yazi/yazi.toml"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/yazi/yazi.toml"
