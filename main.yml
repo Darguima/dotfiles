@@ -4,10 +4,6 @@
     - system_prepare
   tags:
     - always
-    - MINIMAL_TUI
-    - TUI
-    - MINIMAL_GUI
-    - GUI
     - system_prepare
 
 - name: yay
@@ -16,10 +12,6 @@
     - yay
   tags:
     - always
-    - MINIMAL_TUI
-    - TUI
-    - MINIMAL_GUI
-    - GUI
     - yay
 
 - name: Z Shell
@@ -27,10 +19,6 @@
   roles:
     - zsh
   tags:
-    - MINIMAL_TUI
-    - TUI
-    - MINIMAL_GUI
-    - GUI
     - zsh
 
 - name: Wake on LAN
@@ -38,10 +26,6 @@
   roles:
     - wake_on_lan
   tags:
-    - MINIMAL_TUI
-    - TUI
-    - MINIMAL_GUI
-    - GUI
     - wake_on_lan
 
 - name: SSH
@@ -49,10 +33,6 @@
   roles:
     - ssh
   tags:
-    - MINIMAL_TUI
-    - TUI
-    - MINIMAL_GUI
-    - GUI
     - ssh
 
 - name: Wayland
@@ -60,8 +40,6 @@
   roles:
     - wayland
   tags:
-    - MINIMAL_GUI
-    - GUI
     - wayland
 
 - name: waybar
@@ -69,8 +47,6 @@
   roles:
     - waybar
   tags:
-    - MINIMAL_GUI
-    - GUI
     - waybar
 
 - name: sway
@@ -78,8 +54,6 @@
   roles:
     - sway
   tags:
-    - MINIMAL_GUI
-    - GUI
     - sway
 
 - name: playerctl
@@ -87,8 +61,6 @@
   roles:
     - playerctl
   tags:
-    - MINIMAL_GUI
-    - GUI
     - playerctl
 
 - name: Appearance
@@ -96,8 +68,6 @@
   roles:
     - appearance
   tags:
-    - MINIMAL_GUI
-    - GUI
     - appearance
 
 - name: rofi
@@ -105,8 +75,6 @@
   roles:
     - rofi
   tags:
-    - MINIMAL_GUI
-    - GUI
     - rofi
 
 - name: foot
@@ -114,8 +82,6 @@
   roles:
     - foot
   tags:
-    - MINIMAL_GUI
-    - GUI
     - foot
 
 - name: files_managers
@@ -123,8 +89,6 @@
   roles:
     - files_managers
   tags:
-    - MINIMAL_GUI
-    - GUI
     - files_managers
 
 - name: Browsers
@@ -132,8 +96,6 @@
   roles:
     - browsers
   tags:
-    - MINIMAL_GUI
-    - GUI
     - browsers
 
 - name: vim
@@ -141,7 +103,6 @@
   roles:
     - vim
   tags:
-    - GUI
     - vim
 
 - name: VS Code
@@ -149,7 +110,6 @@
   roles:
     - vscode
   tags:
-    - GUI
     - vscode
 
 - name: Syncthing
@@ -157,9 +117,6 @@
   roles:
     - syncthing
   tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
     - syncthing
 
 - name: Bluetooth
@@ -167,9 +124,6 @@
   roles:
     - bluetooth
   tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
     - bluetooth
 
 - name: Keyring
@@ -177,9 +131,6 @@
   roles:
     - keyring
   tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
     - keyring
 
 - name: rclone (Google Drive)
@@ -187,9 +138,6 @@
   roles:
     - rclone
   tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
     - rclone
 
 - name: Docker
@@ -197,9 +145,6 @@
   roles:
     - docker
   tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
     - docker
 
 - name: NodeJS Lang
@@ -207,9 +152,6 @@
   roles:
     - nodejs_lang
   tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
     - nodejs_lang
 
 - name: Elixir Lang
@@ -217,9 +159,6 @@
   roles:
     - elixir_lang
   tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
     - elixir_lang
 
 - name: Android SDK
@@ -227,9 +166,6 @@
   roles:
     - android_sdk
   tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
     - android_sdk
     - android_emulator
   
@@ -246,9 +182,6 @@
   roles:
     - virtualbox
   tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
     - virtualbox
 
 - name: Embedded systems (Arduino, PlatformIO, ...)
@@ -256,9 +189,6 @@
   roles:
     - embedded_systems
   tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
     - embedded_systems
 
 - name: DroidCam
@@ -266,7 +196,6 @@
   roles:
     - droidcam
   tags:
-    - GUI
     - droidcam
 
 - name: Gimp
@@ -274,7 +203,6 @@
   roles:
     - gimp
   tags:
-    - GUI
     - gimp
 
 - name: OBS
@@ -282,7 +210,6 @@
   roles:
     - obs
   tags:
-    - GUI
     - obs
 
 - name: Wireshark
@@ -290,7 +217,6 @@
   roles:
     - wireshark
   tags:
-    - GUI
     - wireshark
 
 - name: General Programs

@@ -4,66 +4,36 @@
     name: grub
     state: latest
   become: true
-  tags:
-    - MINIMAL_TUI
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing efibootmgr
   pacman:
     name: efibootmgr
     state: latest
   become: true
-  tags:
-    - MINIMAL_TUI
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing sudo
   pacman:
     name: sudo
     state: latest
   become: true
-  tags:
-    - MINIMAL_TUI
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing git
   pacman:
     name: git
     state: latest
   become: true
-  tags:
-    - MINIMAL_TUI
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing base
   pacman:
     name: base
     state: latest
   become: true
-  tags:
-    - MINIMAL_TUI
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing NetworkManager
   pacman:
     name: networkmanager
     state: latest
   become: true
-  tags:
-    - MINIMAL_TUI
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 # Drivers and stuff like that
 
@@ -72,10 +42,6 @@
     name: android-file-transfer
     state: latest
   become: true
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 # Video and Sound:
 - name: Installing alsa-utils
@@ -83,34 +49,24 @@
     name: alsa-utils
     state: latest
   become: true
-  tags:
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing pavucontrol
   pacman:
     name: pavucontrol
     state: latest
   become: true
-  tags:
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing mpv
   pacman:
     name: mpv
     state: latest
   become: true
-  tags:
-    - GUI
 
 - name: Installing gwenview
   pacman:
     name: gwenview
     state: latest
   become: true
-  tags:
-    - GUI
 
 # Internet
 - name: Installing net-tools
@@ -118,28 +74,18 @@
     name: net-tools
     state: latest
   become: True
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing KDE Connect
   pacman:
     name: kdeconnect
     state: latest
   become: true
-  tags:
-    - GUI
 
 - name: Installing OpenVPN
   pacman:
     name: openvpn
     state: latest
   become: true
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing Wireguard and dependecy openresolv
   pacman:
@@ -148,10 +94,6 @@
       - openresolv
     state: latest
   become: true
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing Tailscale
   pacman:
@@ -159,20 +101,12 @@
       - tailscale
     state: latest
   become: true
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing qBittorrent
   pacman:
     name: qbittorrent
     state: latest
   become: true
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 # Coding:
 - name: Installing JDK
@@ -180,10 +114,6 @@
     name: jdk-openjdk
     state: latest
   become: true
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 # Utilities:
 - name: Installing man pages
@@ -191,51 +121,30 @@
     name: man-db
     state: latest
   become: true
-  tags:
-    - MINIMAL_TUI
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing less
   pacman:
     name: less
     state: latest
   become: true
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing tree
   pacman:
     name: tree
     state: latest
   become: true
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing wget
   pacman:
     name: wget
     state: latest
   become: true
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing z
   pacman:
     name: z
     state: latest
   become: true
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing WoeUSB
   kewlfft.aur.aur:
@@ -244,30 +153,18 @@
    state: latest
   become: True
   become_user: aur_builder
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing android-tools
   pacman:
     name: android-tools
     state: latest
   become: true
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 - name: Installing scrcpy (Android Screen Share)
   pacman:
     name: scrcpy
     state: latest
   become: true
-  tags:
-    - TUI
-    - MINIMAL_GUI
-    - GUI
 
 # - name: Installing wine, wine-gecko & wine-mono
 #   pacman:
@@ -277,8 +174,7 @@
 #       - wine-mono
 #     state: latest
 #   become: true
-#   tags:
-#     - GUI
+# 
 
 # Apps:
 - name: Installing Libre-Office
@@ -286,32 +182,24 @@
     name: libreoffice-still
     state: latest
   become: true
-  tags:
-    - GUI
 
 - name: Installing Discord
   pacman:
     name: discord
     state: latest
   become: true
-  tags:
-    - GUI
 
 - name: Installing Evince
   pacman:
     name: evince
     state: latest
   become: true
-  tags:
-    - GUI
 
 - name: Installing Obsidian
   pacman:
     name: obsidian
     state: latest
   become: true
-  tags:
-    - GUI
 
 - name: Installing Spotify
   kewlfft.aur.aur:
@@ -320,8 +208,6 @@
     state: latest
   become: True
   become_user: aur_builder
-  tags:
-    - GUI
 
 - name: Installing Stremio
   kewlfft.aur.aur:
@@ -330,8 +216,6 @@
     state: latest
   become: True
   become_user: aur_builder
-  tags:
-    - GUI
 
 - name: Installing Grayjay
   kewlfft.aur.aur:
@@ -340,8 +224,6 @@
     state: latest
   become: True
   become_user: aur_builder
-  tags:
-    - GUI
 
 - name: Installing Slack
   kewlfft.aur.aur:
@@ -350,24 +232,18 @@
     state: latest
   become: True
   become_user: aur_builder
-  tags:
-    - GUI
 
 - name: Installing Inkscape
   pacman:
     name: inkscape
     state: latest
   become: true
-  tags:
-    - GUI
 
 - name: Installing Gnome Calculator
   pacman:
     name: gnome-calculator
     state: latest
   become: true
-  tags:
-    - GUI
 
 - name: Installing NumWorks
   kewlfft.aur.aur:
@@ -376,13 +252,10 @@
    state: latest
   become: True
   become_user: aur_builder
-  tags:
-    - GUI
 
 # - name: Installing Steam
 #   pacman:
 #     name: steam
 #     state: latest
 #   become: true
-#   tags:
-#     - GUI
+# 
