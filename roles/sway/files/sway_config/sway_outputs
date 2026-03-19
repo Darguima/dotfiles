@@ -24,7 +24,7 @@ output $laptop_monitor {
 # Desktop
 output $desktop_monitor_2  {
   res 1920x1080@59.934Hz
-  transform 180
+  # transform 180
 }
 
 output $desktop_monitor_1   {
