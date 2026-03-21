@@ -5,3 +5,9 @@
     state: latest
   become: True
   become_user: aur_builder
+
+- name: Installing Fira Code Font
+  pacman:
+    name: ttf-fira-code
+    state: latest
+  become: True
