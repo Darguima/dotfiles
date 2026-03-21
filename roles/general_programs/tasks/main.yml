@@ -183,11 +183,14 @@
     state: latest
   become: true
 
-- name: Installing Discord
-  pacman:
-    name: discord
+- name: Installing Discord/Webcord
+  kewlfft.aur.aur:
+    name:
+      - discord
+      - webcord
     state: latest
-  become: true
+  become: True
+  become_user: aur_builder
 
 - name: Installing Evince
   pacman:
@@ -209,13 +212,13 @@
   become: True
   become_user: aur_builder
 
-- name: Installing Stremio
-  kewlfft.aur.aur:
-    use: yay
-    name: stremio
-    state: latest
-  become: True
-  become_user: aur_builder
+# - name: Installing Stremio
+#   kewlfft.aur.aur:
+#     use: yay
+#     name: stremio
+#     state: latest
+#   become: True
+#   become_user: aur_builder
 
 - name: Installing Grayjay
   kewlfft.aur.aur:
