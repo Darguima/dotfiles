@@ -4,7 +4,7 @@
 choose_headphones() {
     # To get all the sinks and ports names > pactl list sinks
     sorted_headphones=(
-        "bluez_output.68_59_32_AB_01_48.1"  # JBL Tune 660NC
+        "bluez_output.68:59:32:AB:01:48"  # JBL Tune 660NC
         "Microsoft_LifeChat_LX-3000-00"     # Microsoft LifeChat LX-3000 - Internship Headphones
     )
 
