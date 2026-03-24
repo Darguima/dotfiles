@@ -112,6 +112,13 @@
   tags:
     - vscode
 
+- name: OpenCode
+  hosts: all
+  roles:
+    - opencode
+  tags:
+    - opencode
+
 - name: Syncthing
   hosts: all
   roles:

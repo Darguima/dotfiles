@@ -1,0 +1,12 @@
+{
+  // Info - https://opencode.ai/docs/keybinds/
+  "$schema": "https://opencode.ai/tui.json",
+  "keybinds": {
+    "messages_line_up": "alt+k,ctrl+k",
+    "messages_line_down": "alt+j,ctrl+j",
+    "messages_half_page_up": "alt+u,ctrl+u",
+    "messages_half_page_down": "alt+j,ctrl+j",
+    "messages_first": "ctrl+g,home",
+    "messages_last": "ctrl+shift+g,end"
+  }
+}

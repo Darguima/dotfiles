@@ -1,0 +1,71 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  
+  // Default models for your daily workflow
+  "model": "github-copilot/gpt-5.3-codex",
+  "small_model": "github-copilot/claude-haiku-4.5",
+  
+  // Phase-specific models (Schema-compliant)
+  "agent": {
+    "plan": {
+      "model": "github-copilot/gemini-3.1-pro-preview",
+      "description": "The Architect: Uses Gemini's deep reasoning to map out structure and logic."
+    },
+    "build": {
+      "model": "github-copilot/gpt-5.3-codex",
+      "description": "The Implementer: Uses Codex to write code, resolve syntax, and edit multiple files."
+    }
+  },
+
+  // Model Variants: Tweaks for specific use-cases
+  "provider": {
+    "github-copilot": {
+      "models": {
+        "gemini-3.1-pro-preview": {
+          "variants": {
+            "architect": {
+              "temperature": 0.1,
+              "reasoningEffort": "high"
+            }
+          }
+        },
+        "gpt-5.3-codex": {
+          "variants": {
+            "frontend": {
+              "temperature": 0.5
+            },
+            "refactor": {
+              "temperature": 0.2
+            }
+          }
+        },
+        "claude-haiku-4.5": {
+          "variants": {
+            "chat": {
+              "temperature": 0.6
+            }
+          }
+        }
+      }
+    }
+  },
+
+  // Custom workflow commands
+  "command": {
+    "ui": {
+      "template": "Analyze the UI in these files and improve the styling/UX. Use Tailwind if available. If you can find a file called UI_GUIDELINES.md, use it as guidelines to implement. If such file is not available, create one with the UI guidelines after you finish the UI/UX rework.",
+      "model": "github-copilot/gpt-5.3-codex",
+      "description": "Specialized UI/Frontend pass using Codex"
+    },
+    "debug": {
+      "template": "Run the tests and fix any failing logic. Use terminal commands to verify.",
+      "model": "github-copilot/gemini-3.1-pro-preview",
+      "description": "Deep backend debug pass using Gemini 3.1 Pro"
+    },
+    "quick": {
+      "template": "$ARGUMENTS",
+      "model": "github-copilot/claude-haiku-4.5",
+      "description": "Fast & cheap task (saves your heavy models for later)"
+    }
+  }
+}
