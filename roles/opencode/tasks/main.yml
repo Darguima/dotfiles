@@ -19,6 +19,11 @@
     src: tui.jsonc
     dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/tui.jsonc"
 
+- name: Copying OpenCode Skills folder
+  copy:
+    src: skills/
+    dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/skills/"
+
 - name: Copying OpenCode keys include file
   copy:
     src: include_opencode_keys.zsh
