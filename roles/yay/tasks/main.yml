@@ -43,9 +43,11 @@
     validate: 'visudo -cf %s'
   become: True
 
-- name: Updating & Upgrading yay
-  pacman:
-    executable: yay
-    update_cache: yes
+- name: Update yay cache and all packages, including devel
+  kewlfft.aur.aur:
     upgrade: yes
-    update_cache_extra_args: "--devel"
+    update_cache: yes
+    use: yay
+    extra_args: "--devel"
+  become: True
+  become_user: aur_builder
