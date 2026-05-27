@@ -102,6 +102,12 @@
     state: latest
   become: true
 
+- name: Installing Proton VPN GTK App
+  pacman:
+    name: proton-vpn-gtk-app
+    state: latest
+  become: true
+
 - name: Installing qBittorrent
   pacman:
     name: qbittorrent
