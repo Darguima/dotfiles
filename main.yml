@@ -168,22 +168,6 @@
   tags:
     - elixir_lang
 
-- name: Android SDK
-  hosts: all
-  roles:
-    - android_sdk
-  tags:
-    - android_sdk
-    - android_emulator
-  
-- name: Android Emulator
-  hosts: all
-  roles:
-    - android_emulator
-  tags:
-    - never
-    - android_emulator
-
 - name: VirtualBox
   hosts: all
   roles:

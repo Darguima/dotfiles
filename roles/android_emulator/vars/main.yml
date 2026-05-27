@@ -1,2 +1,0 @@
-user: "{{ ansible_facts['user_id'] }}"
-java_8_home: "JAVA_HOME=/usr/lib/jvm/java-8-openjdk"
