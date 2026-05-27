@@ -34,7 +34,7 @@
   become_user: aur_builder
 
 # Sway
-- name: Ensuring sway config directory
+- name: Ensuring sway config directory exists
   file:
     path: "{{ ansible_facts['user_dir'] }}/.config/sway"
     state: directory
@@ -75,7 +75,7 @@
     dest: "{{ ansible_facts['user_dir'] }}/.config/kanshi/config"
 
 # Sway Notification Center
-- name: Ensuring swaync config directory
+- name: Ensuring swaync config directory exists
   file:
     path: "{{ ansible_facts['user_dir'] }}/.config/swaync"
     state: directory

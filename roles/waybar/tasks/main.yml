@@ -2,11 +2,11 @@
   pacman:
     name:
       - waybar
-      - ttf-font-awesome
+      - ttf-font-awesome # used in style.css
     state: latest
   become: true
 
-- name: Ensuring waybar config directory
+- name: Ensuring waybar config directory exists
   file:
     path: "{{ ansible_facts['user_dir'] }}/.config/waybar"
     state: directory

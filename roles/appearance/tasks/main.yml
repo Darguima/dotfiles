@@ -8,7 +8,7 @@
     state: latest
   become: true
 
-- name: Installing Papirus icon theme, breeze
+- name: Installing Papirus icon theme and breeze
   pacman:
     name:
       - papirus-icon-theme
