@@ -9,22 +9,33 @@
     path: "{{ ansible_facts['user_dir'] }}/.config/opencode"
     state: directory
 
-- name: Copying OpenCode config file
+- name: Copying OpenCode Github Copilot config file
   copy:
-    src: opencode.jsonc
-    dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/opencode.jsonc"
+    src: opencode-github-copilot.jsonc
+    dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/opencode-github-copilot.jsonc"
 
-- name: Copying OpenCode TUI config file (keybindings)
+- name: Copying OpenCode Go config file
   copy:
-    src: tui.jsonc
-    dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/tui.jsonc"
+    src: opencode-go.jsonc
+    dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/opencode-go.jsonc"
+
+- name: Creating symlink to opencode.jsonc
+  file:
+    src: "{{ ansible_facts['user_dir'] }}/.config/opencode/opencode-go.jsonc"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/opencode.jsonc"
+    state: link
 
 - name: Copying OpenCode Skills folder
   copy:
     src: skills/
     dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/skills/"
 
-- name: Copying OpenCode keys include file
+- name: Copying OpenCode TUI config file (keybindings)
+  copy:
+    src: tui.jsonc
+    dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/tui.jsonc"
+
+- name: Copying OpenCode Env Keys include file
   copy:
     src: include_opencode_keys.zsh
     dest: "{{ ansible_facts['user_dir'] }}/.zshrc.d/"

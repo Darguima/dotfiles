@@ -1,0 +1,105 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  "model": "opencode/nemotron-3-ultra-free",
+  "small_model": "opencode/deepseek-v4-flash-free",
+  "agent": {
+    "plan": {
+      "model": "opencode/nemotron-3-ultra-free",
+      "description": "Heavy lifting: Use for writing complex logic and multi-file changes."
+    },
+    "build": {
+      "model": "opencode/deepseek-v4-flash-free",
+      "description": "The Thinker: Use huge context to explain files or map out features."
+    },
+    "general": {
+      "model": "opencode/kimi-k2.6"
+    },
+  },
+
+  "provider": {
+    "opencode": {
+      "models": {
+        "opencode/nemotron-3-ultra-free": {
+          "variants": {
+            "architect": {
+              "temperature": 0.1,
+              "reasoningEffort": "high"
+            }
+          }
+        },
+        "opencode/deepseek-v4-flash-free": {
+          "variants": {
+            "refactor": {
+              "temperature": 0.2
+            }
+          }
+        },
+        "opencode/kimi-k2.6": {
+          "variants": {
+            "chat": {
+              "temperature": 0.6
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "server": {
+    "hostname": "0.0.0.0",
+    "mdns": false,
+    "port": 3000
+  },
+
+  "mcp": {
+    "docker": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-docker"
+      ]
+    },
+    "terraform": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-terraform"
+      ]
+    },
+    "git": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-git"
+      ]
+    }
+  },
+
+  "watcher": {
+    "ignore": [
+      ".git",
+      ".terraform",
+      "*.tfstate",
+      "*.tfstate.backup",
+      ".terraform.lock.hcl",
+      "node_modules",
+      "__pycache__",
+      "*.o",
+      "*.elf",
+      "*.bin",
+      "build",
+      "dist",
+      ".DS_Store"
+    ]
+  },
+  
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "tail_turns": 2
+  }
+}
