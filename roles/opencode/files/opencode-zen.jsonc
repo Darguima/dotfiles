@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+
+  "plugin": [
+    // "superpowers@git+https://github.com/obra/superpowers.git"
+  ],
+
+  "command": {
+    "debug": {
+      "template": "Run the tests and fix any failing logic. Use terminal commands to verify.",
+      "model": "github-copilot/gemini-3.1-pro-preview",
+      "description": "Deep backend debug pass using Gemini 3.1 Pro"
+    }
+  },
+  
+  // Environment setup
+  "shell": "zsh",
+  "logLevel": "INFO",
+  "snapshot": true,
+
+  // Server settings
+  "server": {
+    "hostname": "0.0.0.0",
+    "mdns": false,
+    "port": 3000
+  },
+
+  // Ignored directories for file watcher
+  "watcher": {
+    "ignore": [
+      "**/.git/**",
+      "**/node_modules/**",
+      "**/.terraform/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.cache/**",
+      "**/.venv/**"
+    ]
+  },
+
+  // Agent execution permissions
+  "permission": {
+    "read": "allow",
+    "edit": "allow",
+    "bash": "ask",
+    "task": "ask"
+  },
+
+  // Developer tools and MCP servers
+  "formatter": true,
+  "lsp": true,
+  "mcp": {
+    "docker": {
+      "type": "local",
+      "command": ["npx", "-y", "@docker/mcp-server"],
+      "enabled": true
+    },
+    "terraform": {
+      "type": "local",
+      "command": ["npx", "-y", "@hashicorp/terraform-mcp"],
+      "enabled": true
+    },
+    "git": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-git"],
+      "enabled": true
+    }
+  },
+
+  // Context and token memory management
+  "compaction": {
+    "auto": true,
+    "prune": false,
+    "tail_turns": 2
+  },
+  "tool_output": {
+    "max_lines": 2000,
+    "max_bytes": 51200
+  },
+
+  // Image attachment settings
+  "attachment": {
+    "image": {
+      "auto_resize": true,
+      "max_width": 2000,
+      "max_height": 2000
+    }
+  },
+
+  // Providers & model variants configuration
+  "provider": {
+    "opencode": {
+      "models": {
+        "opencode/nemotron-3-ultra-free": {
+          "variants": {
+            "architect": {
+              "temperature": 0.1,
+              "reasoningEffort": "high"
+            }
+          }
+        },
+        "opencode/deepseek-v4-flash-free": {
+          "variants": {
+            "refactor": {
+              "temperature": 0.2
+            }
+          }
+        },
+        "opencode/big-pickle": {
+          "variants": {
+            "chat": {
+              "temperature": 0.6
+            }
+          }
+        }
+      }
+    }
+  },
+
+  // Agent role assignments mappings
+  "agent": {
+    "plan": {
+      "model": "opencode/nemotron-3-ultra-free",
+      "variant": "architect",
+      "mode": "primary",
+      "description": "Architect agent for structural planning."
+    },
+    "build": {
+      "model": "opencode/deepseek-v4-flash-free",
+      "variant": "refactor",
+      "mode": "primary",
+      "description": "Build agent for active development."
+    },
+    "general": {
+      "model": "opencode/big-pickle",
+      "variant": "chat",
+      "mode": "primary",
+      "description": "General purpose chat agent."
+    }
+  },
+  
+  "default_agent": "plan"
+}

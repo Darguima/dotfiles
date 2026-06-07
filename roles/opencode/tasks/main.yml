@@ -16,12 +16,12 @@
 
 - name: Copying OpenCode Go config file
   copy:
-    src: opencode-go.jsonc
-    dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/opencode-go.jsonc"
+    src: opencode-zen.jsonc
+    dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/opencode-zen.jsonc"
 
 - name: Creating symlink to opencode.jsonc
   file:
-    src: "{{ ansible_facts['user_dir'] }}/.config/opencode/opencode-go.jsonc"
+    src: "{{ ansible_facts['user_dir'] }}/.config/opencode/opencode-zen.jsonc"
     dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/opencode.jsonc"
     state: link
 
@@ -34,9 +34,3 @@
   copy:
     src: tui.jsonc
     dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/tui.jsonc"
-
-- name: Copying OpenCode Env Keys include file
-  copy:
-    src: include_opencode_keys.zsh
-    dest: "{{ ansible_facts['user_dir'] }}/.zshrc.d/"
-    force: false
