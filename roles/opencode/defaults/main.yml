@@ -1,0 +1,11 @@
+# OpenCode Zen ========
+opencode_provider_name: "opencode"
+opencode_plan_model: "nemotron-3-ultra-free"
+opencode_build_model: "deepseek-v4-flash-free"
+opencode_general_model: "big-pickle"
+
+# Github Copilot ========
+# opencode_provider_name: "github-copilot"
+# opencode_plan_model: "gemini-2.1-pro-preview"
+# opencode_build_model: "gpt-5.2-codex"
+# opencode_general_model: "gpt-5.2-codex"

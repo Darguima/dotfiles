@@ -9,21 +9,11 @@
     path: "{{ ansible_facts['user_dir'] }}/.config/opencode"
     state: directory
 
-- name: Copying OpenCode Github Copilot config file
-  copy:
-    src: opencode-github-copilot.jsonc
-    dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/opencode-github-copilot.jsonc"
-
-- name: Copying OpenCode Go config file
-  copy:
-    src: opencode-zen.jsonc
-    dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/opencode-zen.jsonc"
-
-- name: Creating symlink to opencode.jsonc
-  file:
-    src: "{{ ansible_facts['user_dir'] }}/.config/opencode/opencode-zen.jsonc"
+# Check defaults/main.yml for the model variables used in the template.
+- name: Deploying OpenCode config from template
+  template:
+    src: opencode.jsonc
     dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/opencode.jsonc"
-    state: link
 
 - name: Copying OpenCode Skills folder
   copy:

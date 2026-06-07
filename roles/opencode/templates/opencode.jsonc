@@ -8,7 +8,7 @@
   "command": {
     "debug": {
       "template": "Run the tests and fix any failing logic. Use terminal commands to verify.",
-      "model": "opencode/nemotron-3-ultra-free",
+      "model": "{{ opencode_plan_model }}",
       "description": "Deep debug"
     }
   },
@@ -74,26 +74,26 @@
 
   // Providers & model variants configuration
   "provider": {
-    "opencode": {
+    "{{ opencode_provider_name }}": {
       "models": {
-        "opencode/nemotron-3-ultra-free": {
+        "{{ opencode_plan_model }}": {
           "variants": {
-            "architect": {
+            "plan": {
               "temperature": 0.1,
               "reasoningEffort": "high"
             }
           }
         },
-        "opencode/deepseek-v4-flash-free": {
+        "{{ opencode_build_model }}": {
           "variants": {
-            "refactor": {
+            "build": {
               "temperature": 0.2
             }
           }
         },
-        "opencode/big-pickle": {
+        "{{ opencode_general_model }}": {
           "variants": {
-            "chat": {
+            "general": {
               "temperature": 0.6
             }
           }
@@ -105,20 +105,20 @@
   // Agent role assignments mappings
   "agent": {
     "plan": {
-      "model": "opencode/nemotron-3-ultra-free",
-      "variant": "architect",
+      "model": "{{ opencode_provider_name }}/{{ opencode_plan_model }}",
+      "variant": "plan",
       "mode": "primary",
       "description": "Architect agent for structural planning."
     },
     "build": {
-      "model": "opencode/deepseek-v4-flash-free",
-      "variant": "refactor",
+      "model": "{{ opencode_provider_name }}/{{ opencode_build_model }}",
+      "variant": "build",
       "mode": "primary",
       "description": "Build agent for active development."
     },
     "general": {
-      "model": "opencode/big-pickle",
-      "variant": "chat",
+      "model": "{{ opencode_provider_name }}/{{ opencode_general_model }}",
+      "variant": "general",
       "mode": "primary",
       "description": "General purpose chat agent."
     }
