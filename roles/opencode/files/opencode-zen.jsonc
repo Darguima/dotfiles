@@ -8,8 +8,8 @@
   "command": {
     "debug": {
       "template": "Run the tests and fix any failing logic. Use terminal commands to verify.",
-      "model": "github-copilot/gemini-3.1-pro-preview",
-      "description": "Deep backend debug pass using Gemini 3.1 Pro"
+      "model": "opencode/nemotron-3-ultra-free",
+      "description": "Deep debug"
     }
   },
   
@@ -50,21 +50,6 @@
   "formatter": true,
   "lsp": true,
   "mcp": {
-    "docker": {
-      "type": "local",
-      "command": ["npx", "-y", "@docker/mcp-server"],
-      "enabled": true
-    },
-    "terraform": {
-      "type": "local",
-      "command": ["npx", "-y", "@hashicorp/terraform-mcp"],
-      "enabled": true
-    },
-    "git": {
-      "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-git"],
-      "enabled": true
-    }
   },
 
   // Context and token memory management
