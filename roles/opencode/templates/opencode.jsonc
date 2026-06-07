@@ -40,10 +40,21 @@
 
   // Agent execution permissions
   "permission": {
-    "read": "allow",
-    "edit": "allow",
-    "bash": "ask",
-    "task": "ask"
+    // "read": "allow",
+    // "edit": "allow",
+    // "task": "ask",
+    // "bash": {
+    //   "*": "ask",
+    //   "ls": "allow",
+    //   "ls *": "allow",
+    //   "cat *": "allow",
+    //   "pwd": "allow",
+    //   "tree": "allow",
+    //   "tree *": "allow",
+    //   "grep *": "allow",
+    //   "rg *": "allow",
+    //   "find *": "allow"
+    // }
   },
 
   // Developer tools and MCP servers
