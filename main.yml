@@ -133,6 +133,13 @@
   tags:
     - bluetooth
 
+- name: KDE Connect
+  hosts: all
+  roles:
+    - kdeconnect
+  tags:
+    - kdeconnect
+
 - name: Keyring
   hosts: all
   roles:

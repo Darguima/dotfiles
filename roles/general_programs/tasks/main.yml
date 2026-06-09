@@ -75,12 +75,6 @@
     state: latest
   become: True
 
-- name: Installing KDE Connect
-  pacman:
-    name: kdeconnect
-    state: latest
-  become: true
-
 - name: Installing OpenVPN
   pacman:
     name: openvpn
