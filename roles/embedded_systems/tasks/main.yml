@@ -18,9 +18,9 @@
     state: latest
   become: True
 
-- name: "Adding user '{{ user }}' to 'uucp' group"
+- name: "Adding user '{{ linux_username }}' to 'uucp' group"
   user:
-    name: "{{ user }}"
+    name: "{{ linux_username }}"
     groups: uucp
     append: True
   become: True

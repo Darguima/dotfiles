@@ -1,32 +1,24 @@
 ---
 
 # ========================
-# Introduction
-# ========================
-#   Where you will can define all the data that will be used across the dotfiles
-#   This allow to prevent push sensitive information an increase the personalization of the project
-#   Follow the instructions to fill, at least, the required vars.
-
-
-# ========================
 # Dotfiles Environment
 # ========================
-#   Description: Will affect some specific features that can be active/disable or work differently depending the environment
-#   Values: desktop | laptop
-#   Default: desktop
-#   Required: true
-target_environment: desktop # desktop | laptop
+
+# Will affect some specific features that can be active/disable or work differently depending the environment
+target_environment: desktop # desktop / laptop
+
+# The linux username of the one who will use the dotfiles
+linux_username: "{{ ansible_facts['user_id'] }}"
+
+# The linux user home directory, (should be be equivalent to /home/{{ linux_username }})
+linux_user_home: "{{ ansible_facts['user_dir'] }}"
 
 # ========================
 # Syncthing
 # ========================
-#   Description: Syncthing allow synchronize folders across multiple devices with a P2P connection
 
-#   Values: string
-#   Default: your Linux username
-#   Required: false
-syncthing_gui_user: "{{ ansible_facts['user_id'] }}"
+# Syncthing GUI username
+syncthing_gui_user: "{{ linux_username }}"
 
-#   Values: string (bcrypt password hash)
-#   Required: false
+# Syncthing GUI username
 # syncthing_gui_password: Put here your bcrypt password hash

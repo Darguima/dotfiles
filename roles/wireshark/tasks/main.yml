@@ -4,9 +4,9 @@
     state: latest
   become: True
 
-- name: "Adding user '{{ user }}' to 'wireshark' group"
+- name: "Adding user '{{ linux_username }}' to 'wireshark' group"
   user:
-    name: "{{ user }}"
+    name: "{{ linux_username }}"
     groups: wireshark
     append: True
   become: True

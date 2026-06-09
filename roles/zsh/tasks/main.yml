@@ -54,7 +54,7 @@
     dest: "{{ZSH_CUSTOM}}/themes/powerlevel10k"
 
 - name: Changing default shell
-  command: "chsh --shell $(command -v zsh) {{user}}"
+  command: "chsh --shell $(command -v zsh) {{ linux_username }}"
   become: true
 
 - name: Copying dotfiles
@@ -63,8 +63,8 @@
     dest: "{{ item.dest }}"
   loop:
     - src: zshrc
-      dest: "{{ ansible_facts['user_dir'] }}/.zshrc"
+      dest: "{{ linux_user_home }}/.zshrc"
     - src: p10k.zsh
-      dest: "{{ ansible_facts['user_dir'] }}/.p10k.zsh"
+      dest: "{{ linux_user_home }}/.p10k.zsh"
     - src: modules/
-      dest: "{{ ansible_facts['user_dir'] }}/.zshrc.d/"
+      dest: "{{ linux_user_home }}/.zshrc.d/"

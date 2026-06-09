@@ -6,10 +6,10 @@
 
 - name: Ensuring config folder exists
   file:
-    path: "{{ ansible_facts['user_dir'] }}/.config/foot"
+    path: "{{ linux_user_home }}/.config/foot"
     state: directory
 
 - name: Copying Foot config file
   copy:
     src: foot.ini
-    dest: "{{ ansible_facts['user_dir'] }}/.config/foot/foot.ini"
+    dest: "{{ linux_user_home }}/.config/foot/foot.ini"

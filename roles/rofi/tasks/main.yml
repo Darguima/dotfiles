@@ -7,16 +7,16 @@
 - name: Copying rofi configuration files
   copy:
     src: config/
-    dest: "{{ ansible_facts['user_dir'] }}/.config/rofi/"
+    dest: "{{ linux_user_home }}/.config/rofi/"
 
 - name: Ensuring ~/.local/share/fonts directory exists
   file:
-    path: "{{ ansible_facts['user_dir'] }}/.local/share/fonts"
+    path: "{{ linux_user_home }}/.local/share/fonts"
     state: directory
     mode: '0755'
 
 - name: Copy all font files to ~/.local/share/fonts
   copy:
     src: fonts/
-    dest: "{{ ansible_facts['user_dir'] }}/.local/share/fonts/"
+    dest: "{{ linux_user_home }}/.local/share/fonts/"
     mode: '0644'

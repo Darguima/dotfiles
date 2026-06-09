@@ -6,21 +6,21 @@
 
 - name: Ensuring OpenCode config folder exists
   file:
-    path: "{{ ansible_facts['user_dir'] }}/.config/opencode"
+    path: "{{ linux_user_home }}/.config/opencode"
     state: directory
 
 # Check defaults/main.yml for the model variables used in the template.
 - name: Deploying OpenCode config from template
   template:
     src: opencode.jsonc
-    dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/opencode.jsonc"
+    dest: "{{ linux_user_home }}/.config/opencode/opencode.jsonc"
 
 - name: Copying OpenCode Skills folder
   copy:
     src: skills/
-    dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/skills/"
+    dest: "{{ linux_user_home }}/.config/opencode/skills/"
 
 - name: Copying OpenCode TUI config file (keybindings)
   copy:
     src: tui.jsonc
-    dest: "{{ ansible_facts['user_dir'] }}/.config/opencode/tui.jsonc"
+    dest: "{{ linux_user_home }}/.config/opencode/tui.jsonc"

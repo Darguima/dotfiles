@@ -16,9 +16,9 @@
   become: True
   become_user: aur_builder
 
-- name: "Adding user '{{ user }}' to 'vboxusers' group"
+- name: "Adding user '{{ linux_username }}' to 'vboxusers' group"
   user:
-    name: "{{ user }}"
+    name: "{{ linux_username }}"
     groups: vboxusers 
     append: True
   become: True
