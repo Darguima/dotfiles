@@ -20,7 +20,7 @@
     use: yay
     name:
       - wdisplays
-      - glew-wayland # Maybe required by GLEW
+      # - glew-wayland # Apparently glew already supports wayland natively, so this package is not needed
     state: latest
   become: True
   become_user: aur_builder
