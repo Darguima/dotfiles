@@ -5,6 +5,7 @@
       - swaybg
 
       - polkit
+      - polkit-gnome
 
       - swayidle
       - swaylock

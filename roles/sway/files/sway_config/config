@@ -30,6 +30,8 @@ include /etc/sway/config.d/*
 
 ### === Startup Apps ============================================
 
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
 exec nm-applet
 exec blueman-applet
 exec kdeconnect-indicator
