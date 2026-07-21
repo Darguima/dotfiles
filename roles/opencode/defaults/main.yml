@@ -1,20 +1,26 @@
-# OpenCode Zen ========
-# opencode_provider_name: "opencode-go"
+# OpenCode Zen Free ========
+# opencode_provider_name: "opencode"
 # opencode_plan_model: "nemotron-3-ultra-free"
 # opencode_build_model: "deepseek-v4-flash-free"
-# opencode_general_model: "big-pickle"
+# opencode_general_model: "mimo-v2.5-free"
 
 # OpenCode Zen ========
-opencode_provider_name: "opencode-go"
-opencode_plan_model: "qwen3.7-max"
-opencode_build_model: "deepseek-v4-pro"
-opencode_general_model: "deepseek-v4-flash"
+# opencode_provider_name: "opencode-go"
+# opencode_plan_model: "qwen3.7-plus"
+# opencode_build_model: "deepseek-v4-flash"
+# opencode_general_model: "deepseek-v4-flash"
 
 # Github Copilot ========
 # opencode_provider_name: "github-copilot"
 # opencode_plan_model: "gemini-2.1-pro-preview"
 # opencode_build_model: "gpt-5.2-codex"
 # opencode_general_model: "gpt-5.2-codex"
+
+# Google ========
+opencode_provider_name: "google"
+opencode_plan_model: "gemini-3.1-pro-preview"
+opencode_build_model: "gemini-3.5-flash"
+opencode_general_model: "gemini-3.5-flash"
 
 
 
