@@ -1,28 +1,13 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "plugin": [
-    // "superpowers@git+https://github.com/obra/superpowers.git"
-  ],
-
-  "command": {
-    "debug": {
-      "template": "Run the tests and fix any failing logic. Use terminal commands to verify.",
-      "model": "{{ opencode_plan_model }}",
-      "description": "Deep debug"
-    }
-  },
-  
-  // Environment setup
-  "shell": "zsh",
+  "$schema": "https://opencode.ai/config.json",
+  "shell": "/bin/zsh",
   "logLevel": "INFO",
-  "snapshot": true,
 
-  // Server settings
+  // Opencode Web and serve - IMPROVE AND EXPLORE
   "server": {
+    "port": 4096,
     "hostname": "0.0.0.0",
-    "mdns": false,
-    "port": 3000
+    "mdns": true // allow network discovery
   },
 
   // Ignored directories for file watcher
@@ -38,74 +23,74 @@
     ]
   },
 
-  // Agent execution permissions
-  "permission": {
-    // "read": "allow",
-    // "edit": "allow",
-    // "task": "ask",
-    // "bash": {
-    //   "*": "ask",
-    //   "ls": "allow",
-    //   "ls *": "allow",
-    //   "cat *": "allow",
-    //   "pwd": "allow",
-    //   "tree": "allow",
-    //   "tree *": "allow",
-    //   "grep *": "allow",
-    //   "rg *": "allow",
-    //   "find *": "allow"
-    // }
-  },
+  "plugin": [
+    // "superpowers@git+https://github.com/obra/superpowers.git"
+  ],
 
-  // Developer tools and MCP servers
-  "formatter": true,
-  "lsp": true,
-  "mcp": {
-  },
-
-  // Context and token memory management
-  "compaction": {
-    "auto": true,
-    "prune": false,
-    "tail_turns": 2
-  },
-  "tool_output": {
-    "max_lines": 2000,
-    "max_bytes": 51200
-  },
-
-  // Image attachment settings
-  "attachment": {
-    "image": {
-      "auto_resize": true,
-      "max_width": 2000,
-      "max_height": 2000
+  "command": {
+    "docs": {
+      "description": "Generate technical documentation for the current code",
+      "template": "Generate clear technical documentation for the provided code or current file. Focus on data structures, algorithmic flow, memory management, and any specific hardware or performance constraints.",
+      "agent": "build"
+    },
+    "debug": {
+      "description": "Deep debug",
+      "template": "Run the tests and fix any failing logic. Use terminal commands to verify.",
+      "agent": "build"
     }
   },
 
-  // Providers & model variants configuration
+  // "snapshot": true,
+  "share": "manual", // Share conversation with link - EXPLORE
+  "autoupdate": "notify",
+  "formatter": true,
+  "lsp": true,
+  "default_agent": "plan",
+
   "provider": {
     "{{ opencode_provider_name }}": {
       "models": {
         "{{ opencode_plan_model }}": {
+          "reasoning": true,
+          "temperature": true,
           "variants": {
-            "plan": {
-              "temperature": 0.1,
-              "reasoningEffort": "high"
+            "max_reasoning": {
+              // OpenAI / Google
+              "reasoningEffort": "high",
+              "textVerbosity": "low",
+              // Anthropic
+              "thinking": {
+                "type": "enabled",
+                "budgetTokens": 32000
+              }
             }
           }
         },
         "{{ opencode_build_model }}": {
+          "reasoning": true,
+          "temperature": true,
           "variants": {
-            "build": {
-              "temperature": 0.2
+            "low_reasoning": {
+              // OpenAI / Google
+              "reasoningEffort": "low",
+              // Anthropic
+              "thinking": {
+                "type": "disabled"
+              }
             }
           }
         },
-        "{{ opencode_general_model }}": {
+        "{{ opencode_chat_model }}": {
+          "reasoning": true,
+          "temperature": true,
           "variants": {
-            "general": {
-              "temperature": 0.6
+            "no_reasoning": {
+              // OpenAI / Google
+              "reasoningEffort": "none",
+              // Anthropic
+              "thinking": {
+                "type": "disabled"
+              }
             }
           }
         }
@@ -113,27 +98,45 @@
     }
   },
 
-  // Agent role assignments mappings
   "agent": {
     "plan": {
+      "description": "Architectural planning mode using a powerful reasoning model. It outlines the system structure and task breakdown.",
+      "mode": "primary", // Must be primary to be used as default
       "model": "{{ opencode_provider_name }}/{{ opencode_plan_model }}",
-      "variant": "plan",
-      "mode": "primary",
-      "description": "Architect agent for structural planning."
+      "variant": "max_reasoning",
+      "temperature": 0.0, // Strict, deterministic logic for architecture design
+      "top_p": 0.1,
+      "prompt": "You are an expert software architect. Your goal is to design the system architecture, evaluate design patterns, and create a step-by-step implementation plan. Focus on rigorous logic, security, and maintainability. You are strictly forbidden from writing or modifying actual codebase files.",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny"
+      }
     },
     "build": {
+      "description": "Implementation mode. Fast model focused on writing code, executing the plan, and fixing potential compilation or logic bugs.",
+      "mode": "primary",
       "model": "{{ opencode_provider_name }}/{{ opencode_build_model }}",
-      "variant": "build",
-      "mode": "primary",
-      "description": "Build agent for active development."
+      "variant": "low_reasoning",
+      "temperature": 0.3, // Low-mid temperature for coding accuracy with slight flexibility for bug fixing
+      "top_p": 0.8,
+      "prompt": "You are a senior software engineer. Your task is to implement the architecture plan provided. Write clean, efficient, and well-documented code. If bugs or compilation errors arise, fix them autonomously.",
+      "permission": {
+        "edit": "allow",
+        "bash": "ask"
+      }
     },
-    "general": {
-      "model": "{{ opencode_provider_name }}/{{ opencode_general_model }}",
-      "variant": "general",
+    "chat": {
+      "description": "Conversational assistant for code discussion, theory, and brainstorming.",
       "mode": "primary",
-      "description": "General purpose chat agent."
+      "model": "{{ opencode_provider_name }}/{{ opencode_chat_model }}",
+      "variant": "no_reasoning",
+      "temperature": 0.7, // Higher temperature for creative brainstorming and natural conversation
+      "top_p": 0.95,
+      "prompt": "You are a helpful pair-programming assistant. Discuss logic, explain complex programming concepts, and brainstorm solutions with the user. Your main goal is chat about the code and not to implement code or run commands.",
+      "permission": {
+        "edit": "ask",
+        "bash": "ask"
+      }
     }
-  },
-  
-  "default_agent": "plan"
+  }
 }

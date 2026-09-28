@@ -5,7 +5,7 @@
     "messages_line_up": "alt+k,ctrl+k",
     "messages_line_down": "alt+j,ctrl+j",
     "messages_half_page_up": "alt+u,ctrl+u",
-    "messages_half_page_down": "alt+j,ctrl+j",
+    "messages_half_page_down": "alt+d,ctrl+d",
     "messages_first": "ctrl+g,home",
     "messages_last": "ctrl+shift+g,end"
   }
