@@ -212,13 +212,10 @@
   become: True
   become_user: aur_builder
 
-# - name: Installing Stremio
-#   kewlfft.aur.aur:
-#     use: yay
-#     name: stremio
-#     state: latest
-#   become: True
-#   become_user: aur_builder
+- name: Installing Stremio
+  community.general.flatpak:
+    name: com.stremio.Stremio
+    state: present
 
 - name: Installing Grayjay
   kewlfft.aur.aur:

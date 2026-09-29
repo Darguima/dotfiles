@@ -1,0 +1,12 @@
+- name: Installing flatpak
+  pacman:
+    name: flatpak
+    state: latest
+  become: true
+
+- name: Adding Flathub remote
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
