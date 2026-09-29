@@ -1,0 +1,27 @@
+- name: Installing system fonts
+  pacman:
+    name:
+      - fontconfig
+      - inter-font
+      - noto-fonts
+      - noto-fonts-emoji
+      - ttf-dejavu
+      - ttf-liberation
+      - ttf-fira-code
+      - ttf-nerd-fonts-symbols
+    state: latest
+  become: true
+
+- name: Ensuring fontconfig config directory exists
+  file:
+    path: "{{ linux_user_home }}/.config/fontconfig"
+    state: directory
+
+- name: Copying fontconfig aliases
+  copy:
+    src: fonts.conf
+    dest: "{{ linux_user_home }}/.config/fontconfig/fonts.conf"
+
+- name: Refreshing font cache
+  command: fc-cache -f
+  changed_when: false

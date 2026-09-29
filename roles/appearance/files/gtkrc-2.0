@@ -1,6 +1,6 @@
 gtk-theme-name="Adwaita-dark"
 gtk-icon-theme-name="Papirus-Dark"
-gtk-font-name="Cantarell 11"
+gtk-font-name="Inter 11"
 gtk-application-prefer-dark-theme=true
 gtk-cursor-theme-name="breeze_cursors"
 gtk-cursor-theme-size=0

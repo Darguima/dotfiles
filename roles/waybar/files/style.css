@@ -1,6 +1,6 @@
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    /* Icons are provided by Symbols Nerd Font */
+    font-family: Inter, "Symbols Nerd Font", sans-serif;
     font-size: 13px;
 }
 
@@ -162,5 +162,5 @@ label:focus {
 }
 
 #custom-notification {
-    font-family: "NotoSansMono Nerd Font";
+    font-family: "Symbols Nerd Font";
 }

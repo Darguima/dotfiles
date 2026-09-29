@@ -2,7 +2,6 @@
   pacman:
     name:
       - waybar
-      - ttf-font-awesome # used in style.css
     state: latest
   become: true
 

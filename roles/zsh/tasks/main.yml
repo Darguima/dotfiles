@@ -27,26 +27,13 @@
     repo: https://github.com/jeffreytse/zsh-vi-mode
     dest: "{{ZSH_CUSTOM}}/plugins/zsh-vi-mode"
 
-- name: Ensuring Meslo Nerd Font directory
+- name: Installing Meslo Nerd Font for Powerlevel10k
+  kewlfft.aur.aur:
+    use: yay
+    name: ttf-meslo-nerd-font-powerlevel10k
+    state: latest
   become: true
-  file:
-    path: /usr/share/fonts/MesloLGS
-    state: directory
-
-- name: Installing Meslo Nerd Font
-  become: true
-  get_url:
-    url: "{{ item.url }}"
-    dest: "{{ item.dest }}"
-  loop:
-    - url: "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf"
-      dest: "/usr/share/fonts/MesloLGS/MesloLGS NF Regular.ttf"
-    - url: "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf"
-      dest: "/usr/share/fonts/MesloLGS/MesloLGS NF Bold.ttf"
-    - url: "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf"
-      dest: "/usr/share/fonts/MesloLGS/MesloLGS NF Italic.ttf"
-    - url: "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
-      dest: "/usr/share/fonts/MesloLGS/MesloLGS NF Bold Italic.ttf"
+  become_user: aur_builder
 
 - name: Cloning powerlevel10k theme
   git:
