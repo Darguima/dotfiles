@@ -70,22 +70,22 @@ application/vnd.openxmlformats-officedocument.presentationml.presentation=libreo
 application/vnd.visio=libreoffice-draw.desktop
 
 # Compressed Files
-application/zip=org.gnome.Nautilus.desktop;
-application/x-7z-compressed=org.gnome.Nautilus.desktop;
-application/x-bzip=org.gnome.Nautilus.desktop;
-application/x-bzip-compressed-tar=org.gnome.Nautilus.desktop;
-application/x-compressed-tar=org.gnome.Nautilus.desktop;
-application/x-gzip=org.gnome.Nautilus.desktop;
-application/x-xz=org.gnome.Nautilus.desktop;
-application/x-rar-compressed=org.gnome.Nautilus.desktop;
-application/x-tar=org.gnome.Nautilus.desktop;
-application/x-iso9660-image=org.gnome.Nautilus.desktop;
-application/x-lzip=org.gnome.Nautilus.desktop;
-application/x-lzma=org.gnome.Nautilus.desktop;
-application/x-xar=org.gnome.Nautilus.desktop;
-application/x-archive=org.gnome.Nautilus.desktop;
-application/vnd.ms-cab-compressed=org.gnome.Nautilus.desktop;
-application/x-apple-diskimage=org.gnome.Nautilus.desktop;
+application/zip=extract-here.desktop;
+application/x-7z-compressed=extract-here.desktop;
+application/x-bzip=extract-here.desktop;
+application/x-bzip-compressed-tar=extract-here.desktop;
+application/x-compressed-tar=extract-here.desktop;
+application/x-gzip=extract-here.desktop;
+application/x-xz=extract-here.desktop;
+application/x-rar-compressed=extract-here.desktop;
+application/x-tar=extract-here.desktop;
+application/x-iso9660-image=extract-here.desktop;
+application/x-lzip=extract-here.desktop;
+application/x-lzma=extract-here.desktop;
+application/x-xar=extract-here.desktop;
+application/x-archive=extract-here.desktop;
+application/vnd.ms-cab-compressed=extract-here.desktop;
+application/x-apple-diskimage=extract-here.desktop;
 
 # Torrent
 application/x-bittorrent=org.qbittorrent.qBittorrent.desktop;

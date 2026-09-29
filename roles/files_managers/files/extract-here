@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+for archive in "$@"; do
+    target_dir="$(dirname "$(realpath "$archive")")"
+
+    case "$(basename "$archive")" in
+        *.tar|*.tar.gz|*.tgz|*.tar.bz2|*.tbz2|*.tbz|*.tar.xz|*.txz|*.tar.zst|*.tzst)
+            tar -xf "$archive" -C "$target_dir"
+            ;;
+        *)
+            7z x "$archive" -o"$target_dir" -y
+            ;;
+    esac
+done

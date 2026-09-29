@@ -18,18 +18,46 @@
     src: gtk3_bookmarks
     dest: "{{ linux_user_home }}/.config/gtk-3.0/bookmarks"
 
-- name: Configuring MIME Types default applications
-  copy:
-    src: mimeapps.list
-    dest: "{{ linux_user_home }}/.config/"
-
 - name: Copying ZSH `xdg-open` aliases file
   copy:
     src: aliases_xdg_open.zsh
     dest: "{{ linux_user_home }}/.zshrc.d/"
 
-# Yazi stuff
+# Archive extraction stuff
 
+- name: Installing archive extraction dependencies
+  pacman:
+    name:
+      - 7zip
+      - tar
+    state: latest
+  become: true
+
+- name: Copying extract-here script
+  copy:
+    src: extract-here
+    dest: /usr/local/bin/extract-here
+    mode: "0755"
+  become: true
+
+- name: Ensuring local applications directory exists
+  file:
+    path: "{{ linux_user_home }}/.local/share/applications"
+    state: directory
+
+- name: Copying extract-here desktop entry
+  copy:
+    src: extract-here.desktop
+    dest: "{{ linux_user_home }}/.local/share/applications/extract-here.desktop"
+
+# MIME configuration
+
+- name: Configuring MIME Types default applications
+  copy:
+    src: mimeapps.list
+    dest: "{{ linux_user_home }}/.config/"
+
+# Yazi stuff
 - name: Installing Yazi and file previewer dependencies
   pacman:
     name:
@@ -50,7 +78,6 @@
   file:
     path: "{{ linux_user_home }}/.config/yazi"
     state: directory
-
 
 - name: Copying Yazi configuration file
   copy:

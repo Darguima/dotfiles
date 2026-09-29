@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Extract Here
+Exec=extract-here %F
+NoDisplay=true
+Terminal=false
+MimeType=application/zip;application/x-7z-compressed;application/x-tar;application/gzip;application/x-bzip;application/x-bzip-compressed-tar;application/x-xz;application/x-rar-compressed;application/x-compressed-tar;application/x-lzip;application/x-lzma;application/x-xar;application/vnd.ms-cab-compressed;application/x-archive;
