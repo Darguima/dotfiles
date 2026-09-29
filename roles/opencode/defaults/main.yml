@@ -1,28 +1,19 @@
 # OpenCode Zen Free ========
 # opencode_provider_name: "opencode"
-# opencode_plan_model: "nemotron-3-ultra-free"
-# opencode_build_model: "deepseek-v4-flash-free"
-# opencode_chat_model: "mimo-v2.5-free"
 
 # OpenCode Go ========
 opencode_provider_name: "opencode-go"
-opencode_plan_model: "deepseek-v4-pro" # "qwen3.8-max"
-opencode_build_model: "kimi-k2.7-code" #"qwen3.7-plus" # "deepseek-v4-flash"
-opencode_chat_model: "deepseek-v4.1-flash" #"mimo-v2-omni"
+opencode_plan_pro_model: "qwen3.8-max" # "deepseek-v4-pro"
+opencode_plan_model: "qwen3.7-plus" # "qwen3.6-plus"
+opencode_build_pro_model: "kimi-k2.7-code" # "mimo-v2.6-pro"
+opencode_build_model: "deepseek-v4.1-flash" # "qwen3.8-flash"
+opencode_chat_model: "mimo-v2-omni" # "glm-5.3-flash"
 
 # Github Copilot ========
 # opencode_provider_name: "github-copilot"
-# opencode_plan_model: "gemini-2.1-pro-preview"
-# opencode_build_model: "gpt-5.2-codex"
-# opencode_chat_model: "gpt-5.2-codex"
 
 # Google ========
 # opencode_provider_name: "google"
-# opencode_plan_model: "gemini-3.1-pro-preview"
-# opencode_build_model: "gemini-3.5-flash"
-# opencode_chat_model: "gemini-3.5-flash"
-
-
 
 ### Models List Website - https://opencode.ai/docs/go/
 ### Models List JSON - https://opencode.ai/docs/go/#models - https://opencode.ai/zen/go/v1/models

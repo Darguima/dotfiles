@@ -2,14 +2,14 @@
   "$schema": "https://opencode.ai/config.json",
   "shell": "/bin/zsh",
   "logLevel": "INFO",
-
+  
   // Opencode Web and serve - IMPROVE AND EXPLORE
   "server": {
     "port": 4096,
     "hostname": "0.0.0.0",
     "mdns": true // allow network discovery
   },
-
+  
   // Ignored directories for file watcher
   "watcher": {
     "ignore": [
@@ -22,11 +22,9 @@
       "**/.venv/**"
     ]
   },
-
   "plugin": [
     // "superpowers@git+https://github.com/obra/superpowers.git"
   ],
-
   "command": {
     "docs": {
       "description": "Generate technical documentation for the current code",
@@ -36,90 +34,123 @@
     "debug": {
       "description": "Deep debug",
       "template": "Run the tests and fix any failing logic. Use terminal commands to verify.",
-      "agent": "build"
+      "agent": "build_pro"
     }
   },
-
+  
   // "snapshot": true,
   "share": "manual", // Share conversation with link - EXPLORE
   "autoupdate": "notify",
   "formatter": true,
   "lsp": true,
   "default_agent": "plan",
-
+  
   "provider": {
     "{{ opencode_provider_name }}": {
       "models": {
-        "{{ opencode_plan_model }}": {
+        "{{ opencode_plan_pro_model }}": {
           "reasoning": true,
           "temperature": true,
           "variants": {
             "max_reasoning": {
-              // OpenAI / Google
               "reasoningEffort": "high",
               "textVerbosity": "low",
-              // Anthropic
-              "thinking": {
-                "type": "enabled",
-                "budgetTokens": 32000
-              }
+              "thinking": { "type": "enabled", "budgetTokens": 32000 }
             }
           }
         },
-        "{{ opencode_build_model }}": {
+        "{{ opencode_plan_model }}": {
+          "reasoning": true,
+          "temperature": true,
+          "variants": {
+            "medium_reasoning": {
+              "reasoningEffort": "medium",
+              "thinking": { "type": "enabled", "budgetTokens": 16000 }
+            }
+          }
+        },
+        "{{ opencode_build_pro_model }}": {
           "reasoning": true,
           "temperature": true,
           "variants": {
             "low_reasoning": {
-              // OpenAI / Google
               "reasoningEffort": "low",
-              // Anthropic
-              "thinking": {
-                "type": "disabled"
-              }
+              "thinking": { "type": "disabled" }
+            }
+          }
+        },
+        "{{ opencode_build_model }}": {
+          "reasoning": false,
+          "temperature": true,
+          "variants": {
+            "no_reasoning": {
+              "reasoningEffort": "none",
+              "thinking": { "type": "disabled" }
             }
           }
         },
         "{{ opencode_chat_model }}": {
-          "reasoning": true,
+          "reasoning": false,
           "temperature": true,
           "variants": {
             "no_reasoning": {
-              // OpenAI / Google
               "reasoningEffort": "none",
-              // Anthropic
-              "thinking": {
-                "type": "disabled"
-              }
+              "thinking": { "type": "disabled" }
             }
           }
         }
       }
     }
   },
-
+  
   "agent": {
-    "plan": {
-      "description": "Architectural planning mode using a powerful reasoning model. It outlines the system structure and task breakdown.",
-      "mode": "primary", // Must be primary to be used as default
-      "model": "{{ opencode_provider_name }}/{{ opencode_plan_model }}",
+    "plan_pro": {
+      "description": "Architectural planning mode using a PREMIUM reasoning model. Use only for complex system design.",
+      "mode": "primary",
+      "model": "{{ opencode_provider_name }}/{{ opencode_plan_pro_model }}",
       "variant": "max_reasoning",
-      "temperature": 0.0, // Strict, deterministic logic for architecture design
+      "temperature": 0.0,
       "top_p": 0.1,
-      "prompt": "You are an expert software architect. Your goal is to design the system architecture, evaluate design patterns, and create a step-by-step implementation plan. Focus on rigorous logic, security, and maintainability. You are strictly forbidden from writing or modifying actual codebase files.",
+      "prompt": "You are an expert software architect handling complex design tasks. Design system architecture, evaluate patterns, and create step-by-step implementation plans. Focus on rigorous logic, security, and maintainability. You are strictly forbidden from writing or modifying actual codebase files.",
       "permission": {
         "edit": "deny",
         "bash": "deny"
       }
     },
+    "plan": {
+      "description": "Standard planning mode. Outlines task breakdowns and logic for daily coding.",
+      "mode": "primary", 
+      "model": "{{ opencode_provider_name }}/{{ opencode_plan_model }}",
+      "variant": "medium_reasoning",
+      "temperature": 0.0,
+      "top_p": 0.1,
+      "prompt": "You are a software architect. Draft implementation plans and logic structures. Do not edit actual codebase files.",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny"
+      }
+    },
+    "build_pro": {
+      "description": "Premium implementation mode. Fast, highly capable model focused on complex refactoring and hard bugs.",
+      "mode": "primary",
+      "model": "{{ opencode_provider_name }}/{{ opencode_build_pro_model }}",
+      "variant": "low_reasoning",
+      "temperature": 0.3,
+      "top_p": 0.8,
+      "prompt": "You are a senior software engineer handling complex implementation. Write clean, efficient code. If deep bugs or compilation errors arise, fix them autonomously.",
+      "permission": {
+        "edit": "allow",
+        "bash": "ask"
+      }
+    },
     "build": {
-      "description": "Implementation mode. Fast model focused on writing code, executing the plan, and fixing potential compilation or logic bugs.",
+      "description": "Standard implementation mode. Cost-effective model for routine coding and boilerplate.",
       "mode": "primary",
       "model": "{{ opencode_provider_name }}/{{ opencode_build_model }}",
-      "variant": "low_reasoning",
-      "temperature": 0.3, // Low-mid temperature for coding accuracy with slight flexibility for bug fixing
+      "variant": "no_reasoning",
+      "temperature": 0.3,
       "top_p": 0.8,
-      "prompt": "You are a senior software engineer. Your task is to implement the architecture plan provided. Write clean, efficient, and well-documented code. If bugs or compilation errors arise, fix them autonomously.",
+      "prompt": "You are a software developer. Implement the provided instructions efficiently. Fix minor bugs autonomously.",
       "permission": {
         "edit": "allow",
         "bash": "ask"
@@ -130,7 +161,7 @@
       "mode": "primary",
       "model": "{{ opencode_provider_name }}/{{ opencode_chat_model }}",
       "variant": "no_reasoning",
-      "temperature": 0.7, // Higher temperature for creative brainstorming and natural conversation
+      "temperature": 0.7,
       "top_p": 0.95,
       "prompt": "You are a helpful pair-programming assistant. Discuss logic, explain complex programming concepts, and brainstorm solutions with the user. Your main goal is chat about the code and not to implement code or run commands.",
       "permission": {
