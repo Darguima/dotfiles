@@ -7,7 +7,7 @@ opencode_plan_pro_model: "qwen3.8-max" # "deepseek-v4-pro"
 opencode_plan_model: "qwen3.7-plus" # "qwen3.6-plus"
 opencode_build_pro_model: "kimi-k2.7-code" # "mimo-v2.6-pro"
 opencode_build_model: "deepseek-v4.1-flash" # "qwen3.8-flash"
-opencode_chat_model: "mimo-v2-omni" # "glm-5.3-flash"
+opencode_chat_model: "glm-5.3-flash"
 
 # Github Copilot ========
 # opencode_provider_name: "github-copilot"
