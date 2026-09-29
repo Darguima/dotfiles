@@ -25,3 +25,32 @@
 - name: Refreshing font cache
   command: fc-cache -f
   changed_when: false
+
+# User fonts: fonts made available to applications (LibreOffice, Word, ...)
+# but NOT part of the system fontconfig stack. Add new fonts by appending an
+# entry (name + url) to the loop below.
+
+- name: Ensuring user fonts directory exists
+  file:
+    path: "{{ linux_user_home }}/.local/share/fonts"
+    state: directory
+
+- name: Downloading user fonts
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ linux_user_home }}/.local/share/fonts/{{ item.name }}"
+  loop:
+    - name: Poppins-Regular.ttf
+      url: https://raw.githubusercontent.com/google/fonts/main/ofl/poppins/Poppins-Regular.ttf
+    - name: Poppins-Bold.ttf
+      url: https://raw.githubusercontent.com/google/fonts/main/ofl/poppins/Poppins-Bold.ttf
+    - name: Poppins-Italic.ttf
+      url: https://raw.githubusercontent.com/google/fonts/main/ofl/poppins/Poppins-Italic.ttf
+    - name: Poppins-BoldItalic.ttf
+      url: https://raw.githubusercontent.com/google/fonts/main/ofl/poppins/Poppins-BoldItalic.ttf
+    - name: JUST_NOVA-Regular.ttf
+      url: https://justachange.pt/wp-content/themes/just-theme/fonts/JUST_NOVA-Regular.ttf
+
+- name: Refreshing font cache
+  command: fc-cache -f
+  changed_when: false
