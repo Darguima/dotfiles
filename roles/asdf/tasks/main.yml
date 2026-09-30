@@ -1,0 +1,19 @@
+- name: Cloning asdf
+  git:
+    repo: https://github.com/asdf-vm/asdf.git
+    dest: "{{ linux_user_home }}/.asdf"
+    single_branch: yes
+    version: v0.13.1
+
+- name: Copying ZSH asdf include file
+  copy:
+    src: include_asdf.zsh
+    dest: "{{ linux_user_home }}/.zshrc.d/"
+
+# For some projects is useful
+- name: Installing NodeJS plugin
+  shell: ". {{ linux_user_home }}/.asdf/asdf.sh && asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git"
+  args:
+    executable: /bin/bash
+  register: command_output
+  changed_when: "'already added' not in command_output.stdout"

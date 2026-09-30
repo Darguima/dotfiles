@@ -1,1 +1,0 @@
-include $HOME/.asdf/asdf.sh
