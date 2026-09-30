@@ -6,6 +6,36 @@
     state: latest
   become: true
 
+# PAM — unlock the login keyring automatically at login
+- name: Unlocking keyring on authentication (PAM auth)
+  lineinfile:
+    path: /etc/pam.d/login
+    line: "auth       optional     pam_gnome_keyring.so"
+    insertafter: "^auth\\s+include\\s+system-local-login"
+  become: true
+
+- name: Unlocking keyring on session start (PAM session)
+  lineinfile:
+    path: /etc/pam.d/login
+    line: "session    optional     pam_gnome_keyring.so auto_start"
+    insertafter: "^session\\s+include\\s+system-local-login"
+  become: true
+
+- name: Keeping keyring password in sync on password change (PAM password)
+  lineinfile:
+    path: /etc/pam.d/passwd
+    line: "password   optional     pam_gnome_keyring.so"
+    insertafter: "^password\\s+include\\s+system-auth"
+  become: true
+
+# Start the keyring daemon before Sway (loaded from ~/.zshrc.d, runs before zzz_exec_sway.zsh)
+- name: Copying keyring ZSH import
+  copy:
+    src: init_gnome_keyring.zsh
+    dest: "{{ linux_user_home }}/.zshrc.d/"
+
+
+# BitWarden
 - name: Installing Rofi Bitwarden (rbw, rofi-rbw, wtype)
   pacman:
     name:
