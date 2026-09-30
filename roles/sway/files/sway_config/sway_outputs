@@ -32,8 +32,5 @@ output $desktop_monitor_1   {
   scale 1.2
 }
 
-# Start kanshi to handle monitor modifications on live
-exec_always {
-  pkill kanshi
-  kanshi &
-}
+# The outputs configuration is handled by kanshi.service after the login
+

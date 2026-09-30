@@ -34,7 +34,7 @@
   become: True
   become_user: aur_builder
 
-# Sway
+# Sway ======
 - name: Ensuring sway config directory exists
   file:
     path: "{{ linux_user_home }}/.config/sway"
@@ -64,7 +64,7 @@
     mode: 0755
   become: true
 
-# Kanshi
+# Kanshi ======
 - name: Ensuring kanshi config directory exists
   file:
     path: "{{ linux_user_home }}/.config/kanshi"
@@ -72,10 +72,27 @@
 
 - name: Copying kanshi config file
   copy:
-    src: kanshi_config
+    src: kanshi/kanshi_config
     dest: "{{ linux_user_home }}/.config/kanshi/config"
 
-# Sway Notification Center
+- name: Ensuring systemd user directory exists
+  file:
+    path: "{{ linux_user_home }}/.config/systemd/user"
+    state: directory
+
+- name: Copying kanshi systemd user service
+  copy:
+    src: kanshi/kanshi.service
+    dest: "{{ linux_user_home }}/.config/systemd/user/kanshi.service"
+
+- name: Enabling and Starting kanshi systemd user service
+  systemd:
+    name: kanshi.service
+    state: started
+    enabled: yes
+    scope: "user"
+
+# Sway Notification Center ======
 - name: Ensuring swaync config directory exists
   file:
     path: "{{ linux_user_home }}/.config/swaync"

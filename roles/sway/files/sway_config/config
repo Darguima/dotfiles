@@ -31,6 +31,7 @@ include /etc/sway/config.d/*
 ### === Startup Apps ============================================
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec_always systemctl restart kanshi.service --user
 
 exec nm-applet
 exec blueman-applet
