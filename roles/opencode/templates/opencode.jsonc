@@ -106,6 +106,7 @@
   "agent": {
     "plan_pro": {
       "description": "Architectural planning mode using a PREMIUM reasoning model. Use only for complex system design.",
+      "color": "#e02020",
       "mode": "primary",
       "model": "{{ opencode_provider_name }}/{{ opencode_plan_pro_model }}",
       "variant": "max_reasoning",
@@ -119,6 +120,7 @@
     },
     "plan": {
       "description": "Standard planning mode. Outlines task breakdowns and logic for daily coding.",
+      "color": "#f0c000",
       "mode": "primary", 
       "model": "{{ opencode_provider_name }}/{{ opencode_plan_model }}",
       "variant": "medium_reasoning",
@@ -132,6 +134,7 @@
     },
     "build_pro": {
       "description": "Premium implementation mode. Fast, highly capable model focused on complex refactoring and hard bugs.",
+      "color": "#f08000",
       "mode": "primary",
       "model": "{{ opencode_provider_name }}/{{ opencode_build_pro_model }}",
       "variant": "low_reasoning",
@@ -145,6 +148,7 @@
     },
     "build": {
       "description": "Standard implementation mode. Cost-effective model for routine coding and boilerplate.",
+      "color": "#3070d0",
       "mode": "primary",
       "model": "{{ opencode_provider_name }}/{{ opencode_build_model }}",
       "variant": "no_reasoning",
@@ -158,6 +162,7 @@
     },
     "chat": {
       "description": "Conversational assistant for code discussion, theory, and brainstorming.",
+      "color": "#20b040",
       "mode": "primary",
       "model": "{{ opencode_provider_name }}/{{ opencode_chat_model }}",
       "variant": "no_reasoning",
