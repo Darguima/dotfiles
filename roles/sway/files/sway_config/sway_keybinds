@@ -7,6 +7,7 @@
     bindsym $mod+Ctrl+plus exec "swaymsg output $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') scale $(echo $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .scale') + 0.1 | bc)"
     bindsym $mod+Ctrl+equal exec "swaymsg output $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') scale $(echo $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .scale') + 0.1 | bc)"
     bindsym $mod+Ctrl+minus exec "swaymsg output $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') scale $(echo $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .scale') - 0.1 | bc)"
+    bindsym $mod+Ctrl+0 exec "swaymsg output $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') scale 1"
 
 
 # Apps:
