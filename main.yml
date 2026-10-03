@@ -43,6 +43,13 @@
   tags:
     - ssh
 
+- name: Tailscale
+  hosts: all
+  roles:
+    - tailscale
+  tags:
+    - tailscale
+
 - name: Wayland
   hosts: all
   roles:

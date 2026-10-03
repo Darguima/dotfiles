@@ -1,0 +1,26 @@
+- name: Installing Tailscale
+  pacman:
+    name: tailscale
+    state: latest
+  become: true
+
+- name: Enabling and starting tailscaled service
+  systemd:
+    name: tailscaled.service
+    state: started
+    enabled: yes
+  become: true
+
+# Requires Tailscale to be authenticated already (`tailscale up`); fails silently on a fresh install
+- name: Setting current user as Tailscale operator
+  command: tailscale set --operator={{ linux_username }}
+  ignore_errors: true
+
+# Requires Tailscale to be authenticated already (`tailscale up`); fails silently on a fresh install
+- name: Enabling and Starting systray service
+  systemd:
+    name: tailscale-systray
+    state: restarted
+    enabled: yes
+    scope: user
+    daemon_reload: yes

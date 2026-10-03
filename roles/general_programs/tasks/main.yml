@@ -89,13 +89,6 @@
     state: latest
   become: true
 
-- name: Installing Tailscale
-  pacman:
-    name:
-      - tailscale
-    state: latest
-  become: true
-
 - name: Installing Proton VPN GTK App
   pacman:
     name: proton-vpn-gtk-app
