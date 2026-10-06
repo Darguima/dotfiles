@@ -2,7 +2,8 @@
   pacman:
     name:
       - virtualbox
-      - virtualbox-host-modules-arch
+      # - virtualbox-host-dkms - dependency from virtualbox
+      - linux-headers
       - virtualbox-guest-iso
     state: latest
   become: true
