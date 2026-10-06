@@ -11,12 +11,13 @@
     (size 640 480))
 (session-info "toplevel"
     (factory-entry "gimp-single-image-window")
-    (position 4 29)
-    (size 1908 1043)
+    (position 0 0)
+    (size 2125 1162)
+    (monitor 0)
     (open-on-exit)
     (aux-info
-        (left-docks-width "44")
-        (right-docks-width "209")
+        (left-docks-width "52")
+        (right-docks-width "261")
         (maximized "no"))
     (gimp-toolbox
         (side left))
@@ -25,24 +26,11 @@
         (book
             (current-page 0)
             (dockable "gimp-tool-options"
-                (tab-style automatic)
+                (tab-style icon)
                 (aux-info
                     (show-button-bar "true")))
-            (dockable "gimp-channel-list"
-                (tab-style automatic)
-                (preview-size 32)
-                (aux-info
-                    (show-button-bar "true")))
-            (dockable "gimp-vectors-list"
-                (tab-style automatic)
-                (preview-size 32)
-                (aux-info
-                    (show-button-bar "true"))))
-        (book
-            (position 506)
-            (current-page 0)
             (dockable "gimp-layer-list"
-                (tab-style automatic)
+                (tab-style icon)
                 (preview-size 32)
                 (aux-info
                     (show-button-bar "true"))))))

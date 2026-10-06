@@ -4,7 +4,16 @@
     state: latest
   become: true
 
+- name: Checking gimp version
+  command: gimp --version
+  register: gimp_version_output
+  changed_when: false
+
+- name: Setting gimp major.minor version fact
+  set_fact:
+    gimp_version: "{{ gimp_version_output.stdout | regex_search('[0-9]+\\.[0-9]+') }}"
+
 - name: Copying gimp config folder
   copy:
-    src: ./2.10
-    dest: "{{ linux_user_home }}/.config/GIMP/"
+    src: "config/"
+    dest: "{{ linux_user_home }}/.config/GIMP/{{ gimp_version }}"
