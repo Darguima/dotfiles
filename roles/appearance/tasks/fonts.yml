@@ -1,3 +1,6 @@
+# System fonts - are fonts that are set as the default ones to the system
+# All the apps should use this fonts by default based on the fontconfig file
+
 - name: Installing system fonts
   pacman:
     name:
@@ -26,9 +29,18 @@
   command: fc-cache -f
   changed_when: false
 
-# User fonts: fonts made available to applications (LibreOffice, Word, ...)
-# but NOT part of the system fontconfig stack. Add new fonts by appending an
-# entry (name + url) to the loop below.
+# User fonts - this are not default fonts, but are useful for some applications (LibreOffice, Word, Gimp, ...)
+# Add new fonts by appending an entry on the packages or a (name + url) to the loop below
+
+- name: Installing user fonts
+  kewlfft.aur.aur:
+   use: yay
+   name:
+      - ttf-d-din
+      - ttf-poppins
+   state: latest
+  become: True
+  become_user: aur_builder
 
 - name: Ensuring user fonts directory exists
   file:
@@ -40,14 +52,6 @@
     url: "{{ item.url }}"
     dest: "{{ linux_user_home }}/.local/share/fonts/{{ item.name }}"
   loop:
-    - name: Poppins-Regular.ttf
-      url: https://raw.githubusercontent.com/google/fonts/main/ofl/poppins/Poppins-Regular.ttf
-    - name: Poppins-Bold.ttf
-      url: https://raw.githubusercontent.com/google/fonts/main/ofl/poppins/Poppins-Bold.ttf
-    - name: Poppins-Italic.ttf
-      url: https://raw.githubusercontent.com/google/fonts/main/ofl/poppins/Poppins-Italic.ttf
-    - name: Poppins-BoldItalic.ttf
-      url: https://raw.githubusercontent.com/google/fonts/main/ofl/poppins/Poppins-BoldItalic.ttf
     - name: JUST_NOVA-Regular.ttf
       url: https://justachange.pt/wp-content/themes/just-theme/fonts/JUST_NOVA-Regular.ttf
 
