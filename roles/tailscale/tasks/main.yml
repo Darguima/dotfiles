@@ -11,16 +11,29 @@
     enabled: yes
   become: true
 
-# Requires Tailscale to be authenticated already (`tailscale up`); fails silently on a fresh install
-- name: Setting current user as Tailscale operator
-  command: tailscale set --operator={{ linux_username }}
-  ignore_errors: true
+- name: Copying tailnet-connection service file
+  template:
+    src: tailnet-connection.service
+    dest: /etc/systemd/system/tailnet-connection.service
+  become: true
 
-# Requires Tailscale to be authenticated already (`tailscale up`); fails silently on a fresh install
-- name: Enabling and Starting systray service
+- name: Enabling and Starting tailnet-connection service
   systemd:
-    name: tailscale-systray
-    state: restarted
+    name: tailnet-connection.service
+    state: started
+    enabled: yes
+    daemon_reload: yes
+  become: true
+
+- name: Copying tailscale-systray service file
+  copy:
+    src: tailscale-systray.service
+    dest: "{{ linux_user_home }}/.config/systemd/user/tailscale-systray.service"
+
+- name: Enabling and Starting tailscale-systray service
+  systemd:
+    name: tailscale-systray.service
+    state: started
     enabled: yes
     scope: user
     daemon_reload: yes

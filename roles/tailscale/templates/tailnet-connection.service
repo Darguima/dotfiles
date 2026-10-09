@@ -1,0 +1,14 @@
+[Unit]
+Description=Configure Tailscale network connection on boot
+After=tailscaled.service
+Wants=tailscaled.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/tailscale set --operator={{ linux_username }}
+ExecStart=/usr/bin/tailscale switch dsgdevbraga@gmail.com
+ExecStart=/usr/bin/tailscale up --accept-dns=true --accept-routes=true --exit-node="" --reset --operator={{ linux_username }}
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

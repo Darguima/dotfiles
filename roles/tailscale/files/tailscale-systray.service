@@ -1,0 +1,11 @@
+[Unit]
+Description=Tailscale system tray
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/tailscale systray
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
