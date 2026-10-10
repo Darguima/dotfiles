@@ -2,14 +2,12 @@
   "$schema": "https://opencode.ai/config.json",
   "shell": "/bin/zsh",
   "logLevel": "INFO",
-  
   // Opencode Web and serve - IMPROVE AND EXPLORE
   "server": {
     "port": 4096,
     "hostname": "0.0.0.0",
     "mdns": true // allow network discovery
   },
-  
   // Ignored directories for file watcher
   "watcher": {
     "ignore": [
@@ -37,14 +35,12 @@
       "agent": "build_pro"
     }
   },
-  
   // "snapshot": true,
   "share": "manual", // Share conversation with link - EXPLORE
   "autoupdate": "notify",
   "formatter": true,
   "lsp": true,
   "default_agent": "plan",
-  
   "provider": {
     "{{ opencode_provider_name }}": {
       "models": {
@@ -55,7 +51,10 @@
             "max_reasoning": {
               "reasoningEffort": "high",
               "textVerbosity": "low",
-              "thinking": { "type": "enabled", "budgetTokens": 32000 }
+              "thinking": {
+                "type": "enabled",
+                "budgetTokens": 32000
+              }
             }
           }
         },
@@ -65,7 +64,10 @@
           "variants": {
             "medium_reasoning": {
               "reasoningEffort": "medium",
-              "thinking": { "type": "enabled", "budgetTokens": 16000 }
+              "thinking": {
+                "type": "enabled",
+                "budgetTokens": 16000
+              }
             }
           }
         },
@@ -75,7 +77,9 @@
           "variants": {
             "low_reasoning": {
               "reasoningEffort": "low",
-              "thinking": { "type": "disabled" }
+              "thinking": {
+                "type": "disabled"
+              }
             }
           }
         },
@@ -85,7 +89,9 @@
           "variants": {
             "no_reasoning": {
               "reasoningEffort": "none",
-              "thinking": { "type": "disabled" }
+              "thinking": {
+                "type": "disabled"
+              }
             }
           }
         },
@@ -95,14 +101,15 @@
           "variants": {
             "no_reasoning": {
               "reasoningEffort": "none",
-              "thinking": { "type": "disabled" }
+              "thinking": {
+                "type": "disabled"
+              }
             }
           }
         }
       }
     }
   },
-  
   "agent": {
     "plan_pro": {
       "description": "Architectural planning mode using a PREMIUM reasoning model. Use only for complex system design.",
@@ -121,14 +128,16 @@
     "plan": {
       "description": "Standard planning mode. Outlines task breakdowns and logic for daily coding.",
       "color": "#f0c000",
-      "mode": "primary", 
+      "mode": "primary",
       "model": "{{ opencode_provider_name }}/{{ opencode_plan_model }}",
       "variant": "medium_reasoning",
       "temperature": 0.0,
       "top_p": 0.1,
       "prompt": "You are a software architect. Draft implementation plans and logic structures. Do not edit actual codebase files.",
       "permission": {
+        "read": "allow",
         "edit": "deny",
+        "task": "ask",
         "bash": "deny"
       }
     },
@@ -142,7 +151,9 @@
       "top_p": 0.8,
       "prompt": "You are a senior software engineer handling complex implementation. Write clean, efficient code. If deep bugs or compilation errors arise, fix them autonomously.",
       "permission": {
+        "read": "allow",
         "edit": "allow",
+        "task": "ask",
         "bash": "ask"
       }
     },
@@ -156,7 +167,9 @@
       "top_p": 0.8,
       "prompt": "You are a software developer. Implement the provided instructions efficiently. Fix minor bugs autonomously.",
       "permission": {
+        "read": "allow",
         "edit": "allow",
+        "task": "ask",
         "bash": "ask"
       }
     },
@@ -170,7 +183,9 @@
       "top_p": 0.95,
       "prompt": "You are a helpful pair-programming assistant. Discuss logic, explain complex programming concepts, and brainstorm solutions with the user. Your main goal is chat about the code and not to implement code or run commands.",
       "permission": {
+        "read": "allow",
         "edit": "ask",
+        "task": "ask",
         "bash": "ask"
       }
     }
