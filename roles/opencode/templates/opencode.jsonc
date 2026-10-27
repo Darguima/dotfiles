@@ -1,46 +1,18 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  
   "shell": "/bin/zsh",
-  "logLevel": "INFO",
-  // Opencode Web and serve - IMPROVE AND EXPLORE
+  "autoupdate": "notify",
+  "formatter": true,
+  "lsp": true,
+  "default_agent": "plan",
+
   "server": {
     "port": 4096,
     "hostname": "0.0.0.0",
     "mdns": true // allow network discovery
   },
-  // Ignored directories for file watcher
-  "watcher": {
-    "ignore": [
-      "**/.git/**",
-      "**/node_modules/**",
-      "**/.terraform/**",
-      "**/dist/**",
-      "**/build/**",
-      "**/.cache/**",
-      "**/.venv/**"
-    ]
-  },
-  "plugin": [
-    // "superpowers@git+https://github.com/obra/superpowers.git"
-  ],
-  "command": {
-    "docs": {
-      "description": "Generate technical documentation for the current code",
-      "template": "Generate clear technical documentation for the provided code or current file. Focus on data structures, algorithmic flow, memory management, and any specific hardware or performance constraints.",
-      "agent": "build"
-    },
-    "debug": {
-      "description": "Deep debug",
-      "template": "Run the tests and fix any failing logic. Use terminal commands to verify.",
-      "agent": "build_pro"
-    }
-  },
-  // "snapshot": true,
-  "share": "manual", // Share conversation with link - EXPLORE
-  "autoupdate": "notify",
-  "formatter": true,
-  "lsp": true,
-  "default_agent": "plan",
+
   "provider": {
     "{{ opencode_provider_name }}": {
       "models": {
@@ -110,84 +82,318 @@
       }
     }
   },
-  "agent": {
-    "plan_pro": {
-      "description": "Architectural planning mode using a PREMIUM reasoning model. Use only for complex system design.",
-      "color": "#e02020",
-      "mode": "primary",
-      "model": "{{ opencode_provider_name }}/{{ opencode_plan_pro_model }}",
-      "variant": "max_reasoning",
-      "temperature": 0.0,
-      "top_p": 0.1,
-      "prompt": "You are an expert software architect handling complex design tasks. Design system architecture, evaluate patterns, and create step-by-step implementation plans. Focus on rigorous logic, security, and maintainability. You are strictly forbidden from writing or modifying actual codebase files.",
-      "permission": {
-        "edit": "deny",
-        "bash": "deny"
-      }
+
+  "permissions": [
+    {
+      "action": "read",
+      "resource": "*",
+      "effect": "allow"
     },
-    "plan": {
-      "description": "Standard planning mode. Outlines task breakdowns and logic for daily coding.",
-      "color": "#f0c000",
-      "mode": "primary",
-      "model": "{{ opencode_provider_name }}/{{ opencode_plan_model }}",
-      "variant": "medium_reasoning",
-      "temperature": 0.0,
-      "top_p": 0.1,
-      "prompt": "You are a software architect. Draft implementation plans and logic structures. Do not edit actual codebase files.",
-      "permission": {
-        "read": "allow",
-        "edit": "deny",
-        "task": "ask",
-        "bash": "deny"
-      }
+    {
+      "action": "edit",
+      "resource": "*",
+      "effect": "deny"
     },
-    "build_pro": {
-      "description": "Premium implementation mode. Fast, highly capable model focused on complex refactoring and hard bugs.",
-      "color": "#f08000",
-      "mode": "primary",
-      "model": "{{ opencode_provider_name }}/{{ opencode_build_pro_model }}",
-      "variant": "low_reasoning",
-      "temperature": 0.3,
-      "top_p": 0.8,
-      "prompt": "You are a senior software engineer handling complex implementation. Write clean, efficient code. If deep bugs or compilation errors arise, fix them autonomously.",
-      "permission": {
-        "read": "allow",
-        "edit": "allow",
-        "task": "ask",
-        "bash": "ask"
-      }
+    {
+      "action": "subagent",
+      "resource": "*",
+      "effect": "allow"
     },
-    "build": {
-      "description": "Standard implementation mode. Cost-effective model for routine coding and boilerplate.",
-      "color": "#3070d0",
-      "mode": "primary",
-      "model": "{{ opencode_provider_name }}/{{ opencode_build_model }}",
-      "variant": "no_reasoning",
-      "temperature": 0.3,
-      "top_p": 0.8,
-      "prompt": "You are a software developer. Implement the provided instructions efficiently. Fix minor bugs autonomously.",
-      "permission": {
-        "read": "allow",
-        "edit": "allow",
-        "task": "ask",
-        "bash": "ask"
-      }
+    {
+      "action": "shell",
+      "resource": "*",
+      "effect": "ask"
     },
-    "chat": {
-      "description": "Conversational assistant for code discussion, theory, and brainstorming.",
-      "color": "#20b040",
-      "mode": "primary",
-      "model": "{{ opencode_provider_name }}/{{ opencode_chat_model }}",
-      "variant": "no_reasoning",
-      "temperature": 0.7,
-      "top_p": 0.95,
-      "prompt": "You are a helpful pair-programming assistant. Discuss logic, explain complex programming concepts, and brainstorm solutions with the user. Your main goal is chat about the code and not to implement code or run commands.",
-      "permission": {
-        "read": "allow",
-        "edit": "ask",
-        "task": "ask",
-        "bash": "ask"
-      }
+    // Bash: leitura
+    {
+      "action": "shell",
+      "resource": "ls *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "pwd",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "cat *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "head *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "tail *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "wc *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "tree *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "grep *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "rg *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "fd *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "which *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "echo *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "diff *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "jq *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "* --version",
+      "effect": "allow"
+    },
+    // Git: leitura
+    {
+      "action": "shell",
+      "resource": "git status *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git diff *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git log *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git show *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git blame *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git branch",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git branch -a",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git ls-files *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git rev-parse *",
+      "effect": "allow"
+    },
+    // Git: escrita pede confirmação
+    {
+      "action": "shell",
+      "resource": "git add *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "git commit *",
+      "effect": "ask"
+    },
+    // npm / yarn / pip / uv: leitura e verificação
+    {
+      "action": "shell",
+      "resource": "npm ls *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "npm outdated *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "npm test *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "npm run test *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "npm run lint *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "yarn list *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "yarn why *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "yarn test *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "yarn lint *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "pip list *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "pip show *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "pip freeze *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "uv pip list *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "uv pip show *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "uv tree *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "pytest *",
+      "effect": "allow"
+    },
+    // Exceções ao find (que está permitido acima)
+    {
+      "action": "shell",
+      "resource": "find *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "find * -delete *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "find * -exec *",
+      "effect": "ask"
+    },
+    // Bloqueados
+    {
+      "action": "shell",
+      "resource": "sudo *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "rm -rf *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "rm -fr *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "git push *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "git reset --hard *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "git clean *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "dd *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "mkfs *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "chmod -R *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "sh *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "bash *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "npm publish *",
+      "effect": "deny"
     }
-  }
+  ]
 }

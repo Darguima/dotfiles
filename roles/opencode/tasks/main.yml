@@ -10,10 +10,27 @@
     state: directory
 
 # Check defaults/main.yml for the model variables used in the template.
-- name: Deploying OpenCode config from template
+- name: Copying OpenCode config from template
   template:
     src: opencode.jsonc
     dest: "{{ linux_user_home }}/.config/opencode/opencode.jsonc"
+
+- name: Ensuring OpenCode agents folder exists
+  file:
+    path: "{{ linux_user_home }}/.config/opencode/agents"
+    state: directory
+
+# Agents are markdown templates because their frontmatter references model variables.
+- name: Deploying OpenCode agents from templates
+  template:
+    src: "agents/{{ item }}"
+    dest: "{{ linux_user_home }}/.config/opencode/agents/{{ item }}"
+  loop:
+    - plan_pro.md
+    - plan.md
+    - build_pro.md
+    - build.md
+    - chat.md
 
 - name: Copying OpenCode Skills folder
   copy:
