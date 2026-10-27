@@ -32,15 +32,3 @@
     path: "{{ linux_user_home }}/.local/bin"
     state: directory
     mode: "0755"
-
-- name: Install gdrive_mount script
-  copy:
-    src: gdrive_mount
-    dest: "{{ linux_user_home }}/.local/bin/gdrive_mount"
-    mode: "0755"
-
-- name: Install gdrive_unmount script
-  copy:
-    src: gdrive_unmount
-    dest: "{{ linux_user_home }}/.local/bin/gdrive_unmount"
-    mode: "0755"
