@@ -15,6 +15,11 @@
     src: opencode.jsonc
     dest: "{{ linux_user_home }}/.config/opencode/opencode.jsonc"
 
+- name: Copying OpenCode global instructions
+  copy:
+    src: AGENTS.md
+    dest: "{{ linux_user_home }}/.config/opencode/AGENTS.md"
+
 - name: Ensuring OpenCode agents folder exists
   file:
     path: "{{ linux_user_home }}/.config/opencode/agents"
