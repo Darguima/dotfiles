@@ -2,12 +2,20 @@
 # opencode_provider_name: "opencode"
 
 # OpenCode Go ========
-opencode_provider_name: "opencode-go"
-opencode_plan_pro_model: "qwen3.8-max" # "deepseek-v4-pro"
-opencode_plan_model: "qwen3.7-plus" # "qwen3.6-plus"
-opencode_build_pro_model: "kimi-k2.7-code" # "mimo-v2.6-pro"
-opencode_build_model: "deepseek-v4.1-flash" # "qwen3.8-flash"
-opencode_chat_model: "glm-5.3-flash"
+# opencode_provider_name: "opencode-go"
+# opencode_plan_pro_model: “kimi-k3.1-pro” # cheaper alternative: qwen3.8-max
+# opencode_plan_model: “qwen3.7-plus” # cheaper alternative: glm-5.3
+# opencode_build_pro_model: “kimi-k2.7-code” # cheaper alternative: mimo-v2.6-pro
+# opencode_build_model: “minimax-m3.1-flash” # cheaper alternative: mimo-v2.6-flash
+# opencode_chat_model: “qwen3.8-flash” # cheaper alternative: glm-5.3-flash
+
+# Open AI ========
+opencode_provider_name: "openai"
+opencode_plan_pro_model: "gpt-6-astra" # gpt-6.1-sol
+opencode_plan_model: "gpt-6.1-terra" # gpt-6-luna
+opencode_build_pro_model: "gpt-6.1-sol" # gpt-6.1-terra
+opencode_build_model: "gpt-6.1-terra" # gpt-6-luna
+opencode_chat_model: "gpt-6-luna" # gpt-5-nano
 
 # Github Copilot ========
 # opencode_provider_name: "github-copilot"
@@ -15,7 +23,9 @@ opencode_chat_model: "glm-5.3-flash"
 # Google ========
 # opencode_provider_name: "google"
 
-### Models List Website - https://opencode.ai/docs/go/
-### Models List JSON - https://opencode.ai/docs/go/#models - https://opencode.ai/zen/go/v1/models
+### Opencode Go Models List Website - https://opencode.ai/docs/go/
+### Opencode Go Models List JSON - https://opencode.ai/docs/go/#models - https://opencode.ai/zen/go/v1/models
+
+### Open AI Models List JSON File - curl -s https://models.dev/api.json | jq '.openai.models' > models_gpt.json
 
 ### Check prompt used to get best models in prompt.md
