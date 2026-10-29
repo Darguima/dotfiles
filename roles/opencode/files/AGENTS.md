@@ -11,11 +11,13 @@
 ## Working approach
 
 - Before changing a project, inspect its context and follow its conventions.
-- Before implementing changes, present a plan and wait for my approval.
+- Before implementing changes, present a plan and wait for my approval. Do not ask again for steps already covered by the approved plan.
 - Prefer simple solutions and changes focused on the request.
 - Discuss unrelated refactoring or dependencies before introducing them.
 - Use available skills when relevant to the task.
 - Do not invent commands, APIs, or behavior; verify them when necessary.
+- Prefer the available read, glob, and grep tools for exploration. Use simple shell commands and the workdir option instead of unnecessary wrappers or command chains.
+- Use only tools advertised in the current session. If a tool or permission is unavailable, explain the limitation, explaining what you were trying to do (and show the command if relevant); never bypass a denial through another tool, shell command, or subagent.
 
 ## Safety and changes
 

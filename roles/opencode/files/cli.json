@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/v2/cli.json",
+  "session": {
+    "sidebar": "hide"
+  },
+  "attention": {
+    "notifications": true
+  },
+  "keybinds": {
+    "session.line.up": "alt+k,ctrl+k",
+    "session.line.down": "alt+j,ctrl+j",
+    "session.half.page.up": "alt+u,ctrl+u",
+    "session.half.page.down": "alt+d,ctrl+d",
+    "session.first": "ctrl+g,alt+g,home",
+    "session.last": "ctrl+shift+g,alt+shift+g,end"
+  }
+}

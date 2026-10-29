@@ -8,13 +8,17 @@ Here is the context for how my OpenCode environment is organized:
 5. **Chat Agent**: Conversational assistant for brainstorming. Needs to be very fast and cheap (e.g., "flash", "omni").
 
 Selection Criteria:
-Select ONE optimal model for each of the 5 roles from the provided JSON list, strictly balancing the requirement of "Pro" models being highly capable and standard models being cost-effective.
+- Research each candidate's capabilities, reasoning, coding performance, and pricing using reliable sources, preferably official model documentation. Cite sources in the explanation and clearly identify missing or uncertain information; do not invent capabilities or prices.
+- Select one model per role from the provided JSON, balancing capability and cost. Model names alone are not evidence of performance.
+- All selections must use the provider in the supplied list. Choose a variant only from that model's `variants` list. Append it as `#variant`; if the list is empty or the default is preferable, omit it.
+- The list reflects the current OpenCode configuration and can include custom variants. Use catalog-default variants only, and identify uncertainty rather than guessing.
 
 Output Requirements:
 You must output the final selection strictly in the exact format below. After you can include other text like explanations for the choice.
+Return valid YAML and use ASCII double quotes (`"`) around every value. Never use typographic/curly quotes (`“ ”`). If no variant is selected, output only the model ID without `#`.
 
-opencode_plan_pro_model: "<model_id>" # another cheaper possible model
-opencode_plan_model: "<model_id>" # another cheaper possible model
-opencode_build_pro_model: "<model_id>" # another cheaper possible model
-opencode_build_model: "<model_id>" # another cheaper possible model
-opencode_chat_model: "<model_id>" # another cheaper possible model
+opencode_plan_pro_model: "<model_id>[#<variant>]"
+opencode_plan_model: "<model_id>[#<variant>]"
+opencode_build_pro_model: "<model_id>[#<variant>]"
+opencode_build_model: "<model_id>[#<variant>]"
+opencode_chat_model: "<model_id>[#<variant>]"

@@ -37,12 +37,18 @@
     - build.md
     - chat.md
 
-- name: Copying OpenCode Skills folder
+- name: Ensuring OpenCode skills folder exists
+  file:
+    path: "{{ linux_user_home }}/.config/opencode/skills"
+    state: directory
+
+- name: Copying OpenCode skills
   copy:
     src: skills/
     dest: "{{ linux_user_home }}/.config/opencode/skills/"
 
-- name: Copying OpenCode TUI config file (keybindings)
+- name: Copying OpenCode CLI config file (keybindings)
   copy:
-    src: tui.jsonc
-    dest: "{{ linux_user_home }}/.config/opencode/tui.jsonc"
+    src: cli.json
+    dest: "{{ linux_user_home }}/.config/opencode/cli.json"
+    force: true
