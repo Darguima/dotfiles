@@ -9,9 +9,8 @@
     path: "{{ linux_user_home }}/.config/opencode"
     state: directory
 
-# Check defaults/main.yml for the model variables used in the template.
-- name: Copying OpenCode config from template
-  template:
+- name: Copying OpenCode config file
+  copy:
     src: opencode.jsonc
     dest: "{{ linux_user_home }}/.config/opencode/opencode.jsonc"
 
