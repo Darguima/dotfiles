@@ -15,6 +15,7 @@
     ],
     "modules-right": [
         "tray",
+        "bluetooth",
         "custom/disable-keyboard",
         "idle_inhibitor",
         "pulseaudio",
@@ -32,6 +33,17 @@
     "tray": {
         // "icon-size": 21,
         "spacing": 10
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": "",
+        "format-off": "",
+        "format-on": "",
+        "format-connected": " {num_connections}",
+        "tooltip-format": "{controller_alias}",
+        "tooltip-format-connected": "{controller_alias}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "on-click": "foot --app-id=bluetui --title=Bluetooth -W 100x30 bluetui"
     },
     "custom/disable-keyboard": {
         "tooltip": false,

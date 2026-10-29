@@ -16,7 +16,7 @@
     bindsym $mod+f exec $file_manager
     bindsym $mod+r exec $run_menu
 
-    bindsym $mod+b exec blueman-manager
+    bindsym $mod+b exec foot --app-id=bluetui --title=Bluetooth -W 100x30 bluetui
     bindsym $mod+Shift+b exec rofi-rbw --selector-args="--insensitive" --selector-args="-theme $HOME/.config/rofi/text-picker.rasi"
 
     bindsym $mod+n exec swaync-client -t -sw
