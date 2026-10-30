@@ -16,8 +16,12 @@
 - Discuss unrelated refactoring or dependencies before introducing them.
 - Use available skills when relevant to the task.
 - Do not invent commands, APIs, or behavior; verify them when necessary.
-- Prefer the available read, glob, and grep tools for exploration. Use simple shell commands and the workdir option instead of unnecessary wrappers or command chains.
+- Prefer the available read, glob, and grep tools for exploration. Use the workdir option instead of unnecessary wrappers or command chains.
 - Use only tools advertised in the current session. If a tool or permission is unavailable, explain the limitation, explaining what you were trying to do (and show the command if relevant); never bypass a denial through another tool, shell command, or subagent.
+
+## Shell commands
+
+- Prefer native read, glob, and grep tools; when shell is necessary, keep commands simple. Place options and arguments after the executable and subcommand whenever the syntax permits, so shell permission rules can match the command (e.g. `git status --short`, not `git --no-optional-locks status`). Some options are global and must precede the subcommand; preserve valid syntax in those cases, and adjust the permission rule if needed rather than moving the option to an invalid position.
 
 ## Safety and changes
 
