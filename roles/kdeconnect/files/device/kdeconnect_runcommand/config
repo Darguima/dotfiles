@@ -1,0 +1,2 @@
+[General]
+commands="@ByteArray({\"4e5c54ee_7453_4d29_8502_0d25d980ded5\":{\"command\":\"shutdown -h now\",\"name\":\"Shutdown\"},\"bb25342c_d052_4404_8d79_32893024fab8\":{\"command\":\"systemctl suspend\",\"name\":\"Suspend\"},\"cdfb60b3_a681_4df4_8c93_88e6d52cc7f2\":{\"command\":\"swaylock\",\"name\":\"Lock Screen\"}})"

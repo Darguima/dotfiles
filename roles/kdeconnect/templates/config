@@ -1,0 +1,5 @@
+[General]
+customDevices={{ kdeconnect_custom_device_ips | join(',') }}
+disabled_providers_v2=loopback
+keyAlgorithm=EC
+name={{ ansible_facts['hostname'] }}

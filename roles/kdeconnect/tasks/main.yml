@@ -21,3 +21,72 @@
   copy:
     src: portals.conf
     dest: "{{ linux_user_home }}/.config/xdg-desktop-portal/portals.conf"
+
+# Configuring KDE Connect ====
+- name: Ensuring KDE Connect config directory exists
+  file:
+    path: "{{ linux_user_home }}/.config/kdeconnect"
+    state: directory
+
+# List of IPs of the other peers
+- name: Resolving KDE Connect peer IPv4 addresses
+  command: "getent ahostsv4 {{ item }}"
+  register: kdeconnect_peer_resolution
+  loop: "{{ ['archLaptop', 'archDesktop', 'moto-g34-vrum-vrum'] | reject('equalto', ansible_facts['hostname']) | list }}"
+  changed_when: false
+  failed_when: false
+
+- name: Collecting unique KDE Connect peer IPv4 addresses
+  set_fact:
+    kdeconnect_custom_device_ips: "{{ kdeconnect_peer_resolution.results | selectattr('rc', 'equalto', 0) | map(attribute='stdout') | map('regex_findall', '(?m)^([0-9.]+)') | flatten | unique | list }}"
+  changed_when: false
+
+- name: Copying KDE Connect server config
+  template:
+    src: config
+    dest: "{{ linux_user_home }}/.config/kdeconnect/config"
+
+# Configuring KDE Connect devices ====
+- name: Listing paired KDE Connect devices
+  command: kdeconnect-cli --list-devices
+  environment:
+    LANG: C
+  register: kdeconnect_devices
+  changed_when: false
+
+- name: Collecting paired KDE Connect device IDs
+  set_fact:
+    kdeconnect_device_ids: "{{ kdeconnect_devices.stdout | regex_findall('(?m)^- .*: ([0-9a-f]{32}) .*\\(paired(?: and reachable)?\\)$') }}"
+  changed_when: false
+
+- name: Ensuring KDE Connect device config directories exist
+  file:
+    path: "{{ linux_user_home }}/.config/kdeconnect/{{ item }}"
+    state: directory
+  loop: "{{ kdeconnect_device_ids }}"
+
+- name: Ensuring KDE Connect run-command config directories exist
+  file:
+    path: "{{ linux_user_home }}/.config/kdeconnect/{{ item }}/kdeconnect_runcommand"
+    state: directory
+  loop: "{{ kdeconnect_device_ids }}"
+
+- name: Deploying KDE Connect device configs
+  copy:
+    src: device/config
+    dest: "{{ linux_user_home }}/.config/kdeconnect/{{ item }}/config"
+  loop: "{{ kdeconnect_device_ids }}"
+
+- name: Deploying KDE Connect run-command configs
+  copy:
+    src: device/kdeconnect_runcommand/config
+    dest: "{{ linux_user_home }}/.config/kdeconnect/{{ item }}/kdeconnect_runcommand/config"
+  loop: "{{ kdeconnect_device_ids }}"
+
+- name: Stopping KDE Connect daemon
+  command: pkill -x kdeconnectd
+  failed_when: false
+  changed_when: false
+
+- name: Refreshing KDE Connect
+  command: kdeconnect-cli --refresh
