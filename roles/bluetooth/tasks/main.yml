@@ -5,17 +5,9 @@
       - bluez-utils
       - blueman
       - bluedevil
+      - bluetui
     state: latest
   become: true
-
-- name: Installing AUR Bluetooth Apps
-  kewlfft.aur.aur:
-    use: yay
-    name: 
-      - bluetuith
-    state: latest
-  become: True
-  become_user: aur_builder
 
 - name: Enabling Bluetooth service
   systemd:
