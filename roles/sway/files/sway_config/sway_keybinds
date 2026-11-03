@@ -126,6 +126,12 @@
     bindsym $mod+Shift+9 move container to workspace number 9
     bindsym $mod+Shift+0 move container to workspace number 10
 
+    # Move the current workspace to another output
+    bindsym $mod+Ctrl+Shift+$left move workspace to output left
+    bindsym $mod+Ctrl+Shift+$down move workspace to output down
+    bindsym $mod+Ctrl+Shift+$up move workspace to output up
+    bindsym $mod+Ctrl+Shift+$right move workspace to output right
+
     # Toggle between the current and last workspace
     bindsym $mod+Escape workspace back_and_forth
 
